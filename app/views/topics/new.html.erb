@@ -9,10 +9,10 @@
 
 <%= render '/shared/error_messages', :target => @topic %>
 <%= form_for :topic,
-     :url  => forum_topics_path(@forum) do |f| -%>
+     :url  => forum_topics_path(@forum) do |f| %>
 <%= render :partial => "form", :object => f %>
 <%= submit_tag I18n.t('txt.post_topic', :default => 'Post topic') %>
-<% end -%>
+<% end %>
 
 <%= javascript_tag "$('topic_title').focus();" %>
 
