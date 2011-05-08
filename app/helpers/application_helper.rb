@@ -62,6 +62,8 @@ module ApplicationHelper
   end
 
   def for_moderators_of(record, &block)
-    moderator_of?(record) && capture(&block)
+    if moderator_of?(record)
+      capture(&block)
+    end
   end
 end
