@@ -37,8 +37,8 @@ class User
   def do_activation
     self.deleted_at = nil
     self.activation_code = Digest::SHA1.hexdigest( Time.now.to_s.split(//).sort_by {rand}.join )
-    
-    UserMailer.deliver_signup_notification(self) unless using_openid
+
+    UserMailer.signup_notification(self).deliver unless using_openid
   end
 
   protected
@@ -52,8 +52,8 @@ class User
       self.activated_at = Time.now.utc
       self.deleted_at = nil
       self.activation_code = ""
-    
-      UserMailer.deliver_activation(self) unless using_openid
+
+      UserMailer.activation(self).deliver unless using_openid
     end
 
     def remove_moderatorships

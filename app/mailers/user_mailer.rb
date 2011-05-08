@@ -1,23 +1,22 @@
+# coding: utf-8
 class UserMailer < ActionMailer::Base
+  default :from => "your_domain@example.com"
+
   def signup_notification(user)
-    setup_email(user)
-    @subject    += 'Please activate your new account'
-    @body[:url]  = activate_url(user.activation_code, :host => user.site.host)
+    @user = user
+    @url = activate_url(user.activation_code, :host => user.site.host)
+    mail :to => user.email, :subject => subject(user, "Please activate your new account")
   end
 
   def activation(user)
-    setup_email(user)
-    @subject    += 'Your account has been activated!'
-    @body[:url]  = root_url(:host => user.site.host)
+    @user = user
+    @url = root_url(:host => user.site.host)
+    mail :to => user.email, :subject => subject(user, "Your account has been activated!")
   end
 
   protected
 
-    def setup_email(user)
-      @recipients  = "#{user.email}"
-      @from        = "ADMINEMAIL"
-      @subject     = "[YOURSITE]"
-      @sent_on     = Time.now
-      @body[:user] = user
+    def subject(user, text)
+      [user.site.name, text] * " – "
     end
 end
