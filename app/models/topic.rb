@@ -62,8 +62,7 @@ class Topic < ActiveRecord::Base
   def update_cached_post_fields(post)
     # these fields are not accessible to mass assignment
     if remaining_post = post.frozen? ? recent_post : post
-      self.class.update_all(['last_updated_at = ?, last_user_id = ?, last_post_id = ?, posts_count = ?', 
-        remaining_post.created_at, remaining_post.user_id, remaining_post.id, posts.count], ['id = ?', id])
+      self.class.where(:id => id).update_all(:last_updated_at => remaining_post.created_at, :last_user_id => remaining_post.user_id, :last_post_id => remaining_post.id, :posts_count => posts.count)
     else
       destroy
     end
@@ -94,9 +93,9 @@ class Topic < ActiveRecord::Base
 
     def set_post_forum_id
       return unless @old_forum_id
-      posts.update_all :forum_id => forum_id
-      Forum.update_all "posts_count = posts_count - #{posts_count}", ['id = ?', @old_forum_id]
-      Forum.update_all "posts_count = posts_count + #{posts_count}", ['id = ?', forum_id]
+      posts.update_all(:forum_id => forum_id)
+      Forum.where(:id => @old_forum_id).update_all("posts_count = posts_count - #{posts_count}")
+      Forum.where(:id => forum_id).update_all("posts_count = posts_count + #{posts_count}")
     end
 
     def count_user_posts_for_counter_cache
@@ -104,10 +103,10 @@ class Topic < ActiveRecord::Base
     end
 
     def update_cached_forum_and_user_counts
-      Forum.update_all "posts_count = posts_count - #{posts_count}", ['id = ?', forum_id]
-      Site.update_all  "posts_count = posts_count - #{posts_count}", ['id = ?', site_id]
+      Forum.where(:id => forum_id).update_all("posts_count = posts_count - #{posts_count}")
+      Site.where(:id => site_id).update_all("posts_count = posts_count - #{posts_count}")
       @user_posts.each do |user_id, posts|
-        User.update_all "posts_count = posts_count - #{posts.size}", ['id = ?', user_id]
+        User.where(:id => user_id).update_all("posts_count = posts_count - #{posts.size}")
       end
     end
 end

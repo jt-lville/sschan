@@ -11,7 +11,7 @@ class MonitorshipsController < ApplicationController
   end
 
   def destroy
-    Monitorship.update_all ['active = ?', false], ['user_id = ? and topic_id = ?', current_user.id, params[:topic_id]]
+    Monitorship.where(:user_id => current_user.id, :topic_id => params[:topic_id]).update_all(:active => false)
     respond_to do |format| 
       format.html { redirect_to topic_path(params[:forum_id], params[:topic_id]) }
       format.js

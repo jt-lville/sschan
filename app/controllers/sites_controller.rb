@@ -76,6 +76,6 @@ class SitesController < ApplicationController
   end
 
   def authorized?
-    @site.nil? or @site.new_record? # or current_site == Site.find(:first)
+    @site.nil? or @site.new_record? # or current_site == Site.first
   end
 end

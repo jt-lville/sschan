@@ -44,7 +44,7 @@ class SessionsController < ApplicationController
               @user.login = openid_url
               @user.email = registration['email']
               @user.password = 123456
-              @user.site = Site.find(:first)
+              @user.site = Site.first
               @user.display_name = registration['nickname']
               @user.save(false)
             end

@@ -16,15 +16,13 @@ class Site < ActiveRecord::Base
   class << self
 
     def main
-      @main ||= find :first, :conditions => {:host => ''}
+      @main ||= where(:host => '').first
     end
 
     def find_by_host(name)
       return nil if name.nil?
-      name.downcase!
-      name.strip!
-      name.sub! /^www\./, ''
-      sites = find :all, :conditions => ['host = ? or host = ?', name, '']
+      name.downcase! && name.strip! && name.sub!(/^www\./, '')
+      sites = where('host = ? or host = ?', name, '')
       sites.reject { |s| s.default? }.first || sites.first
     end
 
