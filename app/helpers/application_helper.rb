@@ -5,6 +5,12 @@ module ApplicationHelper
     link_to image_tag('feed-icon.png', :size => '14x14', :alt => "Subscribe to #{title}"), url
   end
 
+  def flash_messages
+    flash.map do |name, message|
+      content_tag :p, message, :class => [:notice, name].uniq.join(' ')
+    end.join.html_safe if flash.present?
+  end
+
   def pagination(collection)
     if collection.total_entries > 1
       "<p class='pages'>" + I18n.t('txt.pages', :default => 'Pages') + ": <strong>" + 
