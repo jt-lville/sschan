@@ -43,7 +43,7 @@
 
 <p style="float:right;"><%= avatar_for @user, 80 %></p> 
 
-<h1><%=h @user.display_name %> </h1>
+<h1><%= @user.display_name %> </h1>
 
 <p class="subtitle">
   <%= feed_icon_tag @user.display_name, user_posts_path(:user_id => @user, :format => :rss) %>

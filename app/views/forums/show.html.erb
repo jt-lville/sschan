@@ -10,7 +10,7 @@
 <% unless @forum.moderators.empty? %>
 <ul class="flat" style="margin-top:1em;">
 <% @forum.moderators.each do |user| %>
-  <li><%= link_to h(user.display_name || user.login), user %></li>
+  <li><%= link_to user.display_name || user.login, user %></li>
 <% end %>
 </ul>
 <% else %>
@@ -24,7 +24,7 @@
 <div class="crumbs">
 <%= link_to I18n.t('txt.forums', :default => 'Forums'), root_path %> <span class="arrow">&rarr;</span>
 </div>
-<h1 style="margin-top:0.5em"><%= h @forum.name %></h1>
+<h1 style="margin-top:0.5em"><%= @forum.name %></h1>
 
 <p class="subtitle">
   <%= feed_icon_tag @forum.name, forum_posts_path(@forum, :format => :atom) %> 

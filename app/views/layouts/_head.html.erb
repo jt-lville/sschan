@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-  <title><%=h @current_site && current_site.name || I18n.t('txt.beast_title', :default => 'Altered Beast') %><%= " - #{h @page_title}" if @page_title %></title>
+  <title><%= @current_site && current_site.name || I18n.t('txt.beast_title', :default => 'Altered Beast') %><%= " - " + @page_title if @page_title %></title>
   <%= stylesheet_link_tag 'display' %>
   <%= stylesheet_link_tag 'captcha' %>
   <%= javascript_include_tag "prototype", "effects", "lowpro", 'rails', "application", :cache => "beast" %>

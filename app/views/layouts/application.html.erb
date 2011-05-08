@@ -3,8 +3,8 @@
 <div id="container">
 <div id="content">
   
-<%= content_tag 'p', h(flash[:notice]), :class => 'notice' if flash[:notice] %>
-<%= content_tag 'p', h(flash[:error]), :class => 'notice error' if flash[:error] %>
+<%= content_tag :p, flash[:notice], :class => 'notice' if flash[:notice] %>
+<%= content_tag :p, flash[:error], :class => 'notice error' if flash[:error] %>
 
 <%= yield %>
 </div>
