@@ -4,7 +4,6 @@ class ApplicationController < ActionController::Base
   include AuthenticatedSystem
 
   helper_method :current_page
-  before_filter :set_language
   before_filter :login_required, :only => [:new, :edit, :create, :update, :destroy]
 
   # See ActionController::RequestForgeryProtection for details
@@ -19,11 +18,5 @@ class ApplicationController < ActionController::Base
   def current_page
     @page ||= [1, params[:page].to_i].max
   end
-
-  private
-
-    def set_language
-      I18n.locale = :en || I18n.default_locale
-    end
 
 end
