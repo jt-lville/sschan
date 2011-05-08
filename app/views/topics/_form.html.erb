@@ -1,3 +1,5 @@
+<%= form.error_messages %>
+
 <p>
   <label for="topic_title"><%= I18n.t('txt.views_topics.topic', :default => 'Name') %></label><br />
   <%= form.text_field :title, :onchange => "/*TopicForm.editNewTitle(this);*/", :class => "primary", :tabindex => 10 %>
