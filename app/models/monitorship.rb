@@ -12,7 +12,7 @@ class Monitorship < ActiveRecord::Base
 
     def uniqueness_of_relationship
       if self.class.exists?(:user_id => user_id, :topic_id => topic_id, :active => true)
-        errors.add_to_base("Cannot add duplicate user/topic relation")
+        errors.add(:base, "Cannot add duplicate user/topic relation")
       end
     end
   

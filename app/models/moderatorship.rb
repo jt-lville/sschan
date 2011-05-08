@@ -9,13 +9,13 @@ class Moderatorship < ActiveRecord::Base
 
     def uniqueness_of_relationship
       if self.class.exists?(:user_id => user_id, :forum_id => forum_id)
-        errors.add_to_base("Cannot add duplicate user/forum relation")
+        errors.add(:base, "Cannot add duplicate user/forum relation")
       end
     end
 
     def user_and_forum_in_same_site
       if user && forum && user.site_id != forum.site_id
-        errors.add_to_base("User and Forum must be in the same Site.")
+        errors.add(:base, "User and Forum must be in the same Site")
       end
     end
 end
