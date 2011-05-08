@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
   has_many :moderatorships, :dependent => :delete_all
   has_many :forums, :through => :moderatorships, :source => :forum do
     def moderatable
-      all :select => "#{Forum.table_name}.*, #{Moderatorship.table_name}.id as moderatorship_id"
+      select("#{Forum.table_name}.*, #{Moderatorship.table_name}.id as moderatorship_id")
     end
   end
 
