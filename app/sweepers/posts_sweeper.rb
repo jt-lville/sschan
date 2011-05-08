@@ -7,6 +7,6 @@ class PostsSweeper < ActionController::Caching::Sweeper
     FileUtils.rm_rf File.join(Rails.root, 'public', 'users')
     FileUtils.rm_rf File.join(Rails.root, 'public', 'posts.rss')
   end
-  
+
   alias_method :after_destroy, :after_save
 end
