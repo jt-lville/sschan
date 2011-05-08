@@ -51,16 +51,15 @@ class User
 
     def password_required?
       return false if using_openid
-      crypted_password.blank? || !password.blank?
+      crypted_password.blank? || password.present?
     end
 
     def set_first_user_as_admin
-      self.admin = true if site and site.users.size.zero?
+      self.admin = true if site && site.users.size.zero?
     end
 
     def normalize_login_and_email
-      login.downcase! if login
-      login.strip! if login
+      login.downcase! && login.strip! if login
       email.downcase! if email
       return true
     end
