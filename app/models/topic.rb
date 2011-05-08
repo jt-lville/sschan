@@ -2,7 +2,6 @@ class Topic < ActiveRecord::Base
   include User::Editable
 
   before_validation :set_default_attributes, :on => :create
-  validates_presence_of :title
 
   after_create   :create_initial_post
   before_update  :check_for_moved_forum
