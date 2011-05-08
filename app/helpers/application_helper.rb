@@ -12,7 +12,7 @@ module ApplicationHelper
       "</strong></p>"
     end
   end
-  
+
   def next_page(collection)
     unless collection.current_page == collection.total_entries or collection.total_entries == 0
       "<p style='float:right;'>" + link_to(I18n.t('txt.next_page', :default => 'next page'), { :page => collection.current_page.next }.merge(params.reject{|k,v| k=="page"})) + "</p>"
@@ -64,5 +64,4 @@ module ApplicationHelper
   def for_moderators_of(record, &block)
     moderator_of?(record) && concat(capture(&block))
   end
-
 end

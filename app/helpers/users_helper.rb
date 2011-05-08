@@ -10,7 +10,7 @@ module UsersHelper
     count = current_site.users.count(:conditions => "posts_count > 0")
     I18n.t 'txt.count_users_active', :count => count, :num => number_with_delimiter(count)
   end
-  
+
   # todo: cache this?
   def lurking_user_count
     count = current_site.users.count(:conditions => "posts_count = 0")
@@ -60,7 +60,7 @@ module UsersHelper
   #   link_to_user @user, :content_text => 'Your user page'
   #   # => <a href="/users/3" title="barmy" class="nickname">Your user page</a>
   #
-  def link_to_user(user, options={})
+  def link_to_user(user, options = {})
     raise "Invalid user" unless user
     options.reverse_merge! :content_method => :login, :title_method => :login, :class => :nickname
     content_text      = options.delete(:content_text)
@@ -81,7 +81,7 @@ module UsersHelper
   #   link_to_login_with_IP :content_text => 'not signed in'
   #   # => <a href="/login" title="169.69.69.69">not signed in</a>
   #
-  def link_to_login_with_IP content_text=nil, options={}
+  def link_to_login_with_IP(content_text = nil, options = {})
     ip_addr           = request.remote_ip
     content_text    ||= ip_addr
     options.reverse_merge! :title => ip_addr
@@ -96,7 +96,7 @@ module UsersHelper
   # Link to the current user's page (using link_to_user) or to the login page
   # (using link_to_login_with_IP).
   #
-  def link_to_current_user(options={})
+  def link_to_current_user(options = {})
     if current_user
       link_to_user current_user, options
     else

@@ -9,7 +9,7 @@ class MonitorshipsController < ApplicationController
       format.js
     end
   end
-  
+
   def destroy
     Monitorship.update_all ['active = ?', false], ['user_id = ? and topic_id = ?', current_user.id, params[:topic_id]]
     respond_to do |format| 

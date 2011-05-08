@@ -70,22 +70,23 @@ class PostsController < ApplicationController
     end
   end
 
-protected
-  def find_parents
-    if params[:user_id]
-      @parent = @user = User.find(params[:user_id])
-    elsif params[:forum_id]
-      @parent = @forum = Forum.find_by_permalink(params[:forum_id])
-      @parent = @topic = @forum.topics.find_by_permalink(params[:topic_id]) if params[:topic_id]
-    end
-  end
+  protected
 
-  def find_post
-    post = @topic.posts.find(params[:id])
-    if post.user == current_user || current_user.admin?
-      @post = post
-    else
-      raise ActiveRecord::RecordNotFound
+    def find_parents
+      if params[:user_id]
+        @parent = @user = User.find(params[:user_id])
+      elsif params[:forum_id]
+        @parent = @forum = Forum.find_by_permalink(params[:forum_id])
+        @parent = @topic = @forum.topics.find_by_permalink(params[:topic_id]) if params[:topic_id]
+      end
     end
-  end
+
+    def find_post
+      post = @topic.posts.find(params[:id])
+      if post.user == current_user || current_user.admin?
+        @post = post
+      else
+        raise ActiveRecord::RecordNotFound
+      end
+    end
 end
