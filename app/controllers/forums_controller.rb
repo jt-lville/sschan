@@ -33,7 +33,7 @@ class ForumsController < ApplicationController
   # GET /forums/new
   # GET /forums/new.xml
   def new
-    @forum = Forum.new
+    @forum = current_site.forums.new
 
     respond_to do |format|
       format.html # new.html.erb
