@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
   end
 
   def current_page
-    @page ||= params[:page].blank? ? 1 : params[:page].to_i
+    @page ||= [1, params[:page].to_i].max
   end
 
   private
