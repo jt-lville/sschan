@@ -31,7 +31,7 @@ class TopicsController < ApplicationController
   end
 
   def new
-    @topic = Topic.new
+    @topic = @forum.topics.new
 
     respond_to do |format|
       format.html # new.html.erb
