@@ -76,7 +76,7 @@ namespace :app do
     end
     puts
 
-    mkdir_p File.join(Rails.root, 'log')
+    mkdir_p Rails.root.join('log')
 
     Rake::Task['environment'].invoke
     begin
