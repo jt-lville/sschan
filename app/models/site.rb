@@ -23,13 +23,13 @@ class Site < ActiveRecord::Base
       return nil if name.nil?
       name.downcase! && name.strip! && name.sub!(/^www\./, '')
       sites = where('host = ? or host = ?', name, '')
-      sites.reject { |s| s.default? }.first || sites.first
+      sites.reject(&:default?).first || sites.first
     end
 
   end
 
   def host=(value)
-    write_attribute :host, value.to_s.downcase
+    write_attribute(:host, value.to_s.downcase)
   end
 
   # <3 rspec
