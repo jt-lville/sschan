@@ -2,6 +2,8 @@ class PostsController < ApplicationController
   before_filter :find_parents
   before_filter :find_post, :only => [:edit, :update, :destroy]
 
+  cache_sweeper :posts_sweeper, :only => [:create, :update, :destroy]
+
   # /posts
   # /users/1/posts
   # /forums/1/posts
