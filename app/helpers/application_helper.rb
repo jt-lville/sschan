@@ -26,9 +26,9 @@ module ApplicationHelper
   end
 
   def search_posts_title
-    (params[:q].blank? ? I18n.t('txt.recent_posts', :default => 'Recent Posts') : I18n.t('txt.searching_for', :default => 'Searching for') + " '#{h params[:q]}'").tap do |title|
-      title << " " + I18n.t('txt.by_user', :default => 'by %{user}', :user => h(@user.display_name)) if @user
-      title << " " + I18n.t('txt.in_forum', :default => 'in %{forum}', :forum => h(@forum.name)) if @forum
+    (params[:q].blank? ? I18n.t('txt.recent_posts', :default => 'Recent Posts') : I18n.t('txt.searching_for', :default => 'Searching for') + " '#{params[:q]}'").tap do |title|
+      title << " " + I18n.t('txt.by_user', :default => 'by %{user}', :user => @user.display_name) if @user
+      title << " " + I18n.t('txt.in_forum', :default => 'in %{forum}', :forum => @forum.name) if @forum
     end
   end
 
