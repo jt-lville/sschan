@@ -1,7 +1,8 @@
 class Moderatorship < ActiveRecord::Base
   belongs_to :user
   belongs_to :forum
-  validates_presence_of :user_id, :forum_id
+
+  validates :user_id, :forum_id, :presence => true
   validate :uniqueness_of_relationship
   validate :user_and_forum_in_same_site
 

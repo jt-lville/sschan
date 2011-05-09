@@ -2,7 +2,7 @@ class Monitorship < ActiveRecord::Base
   belongs_to :user
   belongs_to :topic
 
-  validates_presence_of :user_id, :topic_id
+  validates :user_id, :topic_id, :presence => true
   validate :uniqueness_of_relationship
   before_create :check_for_inactive
 
