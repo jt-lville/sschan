@@ -6,7 +6,7 @@
   <%= form_for @user.moderatorships.build do |f| %>
     <h6><%= I18n.t 'txt.admin.admin_and_moderation', :default => 'Admin & Moderation' %></h6>
 
-    <% unless @user.forums.empty? %>
+    <% if @user.forums.present? %>
 
     <p><%= I18n.t 'txt.admin.remove_moderated_forum', :default => 'This user can moderate the following forums. Click one to remove.' %></p>
 
@@ -19,10 +19,10 @@
     </ul>
     <% end %>
 
-  	<% unless @user.available_forums.empty? %>
+  	<% if @user.available_forums.present? %>
     <p>
   	<label><%= I18n.t 'txt.admin.add_as_moderator', :default => 'Add as moderator' %></label><br />
-  	<%= f.select :forum_id, @user.available_forums.collect { |forum| [forum.name, forum.id] }, :include_blank => " - " %>
+  	<%= f.collection_select :forum_id, @user.available_forums, :id, :name, :include_blank => " - " %>
   	</p>
     <p>
   		<%= f.submit I18n.t 'txt.save', :default => 'Save' %>
@@ -35,7 +35,6 @@
 
 <% else %>
   <p><%= I18n.t 'txt.admin.user_account_is_suspended', :default => "User account is suspended" %>. <%= link_to I18n.t('txt.admin.unsuspend_user_account', :default => "Unsuspend user account"), unsuspend_user_path(@user), :method => :put %></p>
-  
 <% end %>
 <p><%= link_to I18n.t('txt.admin.edit_user_account', :default => "Edit user account"), edit_user_path(@user) %></p>
 <% end %>
@@ -43,7 +42,7 @@
 
 <p style="float:right;"><%= avatar_for @user, 80 %></p> 
 
-<h1><%= @user.display_name %> </h1>
+<h1><%= @user.display_name %></h1>
 
 <p class="subtitle">
   <%= feed_icon_tag @user.display_name, user_posts_path(:user_id => @user, :format => :rss) %>
