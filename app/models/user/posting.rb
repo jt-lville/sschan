@@ -5,7 +5,6 @@ class User
   #  - changes forum_id if you're an admin
   #
   def post(forum, attributes)
-    attrs = attributes.to_hash.symbolize_keys
     Topic.new(attributes) do |topic|
       topic.forum = forum
       topic.user  = self
