@@ -88,4 +88,4 @@ protected
 end
 
 Test::Unit::TestCase.extend ModelStubbing::Methods
-Spec::Example::ExampleGroup.extend ModelStubbing::Methods if defined? Spec::Example::ExampleGroup
+RSpec::Core::ExampleGroup.extend ModelStubbing::Methods if defined? RSpec::Core::ExampleGroup
