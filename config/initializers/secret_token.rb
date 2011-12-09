@@ -4,4 +4,4 @@
 # If you change this key, all old signed cookies will become invalid!
 # Make sure the secret is at least 30 characters and all random,
 # no regular words or you'll be exposed to dictionary attacks.
-Sschan::Application.config.secret_token = '7e0c80a863370621a37bee9b846db635b861d10ae3a5bc0ae45a5d74c804fec79b9edbcea54c6d12304754709f35596cebf72b10198da3650e085ecb5d9796cc'
+OrchiveApp::Application.config.secret_token = '13665eebca2ebb6c0f288fe030a134b97451f88f398330a1f84eaaca540df28f0adf78404244f82d907655dd6e0226cfb232e1250293aac56ca53e18d30cecb0'

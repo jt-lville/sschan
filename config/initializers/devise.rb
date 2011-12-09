@@ -1,13 +1,12 @@
-# Use this hook to configure devise mailer, warden hooks and so forth.
-# Many of these configuration options can be set straight in your model.
+# Use this hook to configure devise mailer, warden hooks and so forth. The first
+# four configuration values can also be set straight in your models.
 Devise.setup do |config|
   # ==> Mailer Configuration
-  # Configure the e-mail address which will be shown in Devise::Mailer,
-  # note that it will be overwritten if you use your own mailer class with default "from" parameter.
-  config.mailer_sender = "please-change-me-at-config-initializers-devise@example.com"
+  # Configure the e-mail address which will be shown in DeviseMailer.
+  config.mailer_sender = "noreply@orchive.com"
 
   # Configure the class responsible to send e-mails.
-  # config.mailer = "Devise::Mailer"
+  config.mailer = "Devise::Mailer"
 
   # ==> ORM configuration
   # Load and configure the ORM. Supports :active_record (default) and
@@ -36,7 +35,7 @@ Devise.setup do |config|
   # These keys will be downcased upon creating or modifying a user and when used
   # to authenticate or find a user. Default is :email.
   config.case_insensitive_keys = [ :email ]
-
+  
   # Configure which authentication keys should have whitespace stripped.
   # These keys will have whitespace before and after removed upon creating or
   # modifying a user and when used to authenticate or find a user. Default is :email.
@@ -62,21 +61,18 @@ Devise.setup do |config|
   # ==> Configuration for :database_authenticatable
   # For bcrypt, this is the cost for hashing the password and defaults to 10. If
   # using other encryptors, it sets how many times you want the password re-encrypted.
-  #
-  # Limiting the stretches to just one in testing will increase the performance of
-  # your test suite dramatically. However, it is STRONGLY RECOMMENDED to not use
-  # a value less than 10 in other environments.
-  config.stretches = Rails.env.test? ? 1 : 10
+  config.stretches = 10
 
   # Setup a pepper to generate the encrypted password.
-  # config.pepper = "7b1994c76422955e89487aff0bcbbec84fac14eda844505f4900295b7f8a9e21726bc71b922f443c843521ffd38350945fd932fcb9941d07425d3659eb35270e"
+  # config.pepper = "55761ef5ae59ec82233990e605301ca4a3bfde35294c43a96098b29a888eaedfb337cdfddf8441fd6799bd50f0e2a72e776819de7b9759d2bb0d608705e30fbe"
 
   # ==> Configuration for :confirmable
-  # A period that the user is allowed to access the website even without
-  # confirming his account. For instance, if set to 2.days, the user will be
-  # able to access the website for two days without confirming his account,
-  # access will be blocked just in the third day. Default is 0.days, meaning
-  # the user cannot access the website without confirming his account.
+  # The time you want to give your user to confirm his account. During this time
+  # he will be able to access your application without confirming. Default is 0.days
+  # When confirm_within is zero, the user won't be able to sign in without confirming.
+  # You can use this to let your user access some features of your application
+  # without confirming the account, but blocking it after a certain period
+  # (ie 2 days).
   # config.confirm_within = 2.days
 
   # Defines which key will be used when confirming an account
@@ -102,12 +98,10 @@ Devise.setup do |config|
 
   # ==> Configuration for :validatable
   # Range for password length. Default is 6..128.
-  # config.password_length = 6..128
+   config.password_length = 7..20
 
-  # Email regex used to validate email formats. It simply asserts that
-  # an one (and only one) @ exists in the given string. This is mainly
-  # to give user feedback and not to assert the e-mail validity.
-  # config.email_regexp = /\A[^@]+@[^@]+\z/
+  # Regex to use to validate the email address
+   config.email_regexp = /\A([\w\.%\+\-]+)@([\w\-]+\.)+([\w]{2,})\z/i
 
   # ==> Configuration for :timeoutable
   # The time you want to timeout the user session without activity. After this
@@ -202,8 +196,9 @@ Devise.setup do |config|
   # If you want to use other strategies, that are not supported by Devise, or
   # change the failure app, you can configure them inside the config.warden block.
   #
-  # config.warden do |manager|
+	config.warden do |manager|
+	#	manager.failure_app   = CustomFailure
   #   manager.intercept_401 = false
   #   manager.default_strategies(:scope => :user).unshift :some_external_strategy
-  # end
+	end
 end

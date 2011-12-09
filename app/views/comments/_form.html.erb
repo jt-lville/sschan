@@ -1,0 +1,60 @@
+<style type='text/css'>
+#commentr {
+background-image:URL('/images/newcomment.png');
+width:745px;
+height:103px;
+margin-bottom:0px;
+position:relative;
+top:0px;
+left:0px;
+}
+
+#commentr .comfield{
+position:relative;
+top:5px;
+left:5px;
+width:728px;
+height:86px;
+border-style:solid;
+border-width:1px;
+border-color:#FFF;
+font-size:11px;
+color:gray;
+}
+
+.share {
+background-image:URL('/images/share.png');
+width:64px;
+height:29px;
+border-style:none;
+}
+
+.share:hover{
+background-image:URL('/images/share_hover.png');
+width:64px;
+height:29px;
+border-style:none;
+}
+
+.share:active{
+background-image:URL('/images/share_active.png');
+width:64px;
+height:29px;
+border-style:none;
+}
+
+
+
+</style>
+
+<%= form_for([@post, @post.comments.build]) do |f| %>
+<h2>Post a Comment</h2>
+  <div class="field">
+	<div id='commentr'>
+    <%= f.text_area :content, :class=>'comfield', :placeholder=>'What do you think?' %>
+	</div>
+  </div>
+  <div class="actions">
+     <%= f.submit '', :class=>' share floatLeft'%>
+  </div>
+<% end %>

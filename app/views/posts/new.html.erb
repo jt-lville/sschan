@@ -1,0 +1,228 @@
+<style type="text/css">
+
+#container {
+  margin:auto;
+  width: 995px; 
+  }
+
+#newpost {
+position:relative;
+left:260px;
+top:-30px;
+
+}
+
+#bar {
+background-image:URL('/images/bar.png');
+width:594px;
+height:35px;
+position:relative;
+top:00px;
+left:000px;
+margin-bottom:0px;
+}
+
+
+
+
+#bar .field {
+position:relative;
+top:5px;
+left:5px;
+width:581px;
+height:21px;
+border-style:solid;
+border-width:1px;
+border-color:#FFF;
+font-size:11px;
+color:gray;
+}
+
+#contend {
+background-image:URL('/images/content.png');
+width:595px;
+height:286px;
+position:relative;
+top:00px;
+left:000px;
+margin-bottom:0px;
+}
+
+#contend .dimen {
+position:relative;
+top:5px;
+left:5px;
+width:578px;
+height:269px;
+border-style:solid;
+border-width:1px;
+border-color:#FFF;
+font-size:11px;
+color:gray;
+}
+
+
+#sourceback {
+background-image:URL('/images/sourceback.png');
+width:594px;
+height:68px;
+position:relative;
+top:00px;
+left:000px;
+margin-bottom:0px;
+}
+
+#sourcepos{
+position:relative;
+top:-4px;
+margin-left:50px;
+}
+
+.spacer {
+margin-right:20px;
+}
+
+.spacer2{
+margin-right:27px;
+}
+
+.spacer3{
+margin-right:36px;
+}
+
+.spacer4{
+margin-right:78px;
+}
+
+.spacer5{
+margin-right:16px;
+}
+
+.publish {
+background-image:URL('/images/publish.png');
+width:64px;
+height:29px;
+border-style:none;
+}
+
+.publish:hover{
+background-image:URL('/images/publishhover.png');
+width:64px;
+height:29px;
+border-style:none;
+}
+
+.publish:active{
+background-image:URL('/images/publishactive.png');
+width:64px;
+height:29px;
+border-style:none;
+}
+
+.cancel {
+background-image:URL('/images/cancel.png');
+width:64px;
+height:29px;
+border-style:none;
+}
+
+
+</style>
+
+
+<div id='container'>
+
+<div id='newpost'>
+<h1>New Report</h1>
+
+
+  <div class="field">
+    <%= check_box_tag 'alias_check', 'true' %> Post Anonymously <br><br>
+  </div>
+
+  <%@posts = current_user.posts%>
+
+  <%# if Time.now - @posts[@posts.size - 1].created_at < 600 %>
+  <%# @post.errors.add(:content, "cannot be posted until ten minutes have passed.") %>
+  <%# end %>
+
+<%= form_for(@post) do |f| %>
+  <% if @post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
+      <ul>
+      <% @post.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <div id="bar">
+    <%= f.text_field :title, :class=>'field', :placeholder=>'Enter report title'%>
+  </div>
+  <div id="contend">
+    <%= f.text_area :content, :class=>'dimen', :placeholder=>'What is going on?' %>
+  </div>
+
+  <div id="bar">
+    <%= f.text_field :user_location, :class=>'field', :placeholder=>'Where are you?'%>
+  </div>
+  <div id="bar">
+    <%= f.text_field :post_location, :class=>'field', :placeholder=>'Where is this taking place?' %>
+  </div>
+<div id="bar"> 
+    <%= f.text_field :source, :class=>'field', :placeholder=>'What is your source?' %>
+  </div>
+
+<div id='sourceback'>
+<div id='sourcepos'>
+<br>
+
+	<!-- [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].each do |num| %>
+		<= f.check_box "filter#{num}".to_sym %>
+		<= f.label "filter#{num}".to_sym %>
+	< end %> -->
+
+	<%= check_box_tag 'tags[]', 'politics' %>
+	<%= f.label :politics, :class=>'spacer' %>
+   
+        <%= check_box_tag 'tags[]', 'tech' %>
+	<%= f.label :tech, 'Technology', :class=>'spacer' %>
+   
+	<%= check_box_tag 'tags[]', 'entertainment' %>
+	<%= f.label :entertainment, :class=>'spacer' %>
+   
+	<%= check_box_tag 'tags[]', 'sports' %>
+	<%= f.label :sports, :class=>'spacer' %>
+   
+	<%= check_box_tag 'tags[]', 'science' %>
+	<%= f.label :science, :class=>'spacer' %>
+	<br>
+   
+	<%= check_box_tag 'tags[]', 'crime' %>
+	<%= f.label :crime, :class=>'spacer2' %>
+   
+	<%= check_box_tag 'tags[]', 'business' %>
+	<%= f.label :business, :class=>'spacer3' %>
+   
+	<%= check_box_tag 'tags[]', 'social' %>
+	<%= f.label :social, :class=>'spacer4' %>
+   
+	<%= check_box_tag 'tags[]', 'nature' %>
+	<%= f.label :nature, :class=>'spacer5' %>
+   
+	<%= check_box_tag 'tags[]', 'other' %>
+	<%= f.label :other, :class=>'spacer' %>
+	</div>
+  	</div>
+	<br>
+    <%= f.submit '', :class=>' publish floatLeft'%>
+
+<% end %>
+
+
+<%= link_to '', posts_path, :class=>'cancel floatLeft' %>
+
+</div>
+</div>

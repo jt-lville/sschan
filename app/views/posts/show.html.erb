@@ -1,0 +1,348 @@
+<style type='text/css'>
+	#wrapper {
+		background:#FAFCF9;
+	}
+	#main {
+		background:none;
+		  		width:995px;
+		margin: 0 auto 0 auto;
+	}
+	#content {
+		padding-top:0;
+		margin-left:0;
+		overflow: hidden;
+		position: relative;
+		width: 100%;
+	}
+
+	/* Actual Post */
+	#rightBar { 
+		margin-left:20px;
+		margin-right:auto;
+		padding-top:40px; 
+		width:765px; 
+		position:relative;
+	}	
+	#rightBar #post { 
+		padding:10px;
+		border:3px solid #FDFDFD;
+		-webkit-border-radius:10px;
+		-moz-border-radius:10px;
+		border-radius:10px;
+	}
+	#rightBar #post #postTitle {
+		font-size:30px; 
+		font-weight:500;
+		vertical-align:50%;
+	}
+	#rightBar #post #postContent{
+		font-size:16px;
+		margin-bottom:20px;
+	}
+	#rightBar #post img {
+		-webkit-border-radius:2px;
+		-moz-border-radius:2px;
+		border-radius:2px;
+	}
+	#rightBar #post #postInfo {
+		height:60px;
+		overflow:hidden;
+		height:100%;
+	}
+	#rightBar #post #postInfo p {
+		color:#555;
+		line-height:18px;
+		text-align:left;
+		font-size:15px;
+	}
+	#rightBar #post #postInfo section p img {
+		width:13px;
+		height:14px;
+	}
+	#rightBar #post #postInfo section {
+		text-align:left;
+	}
+
+	#rightBar #comments h2 {
+		font-size:24px;
+	}
+	
+	#rightBar #comment {
+	background-image:URL('/images/newcomment.png');
+	width:745px;
+	height:103px;
+	}
+	
+	.commented {
+background-image:URL('/images/commented.png');
+width:746px;
+height:123px;
+margin-bottom:0px;
+position:relative;
+top:0px;
+bottom:0px;
+}
+
+.comdel {
+background-image:URL('/images/close.jpg');
+width:13px;
+height:13px;
+position:relative;
+top:-100px;
+margin-right:9px;
+float:right;
+}
+
+#textpos {
+position:relative;
+margin-left:15px;
+}	
+	
+.smallify {
+font-size:12px;
+color:gray;
+}	
+
+#timify {
+float:right;
+font-size:12px;
+color:gray;
+position:relative;
+top:52px;
+margin-right:25px;
+}
+
+#netback {
+background-image:URL('/images/netback.png');
+width:745px;
+height:66px;
+margin-bottom:0px;
+}
+
+#networks {
+position:relative;
+top:-2px;
+}
+
+#facebook {
+position:relative;
+left:10px;
+top:12px;
+}
+
+#twitter {
+position:relative;
+left:10px;
+top:17px;
+}
+
+#gplus {
+position:relative;
+left:560px;
+top:-34px;
+}
+
+#linkedin {
+position:relative;
+left:560px;
+top:-34px;
+}
+
+
+	
+</style>
+
+<p class="notice"><%= notice %></p>
+
+<div id='rightBar' class='floatRight'>
+	<div id='post'>
+		<%= image_tag('default_photo.png', :size=>'60x60')%>
+		<h1 class="inline" id="postTitle"><%= @post.title %></h1>
+
+		<p id="postContent"><%= @post.content %></p>
+                
+               <section class="floatRight">
+                           
+                                
+                                <% if can? :manage, :all   %>
+                                                               <p id="voteAccurate">
+				<%=image_tag('NFIcons/time.png') %> 
+                                  <b><a class="blue"><%= link_to 'Accurate', { :action => :vote_up, :id => @post.id }, :method=>:post#, :remote => true
+                                      %></a></b>
+				</p>     	      
+                                <p id="voteInaccurate">
+					<%=image_tag('NFIcons/time.png') %> 
+                                  <b><a class="blue"><%= link_to 'Inaccurate', { :action => :vote_down, :id => @post.id }, :method=>:post#, :remote => true
+                                    %></a></b>
+				</p> 
+
+				
+				<%= link_to_if(can?(:delete, @post), 'Delete', post_path(@post), :id=>'delete', :class=>'floatRight', :confirm => "Are you sure?", :method => :delete) {} %>
+                                 <% end %>
+                                
+                </section>                
+
+		<section id="postInfo">
+			<section class="floatLeft">
+				<p id="postName">
+                                        <% if @post.is_anonymous %>
+                                        <%=image_tag('NFIcons/reporter.png') %> 
+                                        Alias: <a class="blue"><%= @post.alias %></a>
+                                        <% else %>
+                                        <%=image_tag('NFIcons/reporter.png') %> 
+					Reporter: <a class="blue"><%= link_to @post.name, user_path(@post.user) %></a>
+                                        <% end %>
+				</p>
+
+				<p id="userLoc">
+					<%=image_tag('NFIcons/userLoc.png') %> 
+					Location: <a class="blue"><%= @post.user_location %></a>
+				</p>
+
+				<p id="source">
+					<%=image_tag('NFIcons/source.png') %> 
+					Source: <a class='blue'> <%= @post.source  %>  </a>
+				</p>
+
+				<!-- Jon's stuff> <
+                                
+                                 <p id="inaccuracy">
+					<%=image_tag('NFIcons/source.png') %> 
+					Inaccuracy: <a class="blue"><%= @post.inaccuracy %></a>
+				</p>	                                
+                                
+				<p id="trendingValue">
+					<%=image_tag('NFIcons/source.png') %> 
+					Trending Value: <a class="blue"><%= @post.trending_value.round %></a>
+				</p>	 
+                                
+                		<p id="pageViews">
+					<%=image_tag('NFIcons/source.png') %> 
+					Pageviews: <a class="blue"><%= @post.pageviews %></a>
+				</p>	    
+                                
+                                <p id="karmaValue">
+					<%=image_tag('NFIcons/source.png') %> 
+					Newsworthiness: <a class="blue"><%= @post.karma.round %></a>
+				</p>-->
+                                                  
+
+			</section>
+
+			<section class="floatMid">
+				<p id="tags">
+					<%=image_tag('NFIcons/tags.png') %> 
+					Tags: <a class="blue"><%= @post.tag_list  %> </a>
+				</p>
+
+				<p id="postLoc">
+					<%=image_tag('NFIcons/postLoc.png') %> 
+					Occuring In: <a class="blue"><%= @post.post_location %></a>
+				</p>	  
+
+				<p id="time">
+					<%=image_tag('NFIcons/time.png') %> 
+					Date Created: <a class='blue'>
+					<%=@post.created_at.strftime("%B %e %l:%M %p %Y")%>
+					(<%=distance_of_time_in_words(@post.created_at,	Time.now)%> ago)
+					</a>
+				</p>
+
+				 <!-- Jon's stuff><-->  
+
+                             <!--    <p id="accuracy">
+					<%=image_tag('NFIcons/source.png') %> 
+					Accuracy: <a class="blue"><%= @post.accuracy %></a>
+				</p>	-->
+                                 
+				<p id="accuracyPercent">
+					<%=image_tag('NFIcons/source.png') %> 
+					Accuracy Percent: <a class="blue"><%= @post.accuracy_percent.round %> % </a>
+				</p>	
+                           <!--     <p id="comments">
+					<%=image_tag('NFIcons/source.png') %> 
+					<a class="blue"><%= @post.comments.size %></a> comments 
+				</p> -->
+                                
+
+			</section>
+		</section>
+	</div>
+
+
+<div id='netback'>
+<div id='networks'>
+<!--Social Networks-->
+
+<!--facebook-->
+<div id='facebook'>
+<div id="fb-root"></div>
+<div id="fb-root"></div>
+<script>(function(d){
+  var js, id = 'facebook-jssdk'; if (d.getElementById(id)) {return;}
+  js = d.createElement('script'); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212763898785439&xfbml=1";
+  d.getElementsByTagName('head')[0].appendChild(js);
+}(document));</script>
+<div class="fb-like" data-send="false" data-layout="button_count" data-width="450" data-show-faces="true" data-action="recommend" data-font="tahoma"></div>
+</div>
+
+<div id='twitter'>
+<!--twitter-->
+
+<a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="tryorchive" data-related="fhinson:Co-Founder of Orchive">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+</div>
+
+<div id='gplus'>
+<!--gplus-->
+
+<!-- Place this tag where you want the +1 button to render -->
+<g:plusone annotation="inline"></g:plusone>
+
+<!-- Place this render call where appropriate -->
+<script type="text/javascript">
+  (function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://apis.google.com/js/plusone.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
+</script>
+</div>
+
+<div id='linkedin'>
+<!--linkedin-->
+
+<script src="http://platform.linkedin.com/in.js" type="text/javascript"></script>
+<script type="IN/Share" data-counter="right"></script>
+</div>
+</div>
+</div>
+
+
+  
+  <br><br>
+  
+  
+	<div id="comments">
+	
+              	<h2>Comments</h2>
+                <% @comments = @comments.page(params[:page]).per(5)%>
+               
+		<% @comments.each do |c| %>
+                <!-- Jon's note: made it nice -->
+                               <%= render c %>
+                <%= link_to 'Reply', comment_path(c) %>
+                <%= link_to 'Permalink', comment_path(c) %>
+                
+
+                </div>
+				<br><br><br>
+                <% end %>
+		<%= render "comments/form" %>
+	</div>
+	</div>
+	</div>
+</div>
+</div>
+</div>
+</div>

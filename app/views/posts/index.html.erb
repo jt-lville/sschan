@@ -1,0 +1,210 @@
+<style type="text/css">
+	#main {
+		background:none;
+		  		width:995px;
+		margin: 0 auto 0 auto;
+	}
+	#wrapper {
+		background:#FAFCF9;
+	}
+	#content {
+		padding-top:0;
+		margin-left:0;
+		overflow:hidden;
+		position:relative;
+		width:100%;
+	}
+	/* Feed */
+	#rightBar { 
+		margin-left:auto;
+
+		margin-right:auto;
+
+		padding-top:20px; 
+		width:745px; 
+		background-color:#F9F9F9;
+		position:relative;
+	}
+	#rightBar h1{
+		font-size:30px; font-weight:400;
+	}
+	#rightBar p{ 
+		padding-left:8px; 
+		font-size:11px;
+	}
+	#rightBar a{ 
+		text-decoration:none; 
+	}
+	#rightBar div {
+		padding-left:2px;
+		margin-bottom:5px;
+	}
+	#rightBar div #filters {
+		padding-top:4px;
+		line-height:14px;
+	}
+	#rightBar div p a {		
+		margin-left:20px;
+	}
+    
+
+
+	#rightBar #post {
+		padding: 8px; 
+		margin-bottom:10px;
+		height: auto;
+		background-color: #FFFFFF;
+		border-color: #ceecd7;
+		border-width: 1px;
+		border-style: solid;
+		box-shadow: 2px 2px 5px #eeeeee;
+		margin-top: 10px;	
+	}
+	#rightBar #photo {
+		margin:18px 8px 8px 8px;
+	}
+	#rightBar #postTitle {
+		font-size:18px; 
+		font-weight:500;
+		margin-bottom:0;
+	}
+	#rightBar #postContent {
+		font-size:13px;
+		line-height:normal;
+		padding-left:76px;
+	}
+	#rightBar #postInfo {
+		color:#555555;
+		height: 100%;
+		overflow:hidden;
+	}
+	#rightBar #postInfo p {
+		line-height:18px;
+		text-align:left;
+		font-size:12px;
+	}
+	#rightBar #postInfo p img {
+		width:9px;
+		height:10px;
+	}
+	#rightBar #postInfo p a{
+		margin-left:0;
+	}
+	#rightBar #post #postInfo #postName, #rightBar #post #postInfo  #userLoc, #rightBar #post #postInfo #source {
+		width:200px;
+	}
+
+	#rightBar #omitText {
+		color:#00BE69;
+		margin-left:1px;
+	}
+	#rightBar #delete {
+		font-size:12px;
+	}
+
+.comdel {
+background-image:URL('/images/close.jpg');
+width:13px;
+height:13px;
+position:relative;
+top:-178px;
+margin-right:-5px;
+float:right;
+}
+
+</style>
+<%= render '/layouts/sideBar' %>
+
+<div id="rightBar" class="floatRight">
+	<div>
+		<h1 class="floatLeft">News Feed</h1>
+		<p id="filters">
+                        <a id="filterTags">Listing posts by <%= @preference.feed_preference.capitalize %>.  </a><br/>
+			<a id="filterTags">Results are based off of the tags: 
+                           <%if @preference.tag_list == [] %>
+                           None.
+                           <% else %>
+                           <%= @preference.tag_list %>.
+                            <% end %> </a>
+		</p>
+	</div>
+    
+	<% @posts.each do |post| %>
+		<div id="post">
+			<%=link_to  post.title, post, :class=>'blue'%>
+
+				
+				<% if current_user == post.user or can? :manage, :all   %>
+				<%= link_to_if(can?(:delete, post), ' ', post_path(post), :class=>'comdel', :id=>'delete', :confirm => "Are you sure?", :method => :delete) {} %>
+                                 <% end %>
+				
+				<!--=# link_to "Flag", :controller => "posts", :action => "update", #:method => :put, :post => {:flag => true}%>-->
+
+
+			<%= image_tag('default_photo.png',:id=>"photo", :class=>"floatLeft", :size=>'60x60')%>
+
+
+      <p id="postContent">
+				<%= truncate_content(post, post.content)%>
+			</p>
+
+			<section id="postInfo">
+				<p id="postName" class="floatLeft clearLeft">
+					<% if post.is_anonymous %>
+                                        <%=image_tag('NFIcons/reporter.png') %> 
+                                        Reporter: <a class="blue"><%= post.alias %></a>
+                                        <% else %>
+                                        <%=image_tag('NFIcons/reporter.png') %> 
+					Reporter: <a class="blue"><%= link_to post.name, user_path(post.user) %></a>
+                                        <% end %>
+                                </p>
+
+				<p id="tags" class="floatLeft">
+					<%=image_tag('NFIcons/tags.png') %> 
+					Tags: 
+						<% post.tag_list.each do |tag|  %>
+						<%= link_to tag.capitalize, { :action => :tag_with, 
+             :tag => tag, :controller => "preferences"}, :method=>:post, :class=>'blue'%>
+						
+						<%end%>
+				</p>
+
+				<p id="userLoc" class="clearLeft floatLeft">
+					<%=image_tag('NFIcons/userLoc.png') %> 
+					Location: <a class="blue"><%= post.user_location %></a>
+				</p>
+
+				<p id="postLoc" class="floatLeft">
+					<%=image_tag('NFIcons/postLoc.png') %> 
+					Occuring In: <a class="blue"><%= post.post_location %></a>
+				</p>
+
+				<p id="source" class="clearLeft floatLeft">
+					<%=image_tag('NFIcons/source.png') %> 
+					Source: <a class='blue'><%= post.source  %> </a>
+				</p>
+
+				<p id="time" class="floatLeft">
+					<%=image_tag('NFIcons/time.png') %> 
+					Date Created: <a class='blue'><%=post.created_at.strftime("%B %e %l:%M %p %Y")%> (<%=distance_of_time_in_words(post.created_at, Time.now)%> ago)</a>
+				</p>
+				<p id="accuracy" class="floatRight">
+					<%=image_tag('NFIcons/time.png') %> 
+					Accuracy: <a class='blue'><%=post.accuracy_percent%> %</a>
+				</p>                                
+                                
+                                <p id="comments" class="floatRight">
+					<%=image_tag('NFIcons/time.png') %> 
+					<%= link_to post.comments.size.to_s + " comments", post, :class => 'blue' %>
+				</p>
+                                
+                                <!-- Attempting to add a vote option, Jon -->            	                                
+			</section> 
+
+		</div>
+
+	<% end %>
+  
+  <%= paginate @posts %>
+
+</div>
