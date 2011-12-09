@@ -4,4 +4,4 @@
 # If you change this key, all old signed cookies will become invalid!
 # Make sure the secret is at least 30 characters and all random,
 # no regular words or you'll be exposed to dictionary attacks.
-AlteredBeast::Application.config.secret_token = 'a52143001ceb82c5e2f94fefcba0a117b6c3653b711f26fff08a547805afc1e596ede8583ffd0c6a4a0945653352570c4ec922cd69ff15ec27282a7bc5053fee'
+Sschan::Application.config.secret_token = '7e0c80a863370621a37bee9b846db635b861d10ae3a5bc0ae45a5d74c804fec79b9edbcea54c6d12304754709f35596cebf72b10198da3650e085ecb5d9796cc'

@@ -1,38 +1,62 @@
-AlteredBeast::Application.routes.draw do
-  get '/session' => "sessions#create", :as => 'open_id_complete'
+Sschan::Application.routes.draw do
+  devise_for :users
 
-  resources :sites, :moderatorships, :monitorship
+  # The priority is based upon order of creation:
+  # first created -> highest priority.
+  
+  root :to => "home#index"
 
-  resources :forums do
-    resources :topics do
-      resources :posts
-      resource :monitorship
-    end
-    resources :posts
-  end
+  # Sample of regular route:
+  #   match 'products/:id' => 'catalog#view'
+  # Keep in mind you can assign values other than :controller and :action
 
-  resources :posts do
-    get :search, :on => :collection
-  end
-  resources :users do
-    member do
-      put :suspend, :make_admin, :unsuspend
-      get :settings
-      delete :purge
-    end
-    resources :posts, :only => [:index] do
-#      get :monitored, :on => :collection, :shallow => true
-    end
-  end
-  match '/users/:user_id/monitored(.:format)' => 'posts#monitored', :as => 'monitored_posts'
+  # Sample of named route:
+  #   match 'products/:id/purchase' => 'catalog#purchase', :as => :purchase
+  # This route can be invoked with purchase_url(:id => product.id)
 
-  match '/activate/:activation_code' => 'users#activate', :activation_code => nil, :as => 'activate'
-  match '/signup' => 'users#new', :as => 'signup'
-  match '/settings' => 'users#settings', :as => 'settings'
-  match '/login' => 'sessions#new', :as => 'login'
-  match '/logout' => 'sessions#destroy', :as => 'logout'
+  # Sample resource route (maps HTTP verbs to controller actions automatically):
+  #   resources :products
 
-  resource  :session
+  # Sample resource route with options:
+  #   resources :products do
+  #     member do
+  #       get 'short'
+  #       post 'toggle'
+  #     end
+  #
+  #     collection do
+  #       get 'sold'
+  #     end
+  #   end
 
-  root :to => 'forums#index'
+  # Sample resource route with sub-resources:
+  #   resources :products do
+  #     resources :comments, :sales
+  #     resource :seller
+  #   end
+
+  # Sample resource route with more complex sub-resources
+  #   resources :products do
+  #     resources :comments
+  #     resources :sales do
+  #       get 'recent', :on => :collection
+  #     end
+  #   end
+
+  # Sample resource route within a namespace:
+  #   namespace :admin do
+  #     # Directs /admin/products/* to Admin::ProductsController
+  #     # (app/controllers/admin/products_controller.rb)
+  #     resources :products
+  #   end
+
+  # You can have the root of your site routed with "root"
+  # just remember to delete public/index.html.
+  # root :to => 'welcome#index'
+
+  # See how all your routes lay out with "rake routes"
+
+  # This is a legacy wild controller route that's not recommended for RESTful applications.
+  # Note: This route will make all actions in every controller accessible via GET requests.
+  # match ':controller(/:action(/:id(.:format)))'
 end
