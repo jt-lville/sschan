@@ -241,86 +241,45 @@ class PostsController < ApplicationController
 
   # Jon's vote code -- may be glitchy
 
-  def check_votes_users #searches to see if you have voted on it before
-    $voted_up = false
-    $voted_down = false
-
-  end
-
-  def vote_up
-    #simplified for testing
-    @post = Post.find(params[:id])
-    @post.accuracy+=1   
-    update_status
-    @post.save
-    
-    #@post.accuracy+=1
-    #render :text => @post.accuracy
-      
-   redirect_to post_path(@post) and return
-  
-    respond_to do |format|
-      format.html { redirect_to(posts_url) }
-      format.xml  { head :ok }
-
-      format.js { redirect_to(posts_url) }
-    end    
-    
-  end
-
-  def vote_down
-    @post = Post.find(params[:id])
-    @post.inaccuracy+= 1    
-    update_status
-    @post.save
-    
-    #@post.inaccuracy += 1
-    #render :text => @post.inaccuracy
-    
-    redirect_to post_path(@post) and return
-    
-    respond_to do |format|
-      format.html { redirect_to(posts_url) }
-      format.xml  { head :ok }
-
-      format.js { redirect_to(posts_url) }
-    end    
-
-  end
 
   def update_status_for_post(p)
     p.pageviews = p.impressionist_count(:filter=>:session_hash)
 
     p.time_effective = p.created_at.to_time - Time.parse("20-08-2011 19:00") ##Times! in seconds!
     
-    p.total_votes = p.accuracy + p.inaccuracy
-
-    if p.total_votes == 0
-    p.accuracy_percent = 100
-    else
-    p.accuracy_percent = (100 * p.accuracy)/p.total_votes
-    end
-    # here is the amazing trending value algorithm
-    # TODO: pageview counter, time_effective counter
-
-    if p.total_votes == 0
-      tv = 1
-    elsif (Math.log(p.total_votes)<1)
-      tv=1
-    else
-      tv = Math.log(p.total_votes)
-    end
+#    p.total_votes = p.accuracy + p.inaccuracy
+#
+#    if p.total_votes == 0
+#    p.accuracy_percent = 100
+#    else
+#    p.accuracy_percent = (100 * p.accuracy)/p.total_votes
+#    end
+#    # here is the amazing trending value algorithm
+#    # TODO: pageview counter, time_effective counter
+#
+#    if p.total_votes == 0
+#      tv = 1
+#    elsif (Math.log(p.total_votes)<1)
+#      tv=1
+#    else
+#      tv = Math.log(p.total_votes)
+#    end
+#
+#    if p.pageviews == 0
+#      pv = 1
+#    elsif Math.log(p.pageviews)<1
+#      pv=1
+#    else
+#      pv = Math.log(p.pageviews)
+#    end
     
-    if p.pageviews == 0
-      pv = 1
-    elsif Math.log(p.pageviews)<1
-      pv=1
-    else
-      pv = Math.log(p.pageviews)
+    #p.trending_value = tv*(p.accuracy_percent - 50) +
+    #  10*pv + p.time_effective/4000
+
+
+    if p.comments.empty?
+      p.trending_value = p.time_effective
     end
-    
-    p.trending_value = tv*(p.accuracy_percent - 50) +
-      10*pv + p.time_effective/4000
 
   end
 
@@ -334,24 +293,24 @@ class PostsController < ApplicationController
 
   def post_update_karma #this function updates the "value" received from a post
 
-    post_accuracy_ratio = 1
-
-    unless @post.inaccuracy == 0 and @post.accuracy == 0
-      post_accuracy_ratio = @post.accuracy_percent/100
-    end
-
-    #TODO: make sure our karma function doesn't crap out
-    @post.karma = 100*Math.log((@post.pageviews/10)*@post.accuracy*10 + 1) *
-      (post_accuracy_ratio - 0.4  ) +
-      (@post.accuracy/ 10)+
-      (Math.sqrt(@post.accuracy + @post.inaccuracy+400)) -
-      @post.inaccuracy/10 + 5
+#    post_accuracy_ratio = 1
+#
+#    unless @post.inaccuracy == 0 and @post.accuracy == 0
+#      post_accuracy_ratio = @post.accuracy_percent/100
+#    end
+#
+#    #TODO: make sure our karma function doesn't crap out
+#    @post.karma = 100*Math.log((@post.pageviews/10)*@post.accuracy*10 + 1) *
+#      (post_accuracy_ratio - 0.4  ) +
+#      (@post.accuracy/ 10)+
+#      (Math.sqrt(@post.accuracy + @post.inaccuracy+400)) -
+#      @post.inaccuracy/10 + 5
     
   end
   
   def update_status_comments(c)
-    c.relative_value = c.points_up - c.points_down + (rand() - 0.5)/10.0
-    c.save
+#    c.relative_value = c.points_up - c.points_down + (rand() - 0.5)/10.0
+#    c.save
   end
  
   

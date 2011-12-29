@@ -22,7 +22,7 @@
 	validates :title, :length => {:within => 0..150}#, Jon: removed the title regex
 									  #:format => {:with => title_regex }
 
-	validates :content, :length => {:within => 5..2000}
+	validates :content, :length => {:within => 0..2000}
                     
 #   validates :post_location, :presence => true                                                                    
 

@@ -136,9 +136,7 @@ border-style:none;
 <h1>New Report</h1>
 
 
-  <div class="field">
-    <%= check_box_tag 'alias_check', 'true' %> Post Anonymously <br><br>
-  </div>
+
 
   <%@posts = current_user.posts%>
 
@@ -157,22 +155,17 @@ border-style:none;
       </ul>
     </div>
   <% end %>
-  
+
+<%= check_box_tag 'alias_check', 'true' %> Use an Alias? <br><br>
   <div id="bar">
-    <%= f.text_field :title, :class=>'field', :placeholder=>'Enter report title'%>
-  </div>
-  <div id="contend">
-    <%= f.text_area :content, :class=>'dimen', :placeholder=>'What is going on?' %>
+    <%= f.text_field :alias, :class => 'field', :placeholder=> 'Alias (can be left blank)' %>
   </div>
 
   <div id="bar">
-    <%= f.text_field :user_location, :class=>'field', :placeholder=>'Where are you?'%>
+    <%= f.text_field :title, :class=>'field', :placeholder=>'Title'%>
   </div>
-  <div id="bar">
-    <%= f.text_field :post_location, :class=>'field', :placeholder=>'Where is this taking place?' %>
-  </div>
-<div id="bar"> 
-    <%= f.text_field :source, :class=>'field', :placeholder=>'What is your source?' %>
+  <div id="contend">
+    <%= f.text_area :content, :class=>'dimen', :placeholder=>'Post area' %>
   </div>
 
 <div id='sourceback'>
@@ -193,7 +186,7 @@ border-style:none;
 	<%= check_box_tag 'tags[]', 'Video Games' %>
 	<%= f.label 'Video Games', :class=>'spacer' %>
    
-	<%= check_box_tag 'tags[]', 'Magic: the Gathering' %>
+	<%= check_box_tag 'tags[]', 'MtG' %>
 	<%= f.label 'MtG', :class=>'spacer' %>
    
 	<%= check_box_tag 'tags[]', 'Ponies' %>

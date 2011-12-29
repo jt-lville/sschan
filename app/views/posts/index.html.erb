@@ -168,6 +168,12 @@ a:hover {
 	color:#800000;
 }
 
+.plaintext {
+        background:#FFFFFF;
+        font-family:sans-serif;
+        font-size:14px;
+        color:#800000;
+}
 
 </style>
 
@@ -191,17 +197,18 @@ a:hover {
                                 
                                 <br>
 
-                                        <p class ="replytitle"><%=  post.title %></p>
+                                        <b class ="replytitle"><%=  post.title %></b>
                                         <b class ="postername">
 					<% if post.is_anonymous %>
                                         <%= post.alias %>
                                         <% else %>
                                         <%= link_to post.name, user_path(post.user) %>
                                         <% end %>
+                                          </b>
                                         
-                                        <%=post.created_at.strftime("%B %e %l:%M %p %Y")%> (<%=distance_of_time_in_words(post.created_at, Time.now)%> ago)
-                                        [<%= link_to "Reply", post, :class => 'filesize' %>]
-                                        </b>
+                                        <n class ="plaintext"><%=post.created_at.strftime("%B %e %l:%M %p %Y")%> (<%=distance_of_time_in_words(post.created_at, Time.now)%> ago)
+                                        [<%= link_to "Reply", post, :class => 'filesize' %>]</n>
+                                        
 
                                         <p class ="row2"><%= post.content %></p>
                                         

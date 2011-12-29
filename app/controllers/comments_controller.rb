@@ -18,7 +18,7 @@ class CommentsController < ApplicationController
     @comment.points_up = 0
     @comment.points_down = 0
 
-    @post.trending_value *= 2
+    @post.trending_value = Time.now.to_time - Time.parse("20-08-2011 19:00")
 
     @post.save
     @comment.save

@@ -179,20 +179,8 @@ a:hover {
 		<p id="postContent"><%= @post.content %></p>
                 
                <section class="floatRight">
-                           
                                 
                                 <% if can? :manage, :all   %>
-                                                               <p id="voteAccurate">
-				<%=image_tag('NFIcons/time.png') %> 
-                                  <b><a class="blue"><%= link_to 'Accurate', { :action => :vote_up, :id => @post.id }, :method=>:post#, :remote => true
-                                      %></a></b>
-				</p>     	      
-                                <p id="voteInaccurate">
-					<%=image_tag('NFIcons/time.png') %> 
-                                  <b><a class="blue"><%= link_to 'Inaccurate', { :action => :vote_down, :id => @post.id }, :method=>:post#, :remote => true
-                                    %></a></b>
-				</p> 
-
 				
 				<%= link_to_if(can?(:delete, @post), 'Delete', post_path(@post), :id=>'delete', :class=>'floatRight', :confirm => "Are you sure?", :method => :delete) {} %>
                                  <% end %>
@@ -211,19 +199,10 @@ a:hover {
                                         <% end %>
 
 				</p>
-
-				<p id="source">
-					Source: <a class='blue'> <%= @post.source  %>  </a>
-				</p>                   
-                                
-				<p id="trendingValue">
-					Trending Value: <a class="blue"><%= @post.trending_value.round %></a>
-				</p>	 
                                 
                 		<p id="pageViews">
 					Pageviews: <a class="blue"><%= @post.pageviews %></a>
 				</p>	    
-                                                  
 
 			</section>
 				<p id="tags">
