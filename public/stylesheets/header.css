@@ -1,8 +1,10 @@
 /* Header CSS (Logo + Nav Bar)*/
 #header {
-	background: #fff url('/images/header/background.png') 0 87px no-repeat;
-	height:174px;
-	border-top:3px solid #596A93;
+/*	background: #fff url('/images/header/background.png') 0 87px no-repeat;*/
+        background: #fff;
+	height:87px;
+        border-bottom:40px solid #596A93;
+	border-top:0px solid #596A93;
 }
 #header #headerContent {
 
@@ -58,16 +60,16 @@ font-size:14px;
 }
 #header #headerContent #searchField{
 
-  width:223px;
+    width:223px;
 
 
-  height:27px;
-	padding-left:5px;
+     height:27px;
+    padding-left:5px;
   background:transparent url('/images/header/search.png') -3px -3px no-repeat;
   color: #9E9E9E;
   border:none;
 }
-#header #headerContent #navBar #searchField:focus {
+/*#header #headerContent #navBar #searchField:focus {
 	outline-color:#9E9E9E;
 }
 #header #headerContent #navBar #submit {
@@ -79,13 +81,13 @@ font-size:14px;
 	width:25px;
 	height:25px;
 	border-style:none;
-}
-#header #headerContent #navBar #submit:active {
+}*/
+/*#header #headerContent #navBar #submit:active {
 	top:4px;
 	right:27px;
 	box-shadow:1px 1px #eee;
 	border-style:none;
-}
+}*/
 #header #headerContent #navBar input.floatLeft {
 
 	background:#fff url('/images/header/newPostButton.png') 0 0 no-repeat;
@@ -109,7 +111,7 @@ font-size:14px;
 	margin-right:15px;
 	border-style:none;
 }
-#header #headerContent #navBar input.floatLeft:active {
+/*#header #headerContent #navBar input.floatLeft:active {
 	background: #fff url(../images/header/newpostfloat.png) 0 0 no-repeat;
 	position:fixed
 	top: 5px;
@@ -121,7 +123,7 @@ font-size:14px;
 	margin-right:15px;
 	border-style:none;
 
-}
+}*/
 #header #headerContent #navBar img.divider {
 	position:relative;
 	top:-6px;
@@ -131,7 +133,7 @@ font-size:14px;
 }
 #header #headerContent #navBar section span a {
 	position:relative;
-	top:-5px;
+	top:-40px; /*clear all tags area*/
 	color:#fff;
 	border-style:none;
 }

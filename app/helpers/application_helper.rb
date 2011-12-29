@@ -66,11 +66,7 @@ module ApplicationHelper
     c2 = c2.gsub("eels bad man", "eelings baddingly mans") #troll wordfilters
     c2 = c2.gsub("eels good man", "eelings baddingly mans")
     c2 = c2.gsub("sat froc", "sad frog")
-    c2 = c2.gsub("sade frueg", "sad frog")
-    c2.gsub("herp", "diddly")
-    c2.gsub("Herp", "Diddly")
-    c2.gsub("derp", "doodly")
-    c2.gsub("Derp", "Doodly").html_safe
+    c2 = c2.gsub("sade frueg", "sad frog").html_safe
     end
 
   end
