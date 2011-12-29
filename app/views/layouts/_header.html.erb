@@ -53,7 +53,7 @@
   </span> -->
 
   
-  <span id="filters" class='floatLeft'>
+  <span id="filters" class='floatRight'>
     <!--<a>Filters</a>
               <%= link_to displayIcon(5), { :action => :tag_with, 
                :tag => "science", :controller => "preferences"}, :method=>:post, :title=>'Science'%>
@@ -83,10 +83,12 @@
 
               <%= link_to displayIcon(14), { :action => :tag_with, 
                :tag => "other", :controller => "preferences"}, :method=>:post, :title=>'Other' %>
-              
-               <%= link_to "clear", { :action => :clear_tag_list_and_preferences, 
-               :tag => "other", :controller => "preferences"}, :method=>:post, :title=>'Clear' %>
+
     -->
+    
+               <%= link_to "Clear all tags", { :action => :clear_tag_list_and_preferences,
+               :tag => "other", :controller => "preferences"}, :method=>:post, :title=>'Clear' %>
+    
 
     
   </span>

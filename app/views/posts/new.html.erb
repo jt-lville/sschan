@@ -184,36 +184,40 @@ border-style:none;
 		<= f.label "filter#{num}".to_sym %>
 	< end %> -->
 
-	<%= check_box_tag 'tags[]', 'politics' %>
-	<%= f.label :politics, :class=>'spacer' %>
+	<%= check_box_tag 'tags[]', 'Anime' %>
+	<%= f.label 'Anime', :class=>'spacer' %>
    
-        <%= check_box_tag 'tags[]', 'tech' %>
-	<%= f.label :tech, 'Technology', :class=>'spacer' %>
+        <%= check_box_tag 'tags[]', 'Random' %>
+	<%= f.label 'Random', :class=>'spacer' %>
    
-	<%= check_box_tag 'tags[]', 'entertainment' %>
-	<%= f.label :entertainment, :class=>'spacer' %>
+	<%= check_box_tag 'tags[]', 'Video Games' %>
+	<%= f.label 'Video Games', :class=>'spacer' %>
    
-	<%= check_box_tag 'tags[]', 'sports' %>
-	<%= f.label :sports, :class=>'spacer' %>
+	<%= check_box_tag 'tags[]', 'Magic: the Gathering' %>
+	<%= f.label 'Magic: the Gathering', :class=>'spacer' %>
    
-	<%= check_box_tag 'tags[]', 'science' %>
-	<%= f.label :science, :class=>'spacer' %>
+	<%= check_box_tag 'tags[]', 'Ponies' %>
+	<%= f.label 'Ponies', :class=>'spacer' %>
 	<br>
    
-	<%= check_box_tag 'tags[]', 'crime' %>
-	<%= f.label :crime, :class=>'spacer2' %>
+	<%= check_box_tag 'tags[]', 'Intellectual' %>
+	<%= f.label 'Intellectual', :class=>'spacer2' %>
    
-	<%= check_box_tag 'tags[]', 'business' %>
-	<%= f.label :business, :class=>'spacer3' %>
+	<%= check_box_tag 'tags[]', 'Minecraft' %>
+	<%= f.label 'Minecraft', :class=>'spacer3' %>
    
-	<%= check_box_tag 'tags[]', 'social' %>
-	<%= f.label :social, :class=>'spacer4' %>
+	<%= check_box_tag 'tags[]', 'Television' %>
+	<%= f.label 'Television', :class=>'spacer4' %>
    
-	<%= check_box_tag 'tags[]', 'nature' %>
-	<%= f.label :nature, :class=>'spacer5' %>
+	<%= check_box_tag 'tags[]', 'Music' %>
+	<%= f.label 'Music', :class=>'spacer5' %>
    
-	<%= check_box_tag 'tags[]', 'other' %>
-	<%= f.label :other, :class=>'spacer' %>
+	<%= check_box_tag 'tags[]', 'Other' %>
+	<%= f.label 'Other', :class=>'spacer' %>
+
+        <%= f.text_field :tag_list, :class=>'field'%>
+        <%= f.label 'New Tag', :class=>'spacer' %>
+        
 	</div>
   	</div>
 	<br>

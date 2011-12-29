@@ -19,10 +19,10 @@
 
 #	validates :name, :presence => true #commented out for experimental reasons: if it fails, uncomment it
 
-	validates :title, :length => {:within => 5..150}#, Jon: removed the title regex
+	validates :title, :length => {:within => 0..150}#, Jon: removed the title regex
 									  #:format => {:with => title_regex }
 
-	validates :content,:uniqueness => true, :length => {:within => 10..900}
+	validates :content, :length => {:within => 5..2000}
                     
 #   validates :post_location, :presence => true                                                                    
 
@@ -32,6 +32,7 @@
 #   validates :source, :presence => true
 
 	attr_accessor :politics, :tech, :entertainment, :sports, :science, :crime, :business, :social, :nature, :other
+  
 	attr_accessible :name, :title, :content, :user_location, :post_location, :user_id,
     :post_id, :karma, :trending_value, :pageviews, :accuracy, :inaccuracy,   # <-- Jon's super code
     :total_votes, :time_effective, :accuracy_ratio, :accuracy_percent, :source, :alias
