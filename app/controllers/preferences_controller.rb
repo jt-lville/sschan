@@ -73,7 +73,7 @@ class PreferencesController < ApplicationController
     @user = current_user
     @preference = current_preference #attached to users
     @preference.tag_list.clear
-    @preference.feed_preference = "time"
+    @preference.feed_preference = "trending value"
     
     @preference.save
     

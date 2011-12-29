@@ -18,6 +18,8 @@ class CommentsController < ApplicationController
     @comment.points_up = 0
     @comment.points_down = 0
 
+    @post.trending_value *= 2
+
     @post.save
     @comment.save
 		
