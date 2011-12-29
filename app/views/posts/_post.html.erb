@@ -12,7 +12,7 @@
                                         <% end %>
                                           </b>
 
-                                        <n class ="plaintext"><%=post.created_at.strftime("%B %e %l:%M %p %Y")%>
+                                        <n class ="plaintext"><%=post.created_at.strftime("%B %e %Y %l:%M %p")%>
                                          No.<%= post.id%> [<%= link_to "Reply", post, :class => 'filesize' %>]</n>
 
 
