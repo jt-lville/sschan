@@ -2,19 +2,18 @@
 
 <p class="notice"><%= notice %></p>
 
+
 <div id='rightBar' class='floatLeft'>
 	<div id='post'>
 		<%= render @post  %>
 	</div>
-
-  <br><br>
-  
+  <hr/>
 	
                
 		<% @post.comments.each do |comment| %>
                 
             <%= render comment  %>
+  <hr/>
+
   <%end%>
-
-
 		<%= render "comments/form" %>

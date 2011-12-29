@@ -48,12 +48,20 @@ border-style:none;
 </style>
 
 <%= form_for([@post, @post.comments.build]) do |f| %>
-  <div class="field">
-	<div id='commentr'>
-    <%= f.text_area :content, :class=>'comfield', :placeholder=>'What do you think?' %>
-	</div>
+ <div id="bar">
+    <%#= f.text_field :alias, :class => 'field', :placeholder=> 'Alias (can be left blank)' %> 
+   <!--<%= check_box_tag 'alias_check', 'true' %> Use an Alias?-->
   </div>
-  <div class="actions">
-     <%= f.submit '', :class=>' share floatLeft'%>
-  </div>
+
+    <%#= f.text_field :title, :class=>'field', :placeholder=>'Title'%> <%= f.submit 'Submit'%>
+
+  <p id="content">
+    <%= f.text_area :content, :class=>'content', :placeholder=>'Post area' %>
+  </p>
+
+    <p class ="rules">
+    * Feel free to suggest features or improvements.<br/>
+    * If you notice any bugs, inform Jon ASAP.</p>
+        <hr/>
+
 <% end %>
