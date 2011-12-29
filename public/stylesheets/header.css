@@ -16,9 +16,10 @@
 }
 #header #headerContent A {
   color: #555555;
-  text-decoration: none;
+text-decoration: none;
 font-weight:600;
 font-size:14px;
+font-family:inherit;
 
 }
 /* Will become obsolete with js */
@@ -53,7 +54,6 @@ font-size:14px;
 	color:#fff;
 	font-size:14px;
 
-
 }
 #header #headerContent #navBar form {
 	float:left;
@@ -63,8 +63,8 @@ font-size:14px;
     width:223px;
 
 
-     height:27px;
-    padding-left:5px;
+  height:27px;
+  padding-left:5px;
   background:transparent url('/images/header/search.png') -3px -3px no-repeat;
   color: #9E9E9E;
   border:none;
