@@ -14,11 +14,35 @@ module ApplicationHelper
 
     str1 = '<p class = "unkfunc">'
     str2 = '</p>'
+    str3 = '<a class = "unkfunc" href = "/posts/'
+    str4 = '</a>'
 
     if c1 != nil
     arr_lines = c1.split('\n') #split the text into lines
 
     arr_lines.each do |a|
+      if a[0] == ">" and a[1] == ">" #link replies
+        num = a[2..a.size]
+        tmp = num.split(' ')
+        num = tmp[0]
+
+
+        begin
+        if Comment.find(num) != nil #link replies
+          end
+          link = str3 + c.post.id.to_s + "#" + num + '">'
+          if a.index(" ") != nil
+          a.insert(a.index(" "), str4)
+          else
+          a << str4
+          end
+          a.insert(0, link)
+          
+        rescue #defaults to greentext if no link found
+        end
+        
+      end
+        
       if a[0] == ">"
         a.insert(0, str1) #add the greentext tag
         a << str2 #close the greentext tag

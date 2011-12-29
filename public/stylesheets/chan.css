@@ -16,19 +16,23 @@ a {
 a:link {
 
   color:#596a93;
+  text-decoration:inherit;
+  font-family:inherit;
+  font-size:inherit;
 
 }
 a:visited {
         background:inherit;
         color:#596a93;
-        text-decoration:underline;
-        font-family:serif;
+        text-decoration:inherit;
+        font-family:inherit;
 }
 a:hover {
         color:#DD0000;
         background:inherit;
-        text-decoration:underline;
-        font-family:serif;
+        text-decoration:inherit;
+        font-family:inherit;
+        font-size:inherit;
 }
 .adminbar {
         text-align:right;
