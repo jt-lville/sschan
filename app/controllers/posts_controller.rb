@@ -36,10 +36,10 @@ class PostsController < ApplicationController
     @posts = @posts.order('trending_value DESC').page(params[:page]).per(5)
     end  
 
-    @posts.each do |p| #may be inefficient
-      update_status_for_post(p)
-      p.save
-    end
+#    @posts.each do |p| #may be inefficient
+#      update_status_for_post(p)
+#      p.save
+#    end
 
     @preference.save
     

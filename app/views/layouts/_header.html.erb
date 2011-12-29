@@ -85,6 +85,12 @@
                :tag => "other", :controller => "preferences"}, :method=>:post, :title=>'Other' %>
 
     -->
+
+               <% if @preference == nil or @preference.tag_list.empty? %>
+               <%= link_to ("No tags selected |"), '/'  %>
+               <% else %>
+               <%= link_to (@preference.tag_list.join(" ") + " |"), '/'  %>
+               <% end %>
     
                <%= link_to "Clear all tags", { :action => :clear_tag_list_and_preferences,
                :tag => "other", :controller => "preferences"}, :method=>:post, :title=>'Clear' %>

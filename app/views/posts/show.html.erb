@@ -89,13 +89,13 @@ a:hover {
 	color:#800000;
 }
 .row1 {
-	background:#9AD2F6;
+	background:#inherit;
 	font-family:sans-serif;
 	font-size:12px;
 	color:#800000;
 }
 .row2 {
-        background:#FFFFFF;
+        background:#inherit;
         font-family:sans-serif;
         font-size:12px;
         color:#800000;
@@ -137,7 +137,7 @@ a:hover {
         font-weight:800;
 }
 .reply {
-	background:#F0E0D6;
+	background:#inherit;
 	color:#800000;
 	font-family:serif;
 }
@@ -165,101 +165,36 @@ a:hover {
 	font-size:9px;
 	font-family:sans-serif;
 	color:#800000;
+
+
+}
+
+.repliesbox {
+
+        margin: 0 0 0 20px;
+        background: #ebf0fd;
+        width: 440px;
+        position:relative;
+        left:40px;
 }
 	
 </style>
 
 <p class="notice"><%= notice %></p>
 
-<div id='rightBar' class='floatRight'>
+<div id='rightBar' class='floatLeft'>
 	<div id='post'>
-		<%= image_tag('default_photo.png', :size=>'60x60')%>
-                <p class ="replytitle"><%= @post.title %></p>
-
-		<p id="postContent"><%= @post.content %></p>
-                
-               <section class="floatRight">
-                                
-                                <% if can? :manage, :all   %>
-				
-				<%= link_to_if(can?(:delete, @post), 'Delete', post_path(@post), :id=>'delete', :class=>'floatRight', :confirm => "Are you sure?", :method => :delete) {} %>
-                                 <% end %>
-                                
-                </section>                
-
-		<section id="postInfo">
-			<section class="floatLeft">
-				<p id="postName">
-                                        <% if @post.is_anonymous %>
-                                       
-                                        <a class="postername"><%= @post.alias %></a>
-                                        <% else %>
-                                        
-					<a class="postername"><%= link_to @post.name, user_path(@post.user) %></a>
-                                        <% end %>
-
-				</p>
-                                
-                		<p id="pageViews">
-					Pageviews: <a class="blue"><%= @post.pageviews %></a>
-				</p>	    
-
-			</section>
-				<p id="tags">
-					Tags: <a class="blue"><%= @post.tag_list  %> </a>
-				</p>  
-
-				<p id="time">
-					Date Created: <a class='blue'>
-					<%=@post.created_at.strftime("%B %e %l:%M %p %Y")%>
-					(<%=distance_of_time_in_words(@post.created_at,	Time.now)%> ago)
-					</a>
-				</p>
-
-		</section>
+		<%= render @post  %>
 	</div>
 
-
-
-  
   <br><br>
   
 	
-                <% @comments = @comments.page(params[:page]).per(5)%>
                
-		<% @comments.each do |comment| %>
+		<% @post.comments.each do |comment| %>
                 
-            <div id="comment"> <!-- render comment -->
-           <% if can? :manage, :all   %>
-
-                <b> <%= link_to 'Like', { :action => :vote_up, :id => comment.id, :controller => "comments" }, :method=>:post%>: <%= comment.points_up  %> / <%= link_to 'Dislike', { :action => :vote_down, :id => comment.id, :controller => "comments" }, :method=>:post%>: <%= comment.points_down %> </b>
-                <% end %>
-                
-                <div class='commented'>
-				<div id='textpos'>
-                <br>
-                <%= comment.content %>
-                <br>
-				<div id='timify'>
-                <%= comment.created_at.strftime("%B %e %l:%M %p %Y")%> (<%=distance_of_time_in_words(comment.created_at, Time.now)%> ago)
-				</div>
-                <br>
-				<div class='smallify'>
-				Author: <i> <a class="blue"><%#= link_to comment.user.name, user_path(comment.user)%></a></i>
-				</div>
-                
-
-                <% if current_user == comment.user or can? :manage, :all   %>
-                <%= link_to ' ', [comment.post, comment], :class=>'comdel', :confirm => 'Are you sure?',:method => :delete %>
-                <% end %>
-
-                </div>
+            <%= render comment  %>
+  <%end%>
 
 
-                <%= link_to 'Reply', comment_path(comment) %>
-                <%= link_to 'Permalink', comment_path(comment) %>
-                
-				<br><br>
-
-                <% end %>
 		<%= render "comments/form" %>

@@ -1,0 +1,27 @@
+<%= image_tag('default_photo.png',:id=>"photo", :class=>"floatLeft", :size=>'60x60')%>
+
+
+                                <br>
+
+                                        <b class ="replytitle"><%=  post.title %></b>
+                                        <b class ="postername">
+					<% if post.is_anonymous %>
+                                        <%= post.alias %>
+                                        <% else %>
+                                        <%= link_to post.name, user_path(post.user) %>
+                                        <% end %>
+                                          </b>
+
+                                        <n class ="plaintext"><%=post.created_at.strftime("%B %e %l:%M %p %Y")%>
+                                         No.<%= post.id%> [<%= link_to "Reply", post, :class => 'filesize' %>]</n>
+
+
+                                        <p class ="row2"><%= post.content %></p>
+
+                                        <p class ="postername">Tags:
+
+                                        <% post.tag_list.each do |tag|  %>
+						<%= link_to tag.capitalize, { :action => :tag_with,
+                                                   :tag => tag, :controller => "preferences"}, :method=>:post, :class=>'blue'%>
+
+                                        <%end%></p>

@@ -90,13 +90,13 @@ a:hover {
 	color:#800000;
 }
 .row1 {
-	background:#9AD2F6;
+	background:inherit;
 	font-family:sans-serif;
 	font-size:12px;
 	color:#800000;
 }
 .row2 {
-        background:#FFFFFF;
+        background:inherit;
         font-family:sans-serif;
         font-size:12px;
         color:#800000;
@@ -169,11 +169,21 @@ a:hover {
 }
 
 .plaintext {
-        background:#FFFFFF;
+        background:inherit;
         font-family:sans-serif;
         font-size:14px;
         color:#800000;
 }
+
+.repliesbox {
+  
+        margin: 0 0 0 20px;
+        background: #ebf0fd;
+        width: 440px;
+        position:relative;
+        left:40px;
+}
+
 
 </style>
 
@@ -190,43 +200,27 @@ a:hover {
                                  <% end %>
 				
 				<!--=# link_to "Flag", :controller => "posts", :action => "update", #:method => :put, :post => {:flag => true}%>-->
-
-
-                                <%= image_tag('default_photo.png',:id=>"photo", :class=>"floatLeft", :size=>'60x60')%>
-
                                 
+
+                                <%= render post  %>
                                 <br>
 
-                                        <b class ="replytitle"><%=  post.title %></b>
-                                        <b class ="postername">
-					<% if post.is_anonymous %>
-                                        <%= post.alias %>
-                                        <% else %>
-                                        <%= link_to post.name, user_path(post.user) %>
-                                        <% end %>
-                                          </b>
-                                        
-                                        <n class ="plaintext"><%=post.created_at.strftime("%B %e %l:%M %p %Y")%> (<%=distance_of_time_in_words(post.created_at, Time.now)%> ago)
-                                        [<%= link_to "Reply", post, :class => 'filesize' %>]</n>
-                                        
 
-                                        <p class ="row2"><%= post.content %></p>
-                                        
-                                        <p class ="postername">Tags:
-
-                                        <% post.tag_list.each do |tag|  %>
-						<%= link_to tag.capitalize, { :action => :tag_with, 
-                                                   :tag => tag, :controller => "preferences"}, :method=>:post, :class=>'blue'%>
-						
-                                        <%end%></p>
-                                        
                                         <p class ="filesize">
-                                        <% if post.comments.size == 1 %>
-                                        <%= post.comments.size.to_s %> post omitted. Click Reply to view.
-  	                                <% elsif post.comments.size > 1 %>
-                                        <%= post.comments.size.to_s %> posts omitted. Click Reply to view.
+                                        <% if comments_omitted_num(post) == 1 %>
+                                        1 post omitted. Click Reply to view.
+  	                                <% elsif comments_omitted_num(post) > 1 %>
+                                        <%= comments_omitted_num(post) %> posts omitted. Click Reply to view.
                                         <% end %>
                                         </p>
+                                
+
+                                        <% comments_omit(post).each do |c| %>
+                                
+                                        <%= render c %>
+                
+                                        <% end %>
+
 
                                         <br>
                                         

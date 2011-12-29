@@ -28,6 +28,25 @@ module PostsHelper
 	def flagPost(post)
 		flagged = true
 	end
+
+    def comments_omit(post)
+
+    list = post.comments
+
+    if post.comments.size>5
+      list = post.comments[post.comments.size-5..post.comments.size-1]
+    end
+
+    return list
+
+  end
+
+  def comments_omitted_num(post)
+
+    return post.comments.size - comments_omit(post).size
+
+  end
+
 	
 	def displayIcon(num)
     image_tag("header/icon#{num}.png", :class=>'icon')
