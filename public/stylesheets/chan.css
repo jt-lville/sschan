@@ -227,9 +227,17 @@ a:hover {
         left:0px;
 }
 
+.image{
+    float:left;
+    margin: 0 0 0 0px;
+    position:relative;
+    left:-20px
+}
+
 h1 {
 
     font-size:32px;
     color:#CC1105;
+    font-weight:800;
 
 }
