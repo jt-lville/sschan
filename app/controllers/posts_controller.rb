@@ -177,7 +177,7 @@ class PostsController < ApplicationController
 
     alias_value = params[:alias_check]
     
-    if (alias_value == 'true')
+    if (alias_value == 'true') or (@post.alias != nil and @post.alias != "")
       @post.is_anonymous = true
       
       if @post.alias == "anonymous" or @post.alias == ""

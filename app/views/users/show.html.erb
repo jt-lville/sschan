@@ -30,12 +30,14 @@
 
 <hr/>
         <% if @user_on_page.posts.size == 0  %>
-                There appears to be nothing here.
+                This user appears to have made no posts.
         <% end %>
                 <hr/>
  <% @posts.each do |post| %>
- 
-<%= render post %>
+
+                <% unless post.is_anonymous %>
+                <%= render post %>
+                <%  end %>
                 <hr/>
 
  <% end %>
@@ -48,7 +50,7 @@
        <% end %>
                 
        <% if @user_on_page.comments.size == 0  %>
-       There appears to be nothing here.
+       This user appears to have made no comments.
       <% end %>
       <hr/>
               <%= paginate @comments %>
