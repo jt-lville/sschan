@@ -9,7 +9,7 @@
                 <div class='commented'>
 				<div id='textpos'>
 
-                <p class ="row2"><%= comment.content %></p>
+                <p class ="row2"><%= (h comment.content).gsub("\n", '<br/>').html_safe %></p>
 
                 <% if current_user == comment.user or can? :manage, :all   %>
                 <%= link_to ' ', [comment.post, comment], :class=>'comdel', :confirm => 'Are you sure?',:method => :delete %>

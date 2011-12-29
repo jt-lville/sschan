@@ -16,7 +16,7 @@
                                          No.<%= post.id%> [<%= link_to "Reply", post, :class => 'filesize' %>]</n>
 
 
-                                        <p class ="row2"><%= post.content %></p>
+                                        <p class ="row2"><%= (h post.content).gsub("\n", '<br/>').html_safe %></p>
 
                                         <p class ="postername">Tags:
 
