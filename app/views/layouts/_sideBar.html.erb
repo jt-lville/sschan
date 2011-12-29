@@ -3,7 +3,7 @@
 
   <!--  <h2><%= link_to "Your Profile", user_path(@user) %></h2>-->
   <div id="welcome">
-   Welcome! 
+   Welcome, <%= @user.name%>  !
    <br>
    
    </div>
@@ -26,14 +26,7 @@
     
     
 
-    
-    <div id="postingInterface">
-    <% if false %>
-    <%= link_to "Click here to view non-news" , { :action => :tag_with, 
-      :tag => "humor", :controller => "preferences"}, :method=>:post %>
-      <% end %>
 
-    </div>
   </div>
 </div>
 

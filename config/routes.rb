@@ -31,8 +31,6 @@ OrchiveApp::Application.routes.draw do
 	resources :posts do
     resources :comments
     
-  #resources :relationships, :only => [:create, :destroy]
-    
     collection do
     post "vote_up"
     post "vote_down"
@@ -130,16 +128,6 @@ OrchiveApp::Application.routes.draw do
   match '/future' => 'Pages#Future'
   match '/FAQ' => 'Pages#FAQ'
   match '/dashboard' => 'users#adminUI'
-  match '/mattisawesome' => 'Pages#mattisawesome'
-	
-    #match '/request' => 'beta_pages#request'
-    #match '/thankyou' => 'beta_pages#Thank_You'
-    #match '/tys' => 'beta_pages#_signup'
-    #match '/tyo' => 'beta_pages#_open'
-    #match '/tyf' => 'beta_pages#_full'
-    #match '/thankyou' => 'beta_pages#Thank_You'
-    
-	#match '/users/:password', :to => 'users#show',    :as => :user,         :via => :get
-	
+
   
 end

@@ -4,7 +4,7 @@ class BetaPagesController < ApplicationController
 	before_filter :check_login
 	
 	def check_login
-		redirect_to posts_path if user_signed_in?
+		redirect_to '/login' if not user_signed_in?
 	end
 
 end

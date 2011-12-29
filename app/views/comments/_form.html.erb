@@ -48,7 +48,6 @@ border-style:none;
 </style>
 
 <%= form_for([@post, @post.comments.build]) do |f| %>
-<h2>Post a Comment</h2>
   <div class="field">
 	<div id='commentr'>
     <%= f.text_area :content, :class=>'comfield', :placeholder=>'What do you think?' %>

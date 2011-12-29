@@ -59,9 +59,9 @@
 </style>
 
 <div id='container'>
-<div id="box">
+
 	<div id="boxContent">
-		<h1>Beta Member Login</h1>
+		<h1>Super Secret Login</h1>
 		
 		<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
 			<div>
@@ -71,22 +71,29 @@
 			<div id="divt">	
 				<%=f.label :password, 'Password:', :class=> 'inline betaLabelTextField' %>
 				<%=f.password_field :password, :class=>'betaTextField' %>
-			</div> 
+			</div>
+                <br>
 			<section>
 				<%= f.submit '', :class=>'button inline' %>
+                          <br>
 				<% if devise_mapping.rememberable? -%>
 					<span>
 					<br>
 						<%= f.check_box :remember_me %> <%= f.label :remember_me %>
 					</span>
 				<% end -%>
-				<%-if devise_mapping.recoverable? && controller_name !=
+
+                                <%= link_to "Register", '/join' %> <br />
+
+                                <%-if devise_mapping.recoverable? && controller_name !=
 				'passwords'%>
-					<%= link_to "Forgot your password?", new_password_path(resource_name) %><br />
+                                <br>
+					<%= link_to "Password Retrieval", new_password_path(resource_name) %>
 				<% end -%>
+
 			</section>
 		<% end %>
 			
 	</div>
-</div>
+
 </div>

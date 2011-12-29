@@ -2,11 +2,12 @@
 <div id="headerContent">
 
 <div id="topBar"> 
-  <%= link_to(image_tag('logo.png', :alt=>'Orchive', :id=>'logo'), '/posts') %>
+  <%= link_to(image_tag('logo.png', :alt=>'SSChan', :id=>'logo'), '/posts') %>
   
   <span id="headPages" class="floatRight">
     <p>
-      <%= link_to 'Feed', '/posts' %>
+      <%= link_to 'Home', '/' %>
+      <%= link_to 'Postfeed', '/posts' %>
 			
 			<% if current_user.role?('admin') %>
 				<%= link_to('Dashboard', '/dashboard') %>
@@ -22,19 +23,21 @@
 </div>
 
 <div id="navBar">
+  <!--
 	<%= form_for(:search) do |f|%>
 
   	<%= f.text_field :searchValue, :id => 'searchField', :placeholder=>'Start a search' %>
 		<%= f.submit :id => 'submit', :value => '' %>
   <% end %>
+  
 	
 	<%= link_to(submit_tag('', :class=>'floatLeft'), new_post_path)%>
+  
+  -->
 
-
-	<%= image_tag('header/divider.png', :class=>'floatLeft divider')%>
 <section>
-  <span id="feeds" class="floatLeft" >
-		<a href = '/posts'>Feeds</a> <!-- TODO: icons sticking out -->
+  <!-- <span id="feeds" class="floatLeft" >
+		<a href = '/posts'>Feeds</a>
                 <%= link_to displayIcon(1), {:action => :make_feed_preference,
                 :preference => "trending value",  :controller => "preferences"}, :method=>:post, :title=>'Trending Value' %>
 
@@ -47,12 +50,11 @@
                 <%= link_to displayIcon(4), {:action => :make_feed_preference,
                 :preference => "followers", :controller => "preferences"}, :method=>:post, :title=>'Followers' %>
                 
-  </span>
+  </span> -->
 
-	<%= image_tag('header/divider.png', :class=>'floatLeft divider')%>
   
   <span id="filters" class='floatLeft'>
-    <a>Filters</a>
+    <!--<a>Filters</a>
               <%= link_to displayIcon(5), { :action => :tag_with, 
                :tag => "science", :controller => "preferences"}, :method=>:post, :title=>'Science'%>
     
@@ -84,6 +86,8 @@
               
                <%= link_to "clear", { :action => :clear_tag_list_and_preferences, 
                :tag => "other", :controller => "preferences"}, :method=>:post, :title=>'Clear' %>
+    -->
+
     
   </span>
   </section>

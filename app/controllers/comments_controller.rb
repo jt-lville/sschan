@@ -63,7 +63,7 @@ class CommentsController < ApplicationController
 
     nested_comment.user = current_user
     nested_comment.name = current_user.name
-    nested_comment.relative_value =0
+    nested_comment.relative_value = 0
     nested_comment.points_up = 0
     nested_comment.points_down = 0
     nested_comment.save
@@ -147,7 +147,7 @@ class CommentsController < ApplicationController
   end
 
   def update_status
-    @comment.relative_value = @comment.points_up - @comment.points_down + (rand() - 0.5)/10.0
+    #@comment.relative_value = @comment.points_up - @comment.points_down + (rand() - 0.5)/10.0 #comment out for sschan
   end
   
 #  def randomize! #this performs a random shuffle of comments with similar relative values

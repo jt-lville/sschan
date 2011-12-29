@@ -1,3 +1,17 @@
+body {
+         font-size:12pt;
+         background:#FFFFEE;
+         color:#800000;
+}
+
+a {
+        background:inherit;
+        color:#0000EE;
+        text-decoration:underline;
+        font-family:serif;
+        
+}
+
 #beta #main #content {
 	padding-bottom:0;
 	width:100%
@@ -5,7 +19,7 @@
 #beta header {
 	background:url(../images/betaback.png);
 	height:97px;
-	border-top:3px solid #80CD97;
+	border-top:3px solid #596A93;
 }
 
 .logo {
@@ -34,7 +48,7 @@
 	margin-right:20px;
 }
 #beta header span a:hover {
-	color:#48B76A;
+	color:#596A93;
 }
 
 /*

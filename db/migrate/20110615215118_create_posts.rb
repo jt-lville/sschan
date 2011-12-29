@@ -24,8 +24,8 @@ class CreatePosts < ActiveRecord::Migration
       t.integer :inaccuracy #downvotes
       t.integer :total_votes
       
-      t.decimal :accuracy_ratio
-      t.decimal :accuracy_percent
+      #t.decimal :accuracy_ratio
+      #t.decimal :accuracy_percent
 		
       t.decimal :trending_value #note: changed to dec
 

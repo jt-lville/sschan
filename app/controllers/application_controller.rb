@@ -1,8 +1,5 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-
-  #Sabar wuz here
-
   private
   
   def current_preference
@@ -12,6 +9,7 @@ class ApplicationController < ActionController::Base
     @preference = Preference.create
     session[:preference_id] = @preference.id
     @preference
+    
   end
 	
 	# Devise, way of using a different Layout for all the devise/non-signed in Views

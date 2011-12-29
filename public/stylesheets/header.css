@@ -2,7 +2,7 @@
 #header {
 	background: #fff url('/images/header/background.png') 0 87px no-repeat;
 	height:174px;
-	border-top:3px solid #80CD97;
+	border-top:3px solid #596A93;
 }
 #header #headerContent {
 
@@ -18,12 +18,10 @@
 font-weight:600;
 font-size:14px;
 
-
-
 }
 /* Will become obsolete with js */
 #header #headerContent A:hover {
-  color:#00BE69;
+  color:#596A93;
   cursor:pointer;
 }
 
