@@ -2,8 +2,10 @@
 
 <%#= render '/layouts/sideBar' %>
 
-<center><h1>/posts - Postfeed</h1><%= image_tag(random_image_url)  %><br/> <i><%= random_phrase %></i></center>
-<br/><br/><br/><hr/>
+<center><%= image_tag(random_image_url)  %><br/> <i><%= random_phrase %></i><h1>/posts - Postfeed</h1>
+
+</center>
+<hr/>
 
 <%= form_for(@post) do |f| %>
 
@@ -66,9 +68,10 @@
 	<%= f.label 'International'%>
         </p>
 
-    <p class ="rules">
+          <p class ="rules"">
     * Feel free to suggest features or improvements.<br/>
     * If you notice any bugs, inform Jon ASAP.</p>
+
         <hr/>
 
 <% end %>
