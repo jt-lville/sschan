@@ -104,18 +104,20 @@ a:hover {
 .row1 {
 	background:inherit;
 	font-family:sans-serif;
-	font-size:12px;
+	font-size:13px;
 	color:#000000;
 }
 .row2 {
         background:inherit;
         font-family:sans-serif;
-        font-size:12px;
+        font-size:13px;
         color:#000000;
 }
 .unkfunc {
-	background:inert;
+	background:inherit;
 	color:#789922;
+        font-size:13px;
+        font-family:sans-serif;
 }
 .filesize {
 	font-size:16px;
