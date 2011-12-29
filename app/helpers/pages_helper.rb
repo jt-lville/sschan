@@ -9,7 +9,17 @@
     #end
   end
 
-  def random_image_url
+  def random_lily_url
+
+    str = "lily/lily"
+
+    r_num = rand(5) + 1
+
+    str+= r_num.to_s + ".png"
+
+  end
+
+  def random_banner_url
 
     str = "banners/banner"
     r_num = rand(5) + 1
