@@ -2,6 +2,9 @@
 
 <%#= render '/layouts/sideBar' %>
 
+<center><h1>/posts - Postfeed</h1><%= image_tag(random_image_url)  %><br/> <i><%= random_phrase %></i></center>
+<br/><br/><br/><hr/>
+
 <%= form_for(@post) do |f| %>
 
   <% if @post.errors.any? %>
