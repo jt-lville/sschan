@@ -12,13 +12,13 @@ module ApplicationHelper
 
     c1 = c.content
 
-    str1 = '<p class = "unkfunc">'
-    str2 = '</p>'
+    str1 = '<n class = "unkfunc">'
+    str2 = '</n>'
     str3 = '<a class = "unkfunc" href = "/posts/'
     str4 = '</a>'
 
     if c1 != nil
-    arr_lines = c1.split('\n') #split the text into lines
+    arr_lines = c1.split("\n") #split the text into lines
 
     arr_lines.each do |a|
       if a[0] == ">" and a[1] == ">" #link replies
@@ -26,10 +26,10 @@ module ApplicationHelper
         tmp = num.split(' ')
         num = tmp[0]
 
-
         begin
         if Comment.find(num) != nil #link replies
           end
+
           link = str3 + c.post.id.to_s + "#" + num + '">'
           if a.index(" ") != nil
           a.insert(a.index(" "), str4)
@@ -46,22 +46,24 @@ module ApplicationHelper
       if a[0] == ">"
         a.insert(0, str1) #add the greentext tag
         a << str2 #close the greentext tag
+        
         #a << "DERP"
       end
     end
 
     c1 = ""
 
-    arr_lines.each do |a|
-      strtmp = '\n'
-      if arr_lines.index(a) == (arr_lines.size - 1) #recombine the lines into text
-        strtmp = ""
-      end
-      c1 += a + strtmp
-    end
+#    arr_lines.each do |a|
+#      strtmp = "\n"
+#      if arr_lines.index(a) == (arr_lines.size - 1) #recombine the lines into text
+#        strtmp = ""
+#      end
+#      c1 += a + strtmp
+#    end
 
+    c2 = arr_lines.join('<br/>')    #recombine the lines into text
 
-    c2 = c1.gsub("\n", '<br/>').html_safe
+    #c2 = c1.gsub("\n", '<br/>').html_safe
 
     c2 = c2.gsub("eels bad man", "eelings baddingly mans") #troll wordfilters
     c2 = c2.gsub("eels good man", "eelings baddingly mans")

@@ -24,7 +24,7 @@
     str = "banners/banner"
     r_num = rand(5) + 1
 
-    str += r_num.to_s + ".png"
+    str += r_num.to_s + ".png" #choose banners in the form 'bannerX.png'
 
     return str
 
@@ -32,7 +32,7 @@
 
   def random_phrase
 
-    r_num = rand(12)
+    r_num = rand(17)
     str = ""
 
     if r_num == 0
@@ -59,6 +59,14 @@
       str = "Just who the hell do you think I am?!"
     elsif r_num == 11
       str = "Take this!! My love! my anger! and all of my sorrow!"
+    elsif r_num == 12
+      str = "Don't you think dreams and the Internet are similar? They are both areas where the repressed conscious mind vents."
+    elsif r_num == 13
+      str = "This is a foolish place to be... to inquire about the master of this dream."
+    elsif r_num == 14
+      str = "We can forget happy things. We can probably forget sad things too. People have the power to forget."
+    elsif r_num == 15
+      str = "The people would restart their lives in a simple, peaceful village, in the kind of place they wished they had grown up in."
     else
       str = "Elements of Harmony...I know I've heard that from somewhere."
     end

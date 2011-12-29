@@ -10,7 +10,7 @@
 				<div id='textpos'>
                                   
 
-                <p class ="row1"><%= filter_comment(comment) %></p>
+                <div class ="row1"><%= filter_comment(comment) %></div>
 
                 <% if current_user == comment.user or can? :manage, :all   %>
                 <%= link_to ' ', [comment.post, comment], :class=>'comdel', :confirm => 'Are you sure?',:method => :delete %>

@@ -2,7 +2,9 @@
 
 <%#= render '/layouts/sideBar' %>
 
-<center><%= image_tag(random_banner_url)  %><br/> <i><%= random_phrase %></i><h1>/posts - Postfeed</h1>
+<center><%= image_tag(random_banner_url)  %><br/> <i><%= random_phrase %></i>
+
+  <h1>/posts - Postfeed</h1>
 
 </center>
 <hr/>
@@ -19,6 +21,8 @@
       </ul>
     </div>
   <% end %>
+
+
 
   <div id="bar">
     <%= f.text_field :alias, :class => 'field', :placeholder=> 'Alias (can be left blank)' %> <%= check_box_tag 'alias_check', 'true' %> Use an Alias?
@@ -75,6 +79,10 @@
         <hr/>
 
 <% end %>
+         <p>12/20/2011: the site is born as an Orchive clone</p>
+         <p>12/28/2011: after an impressive 2-day work session, Jon Tang gets the site up and running</p>
+         <p>12/29/2011: registration bug was never a bug, just use passwords longer than 6 characters</p>
+         <hr/>
 
 
 <%= link_to '', posts_path, :class=>'cancel floatLeft' %>
