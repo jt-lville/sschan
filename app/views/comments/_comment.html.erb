@@ -3,7 +3,7 @@
 
                 <n class='postername'>
                 <%= link_to comment.user.name, user_path(comment.user)%></n>
-                <n class ="plaintext"><%= comment.created_at.strftime("%B %e %Y %l:%M %p ")%> No.<%= link_to comment.id, (post_path(comment.post)+"#" + comment.id.to_s) %></n>
+                <n class ="plaintext"><%= comment.created_at.strftime("%B %e %Y %l:%M %p ")%> No.<n id="<%= comment.id %>"><%= link_to comment.id, (post_path(comment.post)+"#" + comment.id.to_s) %></n></n>
                 
   
                 <div class='commented'>

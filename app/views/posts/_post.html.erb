@@ -14,7 +14,7 @@
                                           </b>
 
                                         <n class ="plaintext"><%=post.created_at.strftime("%B %e %Y %l:%M %p")%>
-                                         No.<%= post.id%> [<%= link_to "Reply", post, :class => 'filesize' %>]</n>
+                                         No.<%= link_to post.id, post_path(post)%> [<%= link_to "Reply", post, :class => 'filesize' %>]</n>
 
 
                                         <p class ="row2"><%= filter_comment(post) %></p>
