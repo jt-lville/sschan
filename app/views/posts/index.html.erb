@@ -173,6 +173,10 @@ a:hover {
 
 <%#= render '/layouts/sideBar' %>
 
+[<%= link_to "Create New Post", new_post_path %>]
+<p class ="rules">Rules: Don't gib around.</p>
+<br>
+
 	<% @posts.each do |post| %>
 
 				<% if current_user == post.user or can? :manage, :all   %>
