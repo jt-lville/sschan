@@ -47,6 +47,8 @@ module PostsHelper
 
   end
 
+
+
 	
 	def displayIcon(num)
     image_tag("header/icon#{num}.png", :class=>'icon')
