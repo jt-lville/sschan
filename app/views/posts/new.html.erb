@@ -133,16 +133,10 @@ border-style:none;
 <div id='container'>
 
 <div id='newpost'>
-<h1>New Report</h1>
-
-
+<h1>Submit New Post</h1>
 
 
   <%@posts = current_user.posts%>
-
-  <%# if Time.now - @posts[@posts.size - 1].created_at < 600 %>
-  <%# @post.errors.add(:content, "cannot be posted until ten minutes have passed.") %>
-  <%# end %>
 
 <%= form_for(@post) do |f| %>
   <% if @post.errors.any? %>
@@ -205,8 +199,8 @@ border-style:none;
 	<%= check_box_tag 'tags[]', 'Music' %>
 	<%= f.label 'Music', :class=>'spacer5' %>
    
-	<%= check_box_tag 'tags[]', 'Other' %>
-	<%= f.label 'Other', :class=>'spacer' %>
+	<%= check_box_tag 'tags[]', 'International' %>
+	<%= f.label 'International', :class=>'spacer' %>
         
 	</div>
   	</div>

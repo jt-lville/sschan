@@ -1,197 +1,78 @@
-<style type="text/css">
-
-body {
-         font-size:12pt;
-         background:#f6f9ff;
-         color:#000000;
-}
-
-a {
-        background:inherit;
-        color:#0000EE;
-        text-decoration:underline;
-        font-family:serif;
-}
-a:visited {
-        background:inherit;
-        color:#0000EE;
-        text-decoration:underline;
-        font-family:serif;
-}
-a:hover {
-        color:#DD0000;
-        background:inherit;
-        text-decoration:underline;
-        font-family:serif;
-}
-.adminbar {
-        text-align:right;
-        background:inherit;
-        clear:both;
-        float:right;
-}
-.logo {
-        clear:both;
-        text-align:center;
-        background:inherit;
-        font-size:24pt;
-        color:#800000;
-        width:100%;
-}
-.theader {
-        background:#0010E0;
-        color:#FFFFFF;
-        width:100%;
-}
-.postarea {
-        background:inherit;
-}
-.rules {
-        font-size:10px;
-        font-family:sans-serif;
-}
-.postblock {
-        background:#EEAA88;
-        color:#800000;
-        font-weight:800;
-}
-.footer {
-        text-align:center;
-        font-size:12px;
-        font-family:serif;
-}
-.passvalid {
-	background:#EEAA88;
-	text-align:center;
-	width:100%;
-	color:#ffffff;
-}
-.dellist {
-	background:inherit;
-	text-align:center;
-}
-.delbuttons {
-	background:inherit;
-	text-align:center;
-	padding-bottom:4px;
-
-}
-.managehead {
-	background:#0F8FE1;
-	color:#800000;
-	font-family:sans-serif;
-	font-size:14px;
-	padding:0px;
-}
-.postlists {
-	background:#FFFFFF;
-	width:100%;
-	padding:0px;
-	color:#800000;
-}
-.row1 {
-	background:inherit;
-	font-family:sans-serif;
-	font-size:12px;
-	color:#000000;
-}
-.row2 {
-        background:inherit;
-        font-family:sans-serif;
-        font-size:12px;
-        color:#000000;
-}
-.unkfunc {
-	background:inert;
-	color:#789922;
-}
-.filesize {
-	font-size:16px;
-	font-family:serif;
-	text-decoration:none;
-}
-.filetitle {
-	background:inherit;
-	font-size:18px;
-	font-family:serif;
-	color:#CC1105;
-	font-weight:800;
-}
-.postername {
-	background:inherit;
-	font-size:16px;
-	font-family:serif;
-	color:#117743;
-	font-weight:800;}
-.oldpost {
-        background:inherit;
-        font-size:18px;
-        font-family:serif;
-        color:#CC1105;
-        font-weight:800;
-}
-.omittedposts {
-        background:inherit;
-        font-size:18px;
-        font-family:serif;
-        color:#070707;
-        font-weight:800;
-}
-.reply {
-	background:#F0E0D6;
-	color:#000000;
-	font-family:serif;
-}
-.doubledash {
- 	vertical-align:top;
-	clear:both;
-	float:left;
-}
-.replytitle {
-        background:inherit;
-        font-size:18px;
-        font-family:serif;
-        color:#CC1105;
-        font-weight:800;
-}
-.commentpostername {
-        background:inherit;
-        font-size:16px;
-        font-family:serif;
-        color:#117743;
-	font-weight:800;
-}
-.thumbnailmsg {
-	background:inherit;
-	font-size:9px;
-	font-family:sans-serif;
-	color:#800000;
-}
-
-.plaintext {
-        background:inherit;
-        font-family:sans-serif;
-        font-size:14px;
-        color:#000000;
-}
-
-.repliesbox {
-  
-        margin: 0 0 0 20px;
-        background: #ebf0fd;
-        width: 440px;
-        position:relative;
-        left:40px;
-}
-
-
-</style>
+<%= stylesheet_link_tag "chan" %>
 
 <%#= render '/layouts/sideBar' %>
 
-[<%= link_to "Create New Post", new_post_path %>]
-<p class ="rules">Rules: Don't gib around.</p>
-<br>
+<%= form_for(@post) do |f| %>
+
+  <% if @post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
+      <ul>
+      <% @post.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div id="bar">
+    <%= f.text_field :alias, :class => 'field', :placeholder=> 'Alias (can be left blank)' %> <%= check_box_tag 'alias_check', 'true' %> Use an Alias?
+  </div>
+
+    <%= f.text_field :title, :class=>'field', :placeholder=>'Title'%> <%= f.submit 'Submit'%>
+
+  <p id="content">
+    <%= f.text_area :content, :class=>'content', :placeholder=>'Post area' %>
+  </p>
+
+
+	<!-- [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].each do |num| %>
+		<= f.check_box "filter#{num}".to_sym %>
+		<= f.label "filter#{num}".to_sym %>
+	< end %> -->
+        <p class ="checkboxes">
+	<%= check_box_tag 'tags[]', 'Anime' %>
+	<%= f.label 'Anime' %>
+
+        <%= check_box_tag 'tags[]', 'Random' %>
+	<%= f.label 'Random'%>
+
+	<%= check_box_tag 'tags[]', 'Video Games' %>
+	<%= f.label 'Video Games' %>
+
+	<%= check_box_tag 'tags[]', 'MtG' %>
+	<%= f.label 'MtG' %>
+
+	<%= check_box_tag 'tags[]', 'Ponies' %>
+	<%= f.label 'Ponies'%>
+	<br/>
+
+	<%= check_box_tag 'tags[]', 'Intellectual' %>
+	<%= f.label 'Intellectual' %>
+
+	<%= check_box_tag 'tags[]', 'Minecraft' %>
+	<%= f.label 'Minecraft' %>
+
+	<%= check_box_tag 'tags[]', 'Television' %>
+	<%= f.label 'Television' %>
+
+	<%= check_box_tag 'tags[]', 'Music' %>
+	<%= f.label 'Music' %>
+
+	<%= check_box_tag 'tags[]', 'International' %>
+	<%= f.label 'International'%>
+        </p>
+
+    <p class ="rules">
+    * Feel free to suggest features or improvements.<br/>
+    * If you notice any bugs, inform Jon ASAP.</p>
+        <hr/>
+
+<% end %>
+
+
+<%= link_to '', posts_path, :class=>'cancel floatLeft' %>
+
 
 	<% @posts.each do |post| %>
 
@@ -201,7 +82,7 @@ a:hover {
 				
 				<!--=# link_to "Flag", :controller => "posts", :action => "update", #:method => :put, :post => {:flag => true}%>-->
                                 
-
+                                 
                                 <%= render post  %>
                                 <br>
 
@@ -221,8 +102,7 @@ a:hover {
                 
                                         <% end %>
 
-
-                                        <br>
+                                        <hr>
                                         
 
 	<% end %>

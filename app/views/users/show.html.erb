@@ -1,187 +1,4 @@
-<style type='text/css'>
- #wrapper {
- }
-
- #main {
-    width:995px;
-  margin: 0 auto 0 auto;
- }
- 
-
-
- #profpic {
- position:relative;
- left: 210px;
- top:10px;
-
- }
-
- #content {
-  padding-top:0;
-  margin-left:0;
- }
-
- #name {
- position: relative;
- left: 450px;
- top: -200px;
- }
- 
- <!--%= link_to 'Watch this user', {:action => :create, :id => :followed_id, :controller => "relationships" }, :method => :post %-->
-
- #stats {
- background: url('/images/profile/stats.png') 0 0 no-repeat;
- width:225px;
- length:149px;
- position: relative;
- left: 400px;
- top: 115px;
- }
-
- #stat {
- position:relative;
- top:-5px;
- left:0px;
- font-size:24px;
- }
-
- #statfo {
- position: relative;
- left: 215px;
- top: -10px;
- font-size:12px;
- }
-
- #titles {
- background: url('/images/profile/titles.png') 0 0 no-repeat;
- width: 780px;
- height: 149px;
- position: relative;
- left: 456px;
- top: -1130px;
- }
-
- #title {
- position: relative;
- left: 15px;
- top: 5px;
- font-size:24px;
- }
- 
- 
- #postbox {
- position: relative;
- background: url('/images/postbox.png') 0 0 no-repeat;
- width:780px;
- height:975px;
- left: 208px;
- top: 40px
- }
- 
- /* Actual Post */
-
- #postpos {
- position: relative;
- top:-930px;
- left:-10px;
- }
-
- #recent {
- position: relative;
- top:10px;
- left:237px;
- font-size:24px;
- }
- 
- #rightBar { 
-  margin-left:auto;
-
-  margin-right:220px;
-
-  padding-top:20px; 
-  width:745px; 
-  background-color:#FFFFFF;
- }
- #rightBar h1{
-  font-size:30px; font-weight:400;
- }
- #rightBar p{ 
-  padding-left:8px; 
-  font-size:11px;
- }
- #rightBar a{ 
-  text-decoration:none; 
- }
- #rightBar div {
-  padding-left:2px;
-  margin-bottom:5px;
- }
- #rightBar div #filters {
-  padding-top:4px;
-  line-height:14px;
- }
- #rightBar div p a {  
-  margin-left:20px;
- }
-    
-
-
- #rightBar #post {
-  padding: 8px; 
-  margin-bottom:10px;
-  height:143px;
-  background-image:url('/images/post_background.png');
-  background-repeat:no-repeat;
- }
- #rightBar #photo {
-  margin:18px 8px 8px 8px;
- }
- #rightBar #postTitle {
-  font-size:18px; 
-  font-weight:500;
-  margin-bottom:0;
- }
- #rightBar #postContent {
-  font-size:13px;
-  line-height:normal;
-  padding-left:76px;
- }
- #rightBar #postInfo {
-  color:#555555;
- }
- #rightBar #postInfo p {
-  line-height:18px;
-  text-align:left;
-  font-size:12px;
- }
- #rightBar #postInfo p img {
-  width:9px;
-  height:10px;
- }
- #rightBar #postInfo p a{
-  margin-left:0;
- }
- #rightBar #post #postInfo #postName, #rightBar #post #postInfo  #userLoc, #rightBar #post #postInfo #source {
-  width:200px;
- }
-
- #rightBar #omitText {
-  color:#00BE69;
-  margin-left:1px;
- }
- #rightBar #delete {
-  font-size:12px;
- }
- 
-
- #rightBar #comments h2 {
-  font-size:24px;
-  position:relative;
-  
- }
-</style>
-
-<%= render '/layouts/sideBar' %>
+<%= stylesheet_link_tag "chan" %>
 
 <div id='picture'>
 <div id='picturetwo'>
@@ -197,26 +14,13 @@
 </div>
 
 
-<div id='stats'>
-
-
-
-<div id='statfo'>
-<div id='stat'>
-Statistics
-</div>
-<b>Stories:</b> <%= @user_on_page.posts.size %>
-<br>
+<b>Posts:</b> <%= @user_on_page.posts.size %>
+<br/>
 <b>Comments:</b> <%= @user_on_page.comments.size %>
-<br>
-<b>Reliability:</b> <%= @user_on_page.reliability.round %>%
-<br>
-<br>
-<b>Newsworthiness:</b> <%= @user_on_page.karma.round %> 
+<br/>
+<br/>
 
 
-</div>
-</div>
 
 <div id='postbox'>
 </div>
@@ -224,100 +28,32 @@ Statistics
 <div id='postpos'>
 <div id='posts'>
 
-<div id='recent'>
-Recent Posts
-</div>
-
-<div id="rightBar" class="floatRight"> 
+<hr/>
         <% if @user_on_page.posts.size == 0  %>
                 There appears to be nothing here.
         <% end %>
+                <hr/>
  <% @posts.each do |post| %>
-  <div id="post">
-   <%=link_to  post.title, post, :class=>'blue'%>
-                            
-                                <% if current_user == post.user or can? :manage, :all   %>
-    <%= link_to_if(can?(:delete, post), 'Delete', post_path(post), :id=>'delete', :confirm => "Are you sure?", :method => :delete) {} %>
-                                 <% end %>
-    
-    <!--=# link_to "Flag", :controller => "posts", :action => "update", #:method => :put, :post => {:flag => true}%>-->
-
-
-   <%= image_tag('default_photo.png',:id=>"photo", :class=>"floatLeft", :size=>'60x60')%>
-
-
-      <p id="postContent">
-    <%= truncate_content(post, post.content)%>
-   </p>
-
-   <section id="postInfo">
-    <p id="postName" class="floatLeft clearLeft">
-     <%=image_tag('NFIcons/reporter.png') %> 
-     Reporter: <a class="blue"><%= link_to post.name, user_path(post.user) %></a>
-    </p>
-
-    <p id="tags" class="floatLeft">
-     <%=image_tag('NFIcons/tags.png') %> 
-     Tags: <a class="blue"></a>
-    </p>
-
-    <p id="userLoc" class="clearLeft floatLeft">
-     <%=image_tag('NFIcons/userLoc.png') %> 
-     Location: <a class="blue"><%= post.user_location %></a>
-    </p>
-
-    <p id="postLoc" class="floatLeft">
-     <%=image_tag('NFIcons/postLoc.png') %> 
-     Occuring In: <a class="blue"><%= post.post_location %></a>
-    </p>
-
-    <p id="source" class="clearLeft floatLeft">
-     <%=image_tag('NFIcons/source.png') %> 
-     Source: <a class='blue'>Source</a>
-    </p>
-
-    <p id="time" class="floatLeft">
-     <%=image_tag('NFIcons/time.png') %> 
-     Date Created: <a class='blue'><%=post.created_at.strftime("%B %e %l:%M %p %Y")%> (<%=distance_of_time_in_words(post.created_at, Time.now)%> ago)</a>
-    </p>
-                                                             
-   </section> 
-
-  </div>
+ 
+<%= render post %>
+                <hr/>
 
  <% end %>
                 
-        <%= paginate @posts %> <!-- TODO -->
-        
-       <h2>Comments</h2>
- <% @comments.each do |c| %>
-        <b> +<%= c.points_up  %>/-<%= c.points_down %> </b> <i><%= link_to c.user.name, user_path(c.user) %></i>:
-        <br>
-        <%= c.content %>
-        <br>
-        <%= c.created_at.strftime("%B %e %l:%M %p %Y")%> (<%=distance_of_time_in_words(c.created_at, Time.now)%> ago)
-        <br>
-        <%= link_to 'Context', post_path(c.post) %> <%= link_to 'Permalink', comment_path(c) %>
-        <% if current_user == @user_on_page or can? :manage, :all   %>
-                <%= link_to 'Delete Comment', [c.post, c], :confirm => 'Are you sure?',:method => :delete %>
-                <% end %>
-        <br>
-        <br>
-                
-        <% end %>
-        <%= paginate @comments %>
+        <hr/>
+        <% @comments.each do |c| %>
+        <%= render c %>
+    <hr/>
+    
+
+       <% end %>
                 
        <% if @user_on_page.comments.size == 0  %>
        There appears to be nothing here.
       <% end %>
-      <br>         
+      <hr/>
+              <%= paginate @comments %>
         
 </div>
 </div>
-</div>
 
-<div id='titles'>
-<div id='title'>
-Titles
-</div>
-</div>

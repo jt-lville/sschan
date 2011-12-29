@@ -9,6 +9,13 @@ class PostsController < ApplicationController
   # GET /posts.xml
 
   def index
+
+    #4chan style posts
+
+    @post = Post.new
+    @title = 'New Post'
+    #end 4chan style
+
     @user = current_user
     @preference = current_preference
     if @preference.feed_preference == nil
@@ -42,8 +49,10 @@ class PostsController < ApplicationController
 #    end
 
     @preference.save
-    
-    respond_to do |format|
+
+    #end of 4chan style posts
+
+    respond_to do |format| #old code
       format.html # index.html.erb
       format.xml  { render :xml => @posts }
     end
@@ -163,7 +172,7 @@ class PostsController < ApplicationController
     
       
     if @post.tag_list == []
-      @post.tag_list << "Other"
+      @post.tag_list << "Random"
     end
 
     alias_value = params[:alias_check]
@@ -189,7 +198,6 @@ class PostsController < ApplicationController
     end
         
     @post.save
-    
     
     respond_to do |format|
       if @post.save
