@@ -6,5 +6,5 @@ require File.expand_path('../application', __FILE__)
 # Initialize the rails application
 OrchiveApp::Application.initialize!
 
-Paperclip.options[:command_path] = "C:/Program Files (x86)/ImageMagick-6.7.4-Q16/"
+#Paperclip.options[:command_path] = "/usr/bin/" #comment this out for heroku
 Paperclip.options[:swallow_stderr] = false 
