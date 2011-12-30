@@ -5,6 +5,8 @@ gem 'rails', '3.0.8'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
+gem 'rmagick' #necessary for heroku?
+
 gem 'sqlite3', :require => 'sqlite3'
 gem 'devise'
 gem 'cancan'
