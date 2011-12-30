@@ -116,10 +116,12 @@
 </style>
 <div id="container">
 
-<br>
+<br><h1>Sign Up</h1>
 <div id="box">
+
 	<div id="boxContent">
-		
+
+          
 		
 		<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do 	|f| %>
 			<div id="code">
@@ -152,16 +154,15 @@
 				<%= errorImage(@user, :password_confirmation)%>
 			</div>
              
-                          
+                             <%= f.label :avatar, "Avatar: " %> <!-- paperclip! -->
+                             <%= f.file_field :avatar %>
 			<%= f.submit '', :class=>'button floatLeft'%>
 		
 			<p class="">Already a member? <%=link_to('Sign In here', '/login')%></p>
 			<p class=''></p>
 		<% end %>
 		
-		<div id='title'>
-		Sign Up
-		</div>
+		
 	</div>
 </div>
 

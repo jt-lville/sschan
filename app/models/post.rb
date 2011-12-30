@@ -1,11 +1,10 @@
  class Post < ActiveRecord::Base
-    
+
+  has_attached_file :upload, :styles => { :medium => "200x200>", :thumb => "100x100>" }, :default_url => "/images/medium/missing.png",
+    :path => "/images/uploads/" #uploads
+
 	acts_as_taggable
-    #experimental:
- # acts_as_nested_set
-  
-	#acts_as_taggable_on :tags
-  #acts_as_rateable #this is for voting
+
   is_impressionable ##for viewing
 
 	belongs_to :user
@@ -35,7 +34,10 @@
   
 	attr_accessible :name, :title, :content, :user_location, :post_location, :user_id,
     :post_id, :karma, :trending_value, :pageviews, :accuracy, :inaccuracy,   # <-- Jon's super code
-    :total_votes, :time_effective, :accuracy_ratio, :accuracy_percent, :source, :alias
+    :total_votes, :time_effective, :accuracy_ratio, :accuracy_percent, :source, :alias, :upload
+
+#     :upload_file_name, :upload_content_type, :upload_file_size,
+#                  :upload_updated_at
      
      	
 end

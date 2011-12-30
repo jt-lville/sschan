@@ -1,8 +1,11 @@
 require 'gravtastic'
 class User < ActiveRecord::Base
-  include Gravtastic
-  is_gravtastic!
-  
+
+#  include Gravtastic
+#  is_gravtastic!
+
+  has_attached_file :avatar, :styles => { :medium => "200x200>", :thumb => "100x100>" }, :default_url => "/images/medium/missing.png" #avatars
+
   #acts_as_taggable #this is for user tag browsing
   validate :check_beta_code, :on => 'create'
   validate :check_name, :on => 'create'
@@ -15,22 +18,10 @@ class User < ActiveRecord::Base
 	
 	has_many :posts, :dependent => :destroy
 	
-	# has_many :relationships,                                                     :foreign_key => 'follower_id',
-							 # :dependent => :destroy
-	# has_many :following, :through => :relationships, :source => :followed
-	
-	# has_many :reverse_relationships, :foreign_key => 'followed_id',
-									 # :class_name => 'Relationship',
-									 # :dependent => :destroy
-									 
-	# has_many :followers, :through => :reverse_relationships, :source => :follower
-	
 	def role?(role)
     self.role.to_sym == role.to_sym
   end
 	  
-  # Include default devise modules. Others available are:
-  # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
@@ -47,42 +38,22 @@ class User < ActiveRecord::Base
 	
 	validates :password, :presence => true
 
-  #for service selection
-  POSSIBLE_SERVICES = ['Gravatar', 'Facebook', 'Twitter', 'Google']
-#  
-#  posts_upvoted_array = []
-#  posts_downvoted_array = []
-#  awards_array = []
-#
-#  comments_upvoted_array = []
-#  comments_downvoted_array = []
-	
+  #POSSIBLE_SERVICES = ['Gravatar', 'Facebook', 'Twitter', 'Google']
 	
 	def check_beta_code
 		beta_code_array = ['overlord']
 		
 		unless beta_code_array.include?(beta_code)
-			errors.add(:beta_code, "Invalid Beta Code")
+			errors.add(:beta_code, "Invalid Super Secret Id")
 		end
 	end
 	
 	def check_name
 		#Add names as needed, make sure that the names you add are in all uppercase letters
-		illegal_name_array = ['FRANCIS HINSON', 'MATTHEW VASSEUR', 'OFRY SHATZKY', 'NIK NAYAR']
+		illegal_name_array = ['']
 		if illegal_name_array.include?(name.upcase)
 			errors.add(:name, "Invalid Name, No Impersonation Allowed")
 		end
 	end
 	
-	# def following?(followed)
-		# relationships.find_by_followed_id(followed)
-	# end
-	
-	# def follow!(followed)
-		# relationships.create!(:followed_id => followed.id)
-	# end
-	
-	# def unfollow!(followed)
-		# relationships.find_by_followed_id(followed).destroy
-	# end
 end

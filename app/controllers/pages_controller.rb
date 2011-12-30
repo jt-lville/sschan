@@ -19,7 +19,7 @@ class PagesController < ApplicationController
 		
 		@name = 'Default'
 		@email = 'example@example.com'
-		@content = 'Orchive is great!'
+		@content = 'SSC is great!'
   end
 
   def Privacy

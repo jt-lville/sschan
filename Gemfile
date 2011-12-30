@@ -11,10 +11,12 @@ gem 'cancan'
 gem 'kaminari'
 gem 'gravatar_image_tag', '1.0.0.pre2'
 #gem 'vote_fu'
-gem 'rake', '0.9.2'
+gem 'rake', '0.9.2.2'
 gem 'acts-as-taggable-on', '~>2.1.0'
 gem 'gravtastic' #gravatar support
-gem "paperclip", "~> 2.3"
+gem 'paperclip', :path => 'vendor/gems/paperclip' #:git => "git://github.com/thoughtbot/paperclip.git"
+                 #, :branch => "rails3"
+
 gem 'awesome_nested_set'
 #gem 'acts_as_commentable_with_threading'
 #gem 'acts_as_rateable'

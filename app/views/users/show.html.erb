@@ -5,7 +5,8 @@
 </div>
 </div>
 <div id='profpic'>
-<%= gravatar_for @user, :size => 200 %>
+<%#= gravatar_for @user, :size => 200 %>
+  <%= image_tag @user.avatar.url(:medium) %>
 </div>
 
 <div id='name'>

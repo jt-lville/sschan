@@ -42,7 +42,7 @@
     elsif r_num == 2
       str = "Do you know where hell is...? It's in your mind."
     elsif r_num == 3
-      str = "Yours is the drill that will bust through the heavens!"
+      str = "Your drill is the drill that's gonna bust straight through heaven and earth and even tomorrow!"
     elsif r_num == 4
       str = "Good news, everyone!"
     elsif r_num == 5

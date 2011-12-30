@@ -1,5 +1,9 @@
 
-<%= image_tag(random_lily_url, :class=>"image", :size=>'200x200')%>
+<%# if post.upload == nil or post.upload.url == "/uploads/medium/missing.png" %>
+<%#= image_tag(random_lily_url, :class=>"image", :size=>'200x200')%>
+<%# else %>
+<%= image_tag post.upload.url(:medium), :class => "image", :size => '200x200' %>
+<%# end %>
 
 
 
