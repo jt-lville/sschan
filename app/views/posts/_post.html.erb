@@ -2,12 +2,12 @@
 <%# if post.upload == nil or post.upload.url == "/uploads/medium/missing.png" %>
 <%#= image_tag(random_lily_url, :class=>"image", :size=>'200x200')%>
 <%# else %>
-<%= image_tag post.upload.url(:medium), :class => "image", :size => '200x200' %>
+<%= link_to (image_tag post.upload.url(:medium), :class => "image", :size => '200x200'), post_upload.url) %>
 <%# end %>
 
 
 
-                                        <b class ="replytitle"><%=  post.title %></b>
+                                        <b class ="replytitle"><%= post.title %></b>
                                         <b class ="postername">
 					<% if post.is_anonymous %>
                                         <%= post.alias %>
