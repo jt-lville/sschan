@@ -28,17 +28,19 @@
 <div id='postpos'>
 <div id='posts'>
 
-<hr/>
+<hr/><hr/>
         <% if @user_on_page.posts.size == 0  %>
                 This user appears to have made no posts.
-        <% end %>
                 <hr/>
+        <% end %>
+                
  <% @posts.each do |post| %>
 
                 <% unless post.is_anonymous %>
                 <%= render post %>
-                <%  end %>
                 <hr/>
+                <%  end %>
+                
 
  <% end %>
                 
