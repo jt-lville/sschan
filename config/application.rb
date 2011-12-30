@@ -12,7 +12,7 @@ module OrchiveApp
     config.time_zone = 'Eastern Time (US & Canada)'
 
 
-    Paperclip::Railtie.insert #paperclip
+    #Paperclip::Railtie.insert #paperclip todo: might comment out
   
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers

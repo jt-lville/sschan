@@ -11,7 +11,7 @@
 </center>
 <hr/>
 
-<%= form_for(@post) do |f| %>
+<%= form_for :post, @post, :html => {:multipart => true} do |f| %>
 
   <% if @post.errors.any? %>
     <div id="error_explanation">
@@ -25,7 +25,6 @@
   <% end %>
 
 
-
   <div id="bar">
     <%= f.text_field :alias, :class => 'field', :placeholder=> 'Alias (can be left blank)' %> 
     <%= check_box_tag 'alias_check', 'true' %> Anonymous post?
@@ -34,12 +33,10 @@
     <%= f.text_field :title, :class=>'field', :placeholder=>'Title'%> <%= f.submit 'Submit'%>
 <br/>
  <%= f.file_field :upload %>
+
   <p id="content">
     <%= f.text_area :content, :class=>'content', :placeholder=>'Post area' %>
   </p>
-
- 
-
 
 	<!-- [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].each do |num| %>
 		<= f.check_box "filter#{num}".to_sym %>
@@ -77,6 +74,7 @@
 	<%= check_box_tag 'tags[]', 'International' %>
 	<%= f.label 'International'%>
         </p>
+
 
           <p class ="rules"">
     * Feel free to suggest features or improvements.<br/>

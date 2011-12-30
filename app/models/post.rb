@@ -1,7 +1,7 @@
  class Post < ActiveRecord::Base
 
-  has_attached_file :upload, :styles => { :medium => "200x200>", :thumb => "100x100>" }, :default_url => "/images/medium/missing.png",
-    :path => "/images/uploads/" #uploads
+  has_attached_file :upload, :styles => { :medium => "200x200#", :thumb => "100x100#" }, :default_url => "/images/:style/missing.png"
+    #:path => "/images/uploads/", :url => "/images/uploads/:style/:post_id.:extension" #uploads
 
 	acts_as_taggable
 
