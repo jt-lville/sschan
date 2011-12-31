@@ -24,17 +24,21 @@
                 <n class ="plaintext"><%= comment.created_at.strftime("%B %e %Y %l:%M %p ")%> No.<n id="<%= comment.id %>"><%= link_to comment.id, (post_path(comment.post)+"#" + comment.id.to_s) %></n>
                   <% if comment.is_saged %>
                   <b><i>SAGE!</i></b>
-                <% end %></n>
+                <% end %>
+
+                <% if current_user == comment.user or can? :manage, :all   %>
+                [<%= link_to 'Delete', [comment.post, comment], :class=>'comdel', :confirm => 'Are you sure?',:method => :delete %>]
+                <% end %>
+
+                </n>
+
+
   
                 <div class='commented'>
 				<div id='textpos'>
                                   
                 
                 <div class ="row1"><%= filter_comment(comment) %></div>
-
-                <% if current_user == comment.user or can? :manage, :all   %>
-                <%= link_to ' ', [comment.post, comment], :class=>'comdel', :confirm => 'Are you sure?',:method => :delete %>
-                <% end %>
 
 
                   <% if comment.user.avatar.url != "/images/medium/missing_av.png" %>
