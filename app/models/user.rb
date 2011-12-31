@@ -12,12 +12,10 @@ class User < ActiveRecord::Base
 
   #acts_as_taggable #this is for user tag browsing
   validate :check_beta_code, :on => 'create'
-  validate :check_name, :on => 'create'
 	
 	has_and_belongs_to_many :roles
 	has_many :comments
   
-  # has_many :linked_accounts
   has_many :preferences
 	
 	has_many :posts, :dependent => :destroy
@@ -37,7 +35,7 @@ class User < ActiveRecord::Base
 	name_regex = /\A[a-zA-Z .-]+\z/
 	
 	validates :name, :presence=> true,
-									 :length => {:within => 5..45},
+									 :length => {:within => 2..45},
 									 :format => {:with => name_regex }
 	
 	validates :password, :presence => true
@@ -52,12 +50,5 @@ class User < ActiveRecord::Base
 		end
 	end
 	
-	def check_name
-		#Add names as needed, make sure that the names you add are in all uppercase letters
-		illegal_name_array = ['']
-		if illegal_name_array.include?(name.upcase)
-			errors.add(:name, "Invalid Name, No Impersonation Allowed")
-		end
-	end
 	
 end
