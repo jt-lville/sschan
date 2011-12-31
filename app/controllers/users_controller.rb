@@ -21,17 +21,17 @@ class UsersController < ApplicationController
     @user_on_page.accuracy = 0
     @user_on_page.inaccuracy = 0
 
-    @user_on_page.posts.each do |p| #working
-      if p.karma != nil
-      @user_on_page.karma += p.karma
-      else
-      p.karma = 0
-      end
+    #@user_on_page.posts.each do |p| #working
+     # if p.karma != nil
+      #@user_on_page.karma += p.karma
+      #else
+      #p.karma = 0
+      #end
       
-      @user_on_page.accuracy += p.accuracy
-      @user_on_page.inaccuracy += p.inaccuracy
+      #@user_on_page.accuracy += p.accuracy
+      #@user_on_page.inaccuracy += p.inaccuracy
       
-      end
+      #end
       
     if @user_on_page.accuracy + @user_on_page.inaccuracy == 0    
     @user_on_page.reliability = 100     #default reliability
