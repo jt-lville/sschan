@@ -1,7 +1,7 @@
  module PagesHelper
   #Return the Correct Title
   def title
-    base_title = "SSChan"
+    base_title = "sschan"
     #if @title.nil?
      # base_title
     #else
