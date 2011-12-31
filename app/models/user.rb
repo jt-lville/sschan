@@ -4,7 +4,11 @@ class User < ActiveRecord::Base
 #  include Gravtastic
 #  is_gravtastic!
 
-  has_attached_file :avatar, :styles => { :medium => "200x200>", :thumb => "100x100>" }, :default_url => "/images/medium/missing.png" #avatars
+  has_attached_file :avatar, :styles => { :medium => "200x200>", :thumb => "100x100>" }, 
+    :default_url => "/images/medium/missing_av.png", #avatars
+      :storage => :s3,
+      :s3_credentials => "#{RAILS_ROOT}/config/s3.yml",
+      :bucket => 'sschan'
 
   #acts_as_taggable #this is for user tag browsing
   validate :check_beta_code, :on => 'create'
