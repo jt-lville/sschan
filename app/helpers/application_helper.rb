@@ -56,6 +56,14 @@ module ApplicationHelper
         #a << "DERP"
       end
 
+      if a.index("http://") != nil
+        a.insert(0, ('<a href = "' + a + '">'))
+        a << "</a>"
+      elsif a.index("www.") != nil or a.index(".com") != nil or a.index(".net") != nil or a.index(".org") != nil
+        a.insert(0, ('<a href = "http://' + a + '">'))
+        a << "</a>"
+      end
+
     end
 
     c1 = ""

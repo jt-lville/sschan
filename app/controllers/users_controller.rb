@@ -7,7 +7,7 @@ class UsersController < ApplicationController
 		@user_on_page = User.find(params[:id])
     @user = current_user
     @posts = @user_on_page.posts.page(params[:page]).per(5) #Post.find(params[:user]).page(params[:page]).per(5) #TODO
-    @comments = @user_on_page.comments.reverse.page(params[:page]).per(10)
+    @comments = @user_on_page.comments.page(params[:page]).per(10)
       
     @title = @user_on_page.name
     
