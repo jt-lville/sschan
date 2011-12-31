@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111231054109) do
+ActiveRecord::Schema.define(:version => 20111231191443) do
 
   create_table "comments", :force => true do |t|
     t.string   "name"
@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(:version => 20111231054109) do
     t.string   "file_content_type"
     t.integer  "file_file_size"
     t.datetime "file_updated_at"
+    t.boolean  "is_saged"
   end
 
   create_table "impressions", :force => true do |t|

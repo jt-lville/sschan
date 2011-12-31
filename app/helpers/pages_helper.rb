@@ -16,11 +16,14 @@
    while (line = file.gets)
 
       if counter == line_num
+
         file.close
         return line
+
       end
       
       counter = counter + 1
+      
   end
   file.close
 

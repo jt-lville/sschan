@@ -148,11 +148,6 @@ class PostsController < ApplicationController
     @post.user = current_user
     @post.name = @post.user.name
 
-    #@post.accuracy_ratio = 1 #every post has a good start
-    #@post.accuracy_percent = 100
-
-    #@post.accuracy= 0
-    #@post.inaccuracy= 0
     @post.pageviews = 0 
     @post.trending_value = 1
     
@@ -163,14 +158,7 @@ class PostsController < ApplicationController
     @post.source == "me" or @post.source == "Me"
     
     @post.tag_list = params[:tags]
-      
-      #Matt quick fix to tag limit  
-    #if @post.tag_list.size > 4
-    #    @post.tag_list = "Fail"
-    #    @post.tag_list << "Don't have more than 4 tags"
-    #end
-    
-      
+
     if @post.tag_list == []
       @post.tag_list << "Random"
     end

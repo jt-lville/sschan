@@ -14,11 +14,27 @@ class CommentsController < ApplicationController
     #Jon added
     @comment.user = current_user
     @comment.relative_value = 0
+
+    @comment.is_saged = (params[:sage_check] == 'true')
+    alias_value = params[:alias_check]
+
+    if (alias_value == 'true') or (@comment.alias != nil and @comment.alias != "")
+      @comment.is_anonymous = true
+
+      if @comment.alias == "anonymous" or @comment.alias == ""
+        @comment.alias = "Anonymous"
+      end
+    else
+      @comment.is_anonymous = false
+    
+    end
     
     @comment.points_up = 0
     @comment.points_down = 0
 
+    unless @comment.is_saged
     @post.trending_value = Time.now.to_time - Time.parse("20-08-2011 19:00")
+    end
 
     @post.save
     @comment.save

@@ -55,7 +55,7 @@ module PostsHelper
     post.comments.each do |c|
       numposts += 1
 
-      if c.file.url != "/images/original/missing.png" and (numposts < post.comments.size - 5)
+      if c.file.url != "/images/original/missing.png" and (comments_omit(post).index(c) == nil)
         count += 1
       end
 
@@ -63,9 +63,11 @@ module PostsHelper
 
     if count == 1
       return ("and 1 image reply ")
+    elsif count > 1
+      return ("and " + count.to_s + " image replies ")
+    else
+      return ""
     end
-
-    return ("and " + count.to_s + " image replies ")
 
   end
 

@@ -49,8 +49,9 @@ border-style:none;
 
 <%= form_for [@post, @post.comments.build], :html => { :multipart => true } do |f| %>
  <div id="bar">
-    <%#= f.text_field :alias, :class => 'field', :placeholder=> 'Alias (can be left blank)' %> 
-   <!--<%= check_box_tag 'alias_check', 'true' %> Use an Alias?-->
+    <%= f.text_field :alias, :class => 'field', :placeholder=> 'Alias (can be left blank)' %> 
+   <%= check_box_tag 'alias_check', 'true' %> Use an Alias?
+   <%= check_box_tag 'sage_check', 'true' %> Sage!
   </div>
 
     <%= f.file_field :file %>
