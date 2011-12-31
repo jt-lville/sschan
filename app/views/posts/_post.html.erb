@@ -2,10 +2,11 @@
 <%# if post.upload == nil or post.upload.url == "/uploads/medium/missing.png" %>
 <%#= image_tag(random_lily_url, :class=>"image", :size=>'200x200')%>
 <%# else %>
+ <span class ="filesize"><%= post.upload_file_size %></span>
+ <span class ="filetitle"><%= post.upload_file_name %></span>
 <%= link_to (image_tag post.upload.url(:medium), :class => "image", :size => '200x200'), post.upload.url %>
+ 
 <%# end %>
-
-
 
                                         <b class ="replytitle"><%= post.title %></b>
                                         <b class ="postername">
@@ -16,8 +17,8 @@
                                         <% end %>
                                           </b>
 
-                                        <n class ="plaintext"><%=post.created_at.strftime("%B %e %Y %l:%M %p")%>
-                                         No.<%= link_to post.id, post_path(post)%> [<%= link_to "Reply", post, :class => 'filesize' %>]</n>
+                                        <span class ="plaintext"><%=post.created_at.strftime("%B %e %Y %l:%M %p")%>
+                                         No.<%= link_to post.id, post_path(post)%> [<%= link_to "Reply", post, :class => 'filesize' %>]</span>
 
 
                                         <div class ="row2"><%= filter_comment(post) %></div>

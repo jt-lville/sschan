@@ -17,6 +17,12 @@ module ApplicationHelper
     str3 = '<a class = "unkfunc" href = "/posts/'
     str4 = '</a>'
 
+    if c1.index("[spoiler]") != nil #auto-finish spoiler tags
+      if c1.index("[/spoiler]") == nil
+        c1 += "[/spoiler]"
+      end
+    end
+
     if c1 != nil
     arr_lines = c1.split("\n") #split the text into lines
 

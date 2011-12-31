@@ -40,10 +40,10 @@
   
 	attr_accessible :name, :title, :content, :user_location, :post_location, :user_id,
     :post_id, :karma, :trending_value, :pageviews, :accuracy, :inaccuracy,   # <-- Jon's super code
-    :total_votes, :time_effective, :accuracy_ratio, :accuracy_percent, :source, :alias, :upload
+    :total_votes, :time_effective, :accuracy_ratio, :accuracy_percent, :source, :alias, :upload,
 
-#     :upload_file_name, :upload_content_type, :upload_file_size,
-#                  :upload_updated_at
+     :upload_file_name, :upload_content_type, :upload_file_size,
+                  :upload_updated_at
      
      	
 end

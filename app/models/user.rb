@@ -1,4 +1,4 @@
-require 'gravtastic'
+#require 'gravtastic'
 class User < ActiveRecord::Base
 
 #  include Gravtastic
