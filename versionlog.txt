@@ -1,2 +1,2 @@
-Version beta_1.7 - image uploading and comment uploads work! avatars are still dubious though
+Version beta_1.7 - image and comment uploads work! avatars still dubious though
 Version beta_1.6.01 - attempts to add image uploading, dev logs added
