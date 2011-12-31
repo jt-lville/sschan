@@ -124,13 +124,13 @@ a:hover {
         font-family:sans-serif;
 }
 .filesize {
-	font-size:16px;
+	font-size:14px;
 	font-family:sans-serif;
 	text-decoration:none;
 }
 .filetitle {
 	background:inherit;
-	font-size:18px;
+	font-size:14px;
 	font-family:sans-serif;
 	color:#CC1105;
 	font-weight:800;
