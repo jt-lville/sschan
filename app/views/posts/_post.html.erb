@@ -28,4 +28,8 @@
 						<%= link_to tag.capitalize, { :action => :tag_with,
                                                    :tag => tag, :controller => "preferences"}, :method=>:post, :class=>'blue'%>
 
-                                        <%end%></p> <!-- WHITE SPAAAACE!! -->  <br/><br/><br/><br/><br/><br/><br/><br/>
+                                        <%end%></p>
+                                        
+                                        <%= image_tag post.user.avatar.url(:thumb), :size => '100x100', :class => 'floatRight' %>
+
+                                        <!-- WHITE SPAAAACE!! -->  <br/><br/><br/><br/><br/><br/><br/><br/>
