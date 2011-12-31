@@ -57,7 +57,7 @@
   def random_banner_url
 
     str = "banners/banner"
-    r_num = rand(8) + 1
+    r_num = rand(9) + 1
 
     str += r_num.to_s + ".png" #choose banners in the form 'bannerX.png'
 
