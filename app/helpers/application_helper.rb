@@ -49,6 +49,7 @@ module ApplicationHelper
         
         #a << "DERP"
       end
+
     end
 
     c1 = ""
@@ -68,7 +69,12 @@ module ApplicationHelper
     c2 = c2.gsub("eels bad man", "eelings baddingly mans") #troll wordfilters
     c2 = c2.gsub("eels good man", "eelings baddingly mans")
     c2 = c2.gsub("sat froc", "sad frog")
+
+    c2 = c2.gsub("[spoiler]",'<font style="BACKGROUND-COLOR: #000000">').html_safe #possible bug: unclosed spoiler tags still work
+    c2 = c2.gsub("[/spoiler]","</font>").html_safe
+
     c2 = c2.gsub("sade frueg", "sad frog").html_safe
+
     end
 
   end
