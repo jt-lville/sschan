@@ -57,10 +57,10 @@ module ApplicationHelper
       end
 
       if a.index("http://") != nil
-        a.insert(0, ('<a href = "' + a + '">'))
+        a.insert(a.index("http://"), ('<a href = "' + a[a.index("http://")..a.size] + '">'))
         a << "</a>"
-      elsif a.index("www.") != nil or a.index(".com") != nil or a.index(".net") != nil or a.index(".org") != nil
-        a.insert(0, ('<a href = "http://' + a + '">'))
+      elsif a.index("www.") != nil
+        a.insert(a.index("www."), ('<a href = "http://' + a[a.index("www.")..a.size] + '">'))
         a << "</a>"
       end
 
