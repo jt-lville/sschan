@@ -108,9 +108,9 @@
 
                                         <p class ="filesize">
                                         <% if comments_omitted_num(post) == 1 %>
-                                        1 post omitted. Click Reply to view.
+                                        1 post <%= image_replies_omitted_message %> omitted. Click Reply to view.
   	                                <% elsif comments_omitted_num(post) > 1 %>
-                                        <%= comments_omitted_num(post) %> posts omitted. Click Reply to view.
+                                        <%= comments_omitted_num(post) %> posts <%= image_replies_omitted_message %>  omitted. Click Reply to view.
                                         <% end %>
                                         </p>
                                 

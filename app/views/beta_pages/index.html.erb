@@ -45,6 +45,7 @@ font-size:17px;
 position:relative;
 top:30px;
 background-repeat:no-repeat;
+right:120px;
 }
 
 #mainimage img{
@@ -215,8 +216,9 @@ left:0px;
 }
 
 </style>
+<%= stylesheet_link_tag "chan" %>
 
-<%#= render '/layouts/header' %>
+<%= render '/layouts/header' %>
 
 <div id='banner'>
 
@@ -230,10 +232,10 @@ left:0px;
 
 <div id='globe'>
 <div id='bannertext'>
-<h1>Express your feels to the world!</h1>
-<p>Change the way memes are spread worldwide</p>
+
 
 <div id='join'>
+  <p>Welcome to a super secret place!</p><br/>
  <%= link_to image_tag('/images/join.png'),'/join' %>
    </div>
 </div>
@@ -247,38 +249,43 @@ left:0px;
 <div id='container'>
 <div id='control'>
 <div id='mainimage'>
+
+
 <%=image_tag('/images/mid1.png')%>
 <%=image_tag('/images/mid2.png')%>
 <%=image_tag('/images/mid3.png')%>
 </div>
 
 <div id='headoo'>
-The Process
+About
 </div>
 
 <div id='heads'>
+
+      <hr/>
+news
+  <hr/>
+
 <div id='heada1'>
-Contribution
-<p>Members post local events through <br> Super Secret Club, providing anecdotes <br> indicating the location of events as <br> well as their significance.</p>
+What is the SSC?
+<p>Members post local events through <br/> Super Secret Club, providing anecdotes <br/> indicating the location of events as <br/> well as their significance.</p>
 </div>
 </div>
 
 <div id='heads2'>
 <div id='heada2'>
-Comprehension
-<p>Each user will be able to access and <br> review other stories, rating them <br> on accuracy as well as posting their <br> reactions. </p>
+What is SSChan?
+<p>Each user will be able to access and <br/> review other stories, rating them <br/> on accuracy as well as posting their <br/> reactions. </p>
 </div>
 </div>
 
 <div id='heads3'>
 <div id='heada3'>
-Awareness
-<p>Note that this website is mostly a guinea pig <br> for upcoming Orchive features.</p>
+How do I get started?
+<p>Note that this website is mostly a guinea pig <br/> for upcoming Orchive features.</p>
 </div>
 </div>
 </div>
 
-
-</div>
 </div>
 

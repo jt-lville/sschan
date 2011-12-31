@@ -47,7 +47,25 @@ module PostsHelper
 
   end
 
+  def image_replies_omitted_message(post)
 
+    count = 0
+
+    post.comments.each do |c|
+
+      if c.file.url != "/images/original/missing.png"
+        count += 1
+      end
+
+    end
+
+    if count == 1
+      return ("and 1 image reply ")
+    end
+
+    return ("and " + count.to_s + " image replies ")
+
+  end
 
 	
 	def displayIcon(num)
