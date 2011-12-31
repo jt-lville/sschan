@@ -95,7 +95,7 @@
 
 	<% @posts.each do |post| %>
 
-				<% if current_user == post.user or can? :manage, :all   %>
+	<% if current_user == post.user or can? :manage, :all %>
          <span class ="plaintext">[<%= link_to_if(can?(:delete, post), 'Delete', post_path(post), :class=>'delbuttons', :id=>'delete', :confirm => "Are you sure?", :method => :delete) {} %>]
          </span>
   <% end %>
