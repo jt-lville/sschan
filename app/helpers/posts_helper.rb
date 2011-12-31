@@ -49,11 +49,13 @@ module PostsHelper
 
   def image_replies_omitted_message(post)
 
+    numposts = 0
     count = 0
 
     post.comments.each do |c|
+      numposts += 1
 
-      if c.file.url != "/images/original/missing.png"
+      if c.file.url != "/images/original/missing.png" and (numposts < post.comments.size - 5)
         count += 1
       end
 
