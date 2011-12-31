@@ -46,7 +46,9 @@
 
         <hr/>
         <% @comments.each do |c| %>
+        <% unless c.is_anonymous %>
         <%= render c %>
+        <% end %>
 
 
        <% end %>
