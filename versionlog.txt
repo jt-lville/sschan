@@ -1,0 +1,1 @@
+Version beta_1.6.01 - attempts to add image uploading, dev logs added

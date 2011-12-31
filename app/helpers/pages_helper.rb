@@ -9,6 +9,41 @@
     #end
   end
 
+  def news_line(line_num)
+
+   counter = 1
+   file = File.new("newslog.txt", "r")
+   while (line = file.gets)
+
+      if counter == line_num
+        file.close
+        return line
+      end
+      
+      counter = counter + 1
+  end
+  file.close
+
+  end
+
+  def current_version_text
+
+   counter = 1
+   file = File.new("versionlog.txt", "r")
+   while (line = file.gets)
+
+      if counter == 1
+        file.close
+        return line
+      end
+
+      counter = counter + 1
+      
+  end
+  file.close
+
+  end
+
   def random_lily_url
 
     str = "lily/lily"
@@ -22,7 +57,7 @@
   def random_banner_url
 
     str = "banners/banner"
-    r_num = rand(5) + 1
+    r_num = rand(8) + 1
 
     str += r_num.to_s + ".png" #choose banners in the form 'bannerX.png'
 
