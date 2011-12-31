@@ -5,7 +5,7 @@ class Ability
     # Define abilities for the passed in user here. For example:
     user ||= User.new # guest user (not logged in)
 		
-		if user.role? :admin or user.paradigm == "pretension"
+		if user.role? :admin# or user.paradigm == "pretension"
 			can :manage, :all
 		else		
 			can :manage, [Post, Comment, User]
