@@ -4,7 +4,7 @@
                 <n class='postername'>
 
                  <% if comment.file.url != "/images/original/missing.png" %>
-                   <span class ="filesize"><%= comment.file_file_size %> kB</span>
+                   <span class ="filesize"><%= comment.file_file_size %> kB </span>
                   <span class ="filetitle"><%= comment.file_file_name %></span> <br/>
                 <%= link_to (image_tag comment.file.url, :class => "image", :size => '200x200'), comment.file.url %>
                   <% end %>
