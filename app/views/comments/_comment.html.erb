@@ -19,12 +19,12 @@
                 <%= link_to comment.user.name, user_path(comment.user)%>
                 <% end %>
 
-               <% if comment.is_saged %>
-                  <b><i>SAGE!</i></b>
-                <% end %>
+
                 </n>
-                <n class ="plaintext"><%= comment.created_at.strftime("%B %e %Y %l:%M %p ")%> No.<n id="<%= comment.id %>"><%= link_to comment.id, (post_path(comment.post)+"#" + comment.id.to_s) %></n></n>
-                
+                <n class ="plaintext"><%= comment.created_at.strftime("%B %e %Y %l:%M %p ")%> No.<n id="<%= comment.id %>"><%= link_to comment.id, (post_path(comment.post)+"#" + comment.id.to_s) %></n>
+                  <% if comment.is_saged %>
+                  <b><i>SAGE!</i></b>
+                <% end %></n>
   
                 <div class='commented'>
 				<div id='textpos'>
