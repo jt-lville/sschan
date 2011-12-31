@@ -6,6 +6,7 @@ gem 'rails', '3.0.8'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'aws-s3'
+gem 'aws-sdk'
 #gem "rmagick", "2.12.0", :require => 'RMagick' #necessary for heroku?
 
 gem 'sqlite3', :require => 'sqlite3'

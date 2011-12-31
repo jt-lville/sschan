@@ -4,7 +4,7 @@ module BetaPagesHelper
 		if string == 'signup.html.erb'
 			@title = 'Thank You'
 		elsif string == 'open.html.erb'
-			@title = 'Join Orchive'
+			@title = 'Join SSC'
 		else
 			@title = 'Sorry'
 		end
