@@ -1,6 +1,6 @@
 module ApplicationHelper
   def title
-    base_title = "SSChan"
+    base_title = "sschan"
     #if @title.nil?
      # base_title
     #else
