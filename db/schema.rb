@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111230031029) do
+ActiveRecord::Schema.define(:version => 20111231054109) do
 
   create_table "comments", :force => true do |t|
     t.string   "name"
@@ -27,6 +27,13 @@ ActiveRecord::Schema.define(:version => 20111230031029) do
     t.string   "alias"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "parent_id"
+    t.integer  "lft"
+    t.integer  "rgt"
+    t.string   "file_file_name"
+    t.string   "file_content_type"
+    t.integer  "file_file_size"
+    t.datetime "file_updated_at"
   end
 
   create_table "impressions", :force => true do |t|
@@ -53,6 +60,25 @@ ActiveRecord::Schema.define(:version => 20111230031029) do
   add_index "impressions", ["impressionable_type", "impressionable_id", "session_hash"], :name => "poly_session_index"
   add_index "impressions", ["user_id"], :name => "index_impressions_on_user_id"
 
+  create_table "linked_accounts", :force => true do |t|
+    t.string   "email",                                 :default => "", :null => false
+    t.string   "encrypted_password",     :limit => 128, :default => "", :null => false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",                         :default => 0
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.string   "service"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "linked_accounts", ["email"], :name => "index_linked_accounts_on_email", :unique => true
+  add_index "linked_accounts", ["reset_password_token"], :name => "index_linked_accounts_on_reset_password_token", :unique => true
+
   create_table "posts", :force => true do |t|
     t.string   "name"
     t.string   "title"
@@ -66,6 +92,8 @@ ActiveRecord::Schema.define(:version => 20111230031029) do
     t.integer  "accuracy"
     t.integer  "inaccuracy"
     t.integer  "total_votes"
+    t.decimal  "accuracy_ratio"
+    t.decimal  "accuracy_percent"
     t.decimal  "trending_value"
     t.decimal  "karma"
     t.integer  "time_effective"
@@ -74,6 +102,9 @@ ActiveRecord::Schema.define(:version => 20111230031029) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "flagged",             :default => false
+    t.integer  "parent_id"
+    t.integer  "lft"
+    t.integer  "rgt"
     t.string   "upload_file_name"
     t.string   "upload_content_type"
     t.integer  "upload_file_size"
@@ -88,6 +119,16 @@ ActiveRecord::Schema.define(:version => 20111230031029) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "relationships", :force => true do |t|
+    t.integer  "follower_id"
+    t.integer  "followed_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "relationships", ["followed_id"], :name => "index_relationships_on_followed_id"
+  add_index "relationships", ["follower_id"], :name => "index_relationships_on_follower_id"
 
   create_table "roles", :force => true do |t|
     t.string   "name"

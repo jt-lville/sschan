@@ -2,6 +2,7 @@
 <div class ="repliesbox">
 
                 <n class='postername'>
+                <%= link_to (image_tag comment.file.url(:medium), :class => "image", :size => '100x100'), comment.file.url %>
                 <%= link_to comment.user.name, user_path(comment.user)%></n>
                 <n class ="plaintext"><%= comment.created_at.strftime("%B %e %Y %l:%M %p ")%> No.<n id="<%= comment.id %>"><%= link_to comment.id, (post_path(comment.post)+"#" + comment.id.to_s) %></n></n>
                 
@@ -16,9 +17,12 @@
                 <%= link_to ' ', [comment.post, comment], :class=>'comdel', :confirm => 'Are you sure?',:method => :delete %>
                 <% end %>
 
+                 <%= image_tag comment.user.avatar.url(:thumb), :size => '100x100', :class => 'floatRight' %>
+
+                <br/><br/><br/><br/><br/><br/>
                 </div>
 		
 
 </div>
   </div>
-<br>
+<br/>
