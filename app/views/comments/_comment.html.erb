@@ -7,8 +7,10 @@
                 <%= link_to (image_tag comment.file.url, :class => "image", :size => '200x200'), comment.file.url %>
                   <% end %>
 
+                  <% if comment.user.avatar.url != "/images/medium/missing_av.png" %>
                    <%= image_tag comment.user.avatar.url, :size => '50x50', :class => 'floatRight' %>
-                  
+                  <% end %>
+
                 <%= link_to comment.user.name, user_path(comment.user)%></n>
                 <n class ="plaintext"><%= comment.created_at.strftime("%B %e %Y %l:%M %p ")%> No.<n id="<%= comment.id %>"><%= link_to comment.id, (post_path(comment.post)+"#" + comment.id.to_s) %></n></n>
                 
@@ -24,10 +26,12 @@
                 <% end %>
 
 
-                <br/><br/>
+                  <% if comment.user.avatar.url != "/images/medium/missing_av.png" %>
+                   <br/><br/>
+                  <% end %>
 
                 <% if comment.file.url != "/images/original/missing.png" %>
-                <br/><br/><br/><br/><br/><br/><br/><br/><br/>
+                <br/><br/><br/><br/><br/><br/><br/><br/>
                 <% end %>
 
                 </div>
