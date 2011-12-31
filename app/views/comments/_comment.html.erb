@@ -4,7 +4,7 @@
                 <n class='postername'>
 
                  <% if comment.file.url != "/images/original/missing.png" %>
-                <%= link_to (image_tag comment.file.url, :class => "image", :size => '100x100'), comment.file.url %>
+                <%= link_to (image_tag comment.file.url, :class => "image", :size => '200x200'), comment.file.url %>
                   <% end %>
 
                    <%= image_tag comment.user.avatar.url, :size => '50x50', :class => 'floatRight' %>
@@ -25,6 +25,11 @@
 
 
                 <br/><br/>
+
+                <% if comment.file.url != "/images/original/missing.png" %>
+                <br/><br/><br/><br/><br/><br/><br/><br/><br/>
+                <% end %>
+
                 </div>
 		
 
