@@ -47,6 +47,25 @@
 
   end
 
+  def random_frontpage_yt_url
+
+    r_num = rand(4)
+    str = ""
+
+    if r_num == 0
+      str = "http://www.youtube.com/embed/IdHTnpgpLDc" #we all know that feel
+    elsif r_num == 1
+      str = "http://www.youtube.com/embed/HNrwhRkB_O4" #fasten rainbow dash
+    elsif r_num == 2
+      str = "http://www.youtube.com/embed/nUQ1Y8nPz0Q" #row row fight the power
+    elsif r_num == 3
+      str = "http://www.youtube.com/embed/GlVwxSfaYhs" #at the gala finale
+    end
+
+    return str
+
+  end
+
   def random_lily_url
 
     str = "lily/lily"
