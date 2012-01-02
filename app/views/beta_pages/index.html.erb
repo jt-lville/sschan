@@ -218,7 +218,7 @@ left:0px;
 </style>
 <%= stylesheet_link_tag "chan" %>
 
-<%= render '/layouts/header' %>
+<%#= render '/layouts/header' %>
 
 <div id='banner'>
 
@@ -236,7 +236,7 @@ left:0px;
 
 <div id='join'>
   <p>Welcome to a super secret place!</p><br/>
- <%= link_to image_tag('/images/join.png'),'/join' %>
+ <%= link_to image_tag('/images/join.png'),'/login' %>
    </div>
 </div>
 </div>
@@ -257,11 +257,10 @@ left:0px;
 </div>
 
 <div id='headoo'>
-About
+About sschan
 </div>
 
 <div id='heads'>
-
       <hr/>
          <p><b><%= news_line(1) %></b></p>
          <p><%= news_line(2) %></p>
@@ -277,8 +276,8 @@ About
 
 <div id='heads2'>
 <div id='heada2'>
-What is an SSC?
-<p>SSC stands for Super Secret Club, a <br/>group of people with a shared connection, <br/> often a high school, who gather together <br/> to share private and public media.</p>
+What is a Super Secret Club?
+<p>A Super Secret Club is a <br/>group of people with a shared connection, <br/> often a high school or workplace, who gather together <br/> to share private and public media.</p>
 </div>
 
 </div>
