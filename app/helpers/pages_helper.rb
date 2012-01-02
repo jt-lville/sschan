@@ -49,20 +49,16 @@
 
   def random_frontpage_yt_url
 
-    r_num = rand(4)
-    str = ""
+    yt_links = ["http://www.youtube.com/embed/IdHTnpgpLDc", "http://www.youtube.com/embed/HNrwhRkB_O4",
+                "http://www.youtube.com/embed/nUQ1Y8nPz0Q", "http://www.youtube.com/embed/GlVwxSfaYhs", #original 4
+                "http://www.youtube.com/embed/2R677MV--WI", "http://www.youtube.com/embed/bxzTrWUajZg",
+                "http://www.youtube.com/embed/6-uMkAWj28o", "http://www.youtube.com/embed/TjkSyQHQddo",
+                "http://www.youtube.com/embed/4dGJKh9hLTs", "http://www.youtube.com/embed/4wsNJ9K9ROw",
+                "http://www.youtube.com/embed/gCCbIkCcRKk", "http://www.youtube.com/embed/KckGp2Hz9yU",
+                "http://www.youtube.com/embed/4p8cH380Mrg", "http://www.youtube.com/embed/qeIqZWfVZqY" # layton battle, vow
+                ]
 
-    if r_num == 0
-      str = "http://www.youtube.com/embed/IdHTnpgpLDc" #we all know that feel
-    elsif r_num == 1
-      str = "http://www.youtube.com/embed/HNrwhRkB_O4" #fasten rainbow dash
-    elsif r_num == 2
-      str = "http://www.youtube.com/embed/nUQ1Y8nPz0Q" #row row fight the power
-    elsif r_num == 3
-      str = "http://www.youtube.com/embed/GlVwxSfaYhs" #at the gala finale
-    end
-
-    return str
+    return yt_links[rand(yt_links.size)]
 
   end
 
