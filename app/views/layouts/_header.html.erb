@@ -79,6 +79,7 @@
                :tag => "other", :controller => "preferences"}, :method=>:post, :title=>'Other' %>
 
     -->
+              <%= link_to "Inbox |", "/messages" %>
 
                <% if @preference == nil or @preference.tag_list.empty? %>
                <%= link_to ("No tags selected |"), '/'  %>

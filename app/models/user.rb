@@ -15,6 +15,8 @@ class User < ActiveRecord::Base
 	
 	has_and_belongs_to_many :roles
 	has_many :comments
+	
+  has_many :received_messages, :class_name => 'Message', :foreign_key => :recipient_id
   
   has_many :preferences
 	

@@ -79,8 +79,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
-
-	<link rel="icon" href="/images/favicon.ico">
+<link rel="icon" href="/images/favicon.ico">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link href='http://fonts.googleapis.com/css?family=Ubuntu:300,400,500&v2' rel='stylesheet' type='text/css'>
   
@@ -92,15 +91,23 @@
   <div id="wrapper">
     <%= render "layouts/header" %>
 
-
-  <% if signed_in? %>
-  <div id="notify">A little notification here</div> <!-- more pusher stuff-->
-  <div id="status"></div>
-  <!--<div id="notify_api"><button type="button" id="ask_notify_permission">Enable Webkit Notifications</button></div>-->
-  <% end %>
-
     <div id="main"> 
       <div id="content">
+
+  <% if signed_in? %>
+
+    <center>
+
+      Notifications
+      <div id="notify"></div></center> <!-- more pusher stuff-->
+  <!--<div id="status"></div>-->
+  <!--<div id="notify_api"><button type="button" id="ask_notify_permission">Enable Webkit Notifications</button></div>-->
+  <% end %>
+  
+  <br/>
+  <hr/>
+
+
         <%= yield %>
       </div>
     </div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111231202933) do
+ActiveRecord::Schema.define(:version => 20120103225030) do
 
   create_table "comments", :force => true do |t|
     t.string   "name"
@@ -79,6 +79,15 @@ ActiveRecord::Schema.define(:version => 20111231202933) do
 
   add_index "linked_accounts", ["email"], :name => "index_linked_accounts_on_email", :unique => true
   add_index "linked_accounts", ["reset_password_token"], :name => "index_linked_accounts_on_reset_password_token", :unique => true
+
+  create_table "messages", :force => true do |t|
+    t.string   "subject"
+    t.text     "body"
+    t.integer  "recipient_id"
+    t.integer  "sender_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "posts", :force => true do |t|
     t.string   "name"

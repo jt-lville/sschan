@@ -14,11 +14,16 @@ OrchiveApp::Application.routes.draw do
 		resources :comments
 		resources :posts
     resources :preferences
+    resources :messages
+    
     member do 
       get :following, :followers
     end 
     
 	end
+
+  resources :messages do
+  end
   
   resources :preferences do 
     collection do
@@ -58,7 +63,7 @@ OrchiveApp::Application.routes.draw do
   
 	root :to => 'beta_pages#index'
 	  
-  #match '/chat' => 'chat#index'
+  match '/messages' => 'messages#index'
   post 'pusher/auth' #for pusher
 
   match '/contact' => 'Pages#Contact'

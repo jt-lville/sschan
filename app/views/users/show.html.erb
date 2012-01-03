@@ -20,6 +20,22 @@
 <br/>
 <b>Comments:</b> <%= @user_on_page.comments.size %>
 <br/>
+<hr/>
+
+<% form_for Message.new do |f| %>
+	<%= f.hidden_field :recipient_id, :value => @user.id %>
+	<div>
+
+		<%= f.text_field :subject, :placeholder => 'subject'  %>
+	</div>
+	<div>
+		<%= f.text_area :body, :placeholder => 'message'  %>
+	</div>
+	<div>
+		<%= f.submit 'Send' %>
+	</div>
+<% end %>
+
 <br/>
 
 <div id='postbox'>
