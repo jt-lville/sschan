@@ -59,6 +59,9 @@ module ApplicationHelper
       if a.index("http://") != nil
         a.insert(a.index("http://"), ('<a href = "' + a[a.index("http://")..a.size] + '">'))
         a << "</a>"
+      elsif a.index("https://") != nil
+        a.insert(a.index("https://"), ('<a href = "' + a[a.index("http:s//")..a.size] + '">'))
+        a << "</a>"
       elsif a.index("www.") != nil
         a.insert(a.index("www."), ('<a href = "http://' + a[a.index("www.")..a.size] + '">'))
         a << "</a>"
