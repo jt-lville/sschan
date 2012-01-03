@@ -22,8 +22,9 @@
 <br/>
 <hr/>
 
+Send <%=@user_on_page.name%> a message!
 <% form_for Message.new do |f| %>
-	<%= f.hidden_field :recipient_id, :value => @user.id %>
+	<%= f.hidden_field :recipient_id, :value => @user_on_page.id %>
 	<div>
 
 		<%= f.text_field :subject, :placeholder => 'subject'  %>
