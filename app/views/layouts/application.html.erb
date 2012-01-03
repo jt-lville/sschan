@@ -2,8 +2,40 @@
 <html>
 <head>
 
+
 <script type="text/javascript" src="http://use.typekit.com/jca1dnc.js"></script>
 <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+ <script src="/javascripts/jquery.titlealert.js"></script>
+<script src="http://js.pusherapp.com/1.9/pusher.min.js"></script> <!-- pusher!! -->
+
+<% if signed_in? # no notifications if you're not signed in %>
+<script type="text/javascript" charset="utf-8">
+  $(function() {
+    // subscribes each user to private channel
+
+    var pusher = new Pusher('58241c114f90e278e82f'); // public app key
+    var channel = pusher.subscribe('private-'+<%= current_user.id %>);
+
+    // Some useful debug msgs
+    pusher.connection.bind('connecting', function() {
+      $('div#status').text('Connecting to Pusher...');
+    });
+    pusher.connection.bind('connected', function() {
+      $('div#status').text('Connected to Pusher!');
+    });
+    pusher.connection.bind('failed', function() {
+      $('div#status').text('Connection to Pusher failed :(');
+    });
+    channel.bind('subscription_error', function(status) {
+      $('div#status').text('Pusher subscription_error');
+    });
+  });
+</script>
+<% end %>
+
+<!-- end pusher -->
 
 
 <!--[if lt IE 9]>
@@ -49,6 +81,15 @@
 	
 </head>
 <body>
+
+  <% if signed_in? %>
+  <div id="notify">A little notification here</div>
+
+  <div id="status"></div>
+
+  <!--<div id="notify_api"><button type="button" id="ask_notify_permission">Enable Webkit Notifications</button></div>-->
+<% end %>
+
   <div id="wrapper">
     <%= render "layouts/header" %>
     

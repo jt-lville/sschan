@@ -1,4 +1,11 @@
 OrchiveApp::Application.configure do
+
+  require 'pusher'
+
+  Pusher.app_id = 12960
+  Pusher.key = '58241c114f90e278e82f'
+  Pusher.secret = 'ad75cd9c336b5d0e1afd' #Pusher stuff
+
   # Settings specified here will take precedence over those in config/application.rb
 
   # In the development environment your application's code is reloaded on
@@ -24,5 +31,6 @@ OrchiveApp::Application.configure do
   config.action_dispatch.best_standards_support = :builtin
 	
 	config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  
 end
 
