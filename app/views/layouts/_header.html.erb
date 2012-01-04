@@ -79,7 +79,7 @@
                :tag => "other", :controller => "preferences"}, :method=>:post, :title=>'Other' %>
 
     -->
-              <%= link_to "Inbox |", "/messages" %>
+              <%= link_to ("Inbox "+ render_unread_count(current_user) +" |"), "/messages" %>
 
                <% if @preference == nil or @preference.tag_list.empty? %>
                <%= link_to ("No tags selected |"), '/'  %>

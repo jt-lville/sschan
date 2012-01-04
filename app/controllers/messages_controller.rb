@@ -3,6 +3,12 @@ class MessagesController < ApplicationController
   
   def index
     @messages = current_user.received_messages
+
+    @messages.each do |m|
+      m.unread = false
+      m.save
+    end
+
   end
   
   def create
