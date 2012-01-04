@@ -1,8 +1,8 @@
 class AddFeaturesToMessages < ActiveRecord::Migration
   def self.up
 
-    add_column :messages, :unread, :boolean, :default => 1
-    add_column :messages, :important, :boolean, :default => 0
+    add_column :messages, :unread, :boolean, :default => :true
+    add_column :messages, :important, :boolean, :default => :false
     add_column :messages, :group_id, :integer
   end
 
