@@ -68,117 +68,10 @@
 	}
 </style>
 
-<%= render '/layouts/sideBar' %>
+<%#= render '/layouts/sideBar' %>
 
 <p class="notice"><%= notice %></p>
 
-<div id='rightBar' class='floatRight'>
-	<div id='post'>
-		<%= image_tag('default_photo.png', :size=>'60x60')%>
-		<h1 class="inline" id="postTitle"><%= @post.title %></h1>
-
-		<p id="postContent"><%= @post.content %></p>
-                
-               <section class="floatRight">
-                                
-                                <% if current_user == @post.user or can? :manage, :all   %>
-				<%= link_to_if(can?(:delete, @post), 'Delete', post_path(@post), :id=>'delete', :class=>'floatRight', :confirm => "Are you sure?", :method => :delete) {} %>
-                                 <% end %>
-                                
-                </section>                
-
-		<section id="postInfo">
-			<section class="floatLeft">
-				<p id="postName">
-					<%=image_tag('NFIcons/reporter.png') %> 
-					Reporter: <a class="blue"><%= link_to @post.name, user_path(@post.user) %></a>
-				</p>
-
-				<p id="userLoc">
-					<%=image_tag('NFIcons/userLoc.png') %> 
-					Location: <a class="blue"><%= @post.user_location %></a>
-				</p>
-
-				<p id="source">
-					<%=image_tag('NFIcons/source.png') %> 
-					Source: <a class='blue'> <%= @post.source  %>  </a>
-				</p>
-
-				<!-- Jon's stuff> <-->
-                                
-                                 <p id="inaccuracy">
-					<%=image_tag('NFIcons/source.png') %> 
-					Inaccuracy: <a class="blue"><%= @post.inaccuracy %></a>
-				</p>	                                
-                                
-				<p id="trendingValue">
-					<%=image_tag('NFIcons/source.png') %> 
-					Trending Value: <a class="blue"><%= @post.trending_value.round %></a>
-				</p>	 
-                                
-                		<p id="pageViews">
-					<%=image_tag('NFIcons/source.png') %> 
-					Pageviews: <a class="blue"><%= @post.pageviews %></a>
-				</p>	  
-                                <p id="truePageViews">
-					<%=image_tag('NFIcons/source.png') %> 
-					True Pageviews: <a class="blue"><%= @post.pageviews %></a>
-				</p>	  
-                                <p id="freshnessValue">
-					<%=image_tag('NFIcons/source.png') %> 
-					Freshness Value: <a class="blue"><%= @post.time_effective %></a>
-				</p>
-                                
-                                <p id="karmaValue">
-					<%=image_tag('NFIcons/source.png') %> 
-					Newsworthiness: <a class="blue"><%= @post.karma.round %></a>
-				</p>
-                                                  
-
-			</section>
-
-			<section class="floatMid">
-				<p id="tags">
-					<%=image_tag('NFIcons/tags.png') %> 
-					Tags: <a class="blue"><%= @post.tag_list  %> </a>
-				</p>
-
-				<p id="postLoc">
-					<%=image_tag('NFIcons/postLoc.png') %> 
-					Occuring In: <a class="blue"><%= @post.post_location %></a>
-				</p>	  
-
-				<p id="time">
-					<%=image_tag('NFIcons/time.png') %> 
-					Date Created: <a class='blue'>
-					<%=@post.created_at.strftime("%B %e %l:%M %p %Y")%>
-					(<%=distance_of_time_in_words(@post.created_at,	Time.now)%> ago)
-					</a>
-				</p>
-
-				 <!-- Jon's stuff><-->  
-
-                                 <p id="accuracy">
-					<%=image_tag('NFIcons/source.png') %> 
-					Accuracy: <a class="blue"><%= @post.accuracy %></a>
-				</p>	
-                                 
-				<p id="accuracyPercent">
-					<%=image_tag('NFIcons/source.png') %> 
-					Accuracy Percent: <a class="blue"><%= @post.accuracy_percent.round %> % </a>
-				</p>	
-                                <p id="comments">
-					<%=image_tag('NFIcons/source.png') %> 
-					<a class="blue"><%= @post.comments.size %></a> comments 
-				</p>	
-                                
-
-			</section>
-		</section>
-	</div>
-  
-  <br><br><br><br><br>
-  
   
 	<div id="comments">
           <% c = @comment %>
@@ -197,33 +90,6 @@
                 <% end %>
                 <br>
 
-                <%= form_for c do |f|%>
-
-                <%= f.fields_for c.children.build do |builder| %>
-
-                <%= builder.text_area :content, :placeholder => 'What do you think?'%>
-
-                <%= f.submit 'Submit Reply', :id => c.id %>
-                <% end %>
-                <% end %>
-                
-                <%#= link_to 'Submit Reply Test 2', { :action => :reply, :id => c.id, :controller => "comments", :parent_comment => c }, :method => :post %>
-
-                 <%# unless c.children.empty? %>
-                 <%#= render c.children %>
-                 <%# end %>
-                
-                <!-- When you have the CSS set up, do the stuff below vvv -->
-
-                               <%#  render c %>
-               <%#*<br>%>
-               <%#= link_to 'Context', post_path(c.post) %>
-                <%#*<br>%>
-
-                <%#= link_to 'Submit Reply', { :action => :reply, :id => c.id, :controller => "comments", :parent_comment => c }, :method => :post %>
-                 <%# unless c.children.empty? %>
-                 <%#= render c.children %>
-                 <%# end %>
 
                 <br>
                

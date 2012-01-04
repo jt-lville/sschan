@@ -1,4 +1,9 @@
 
+	<% if current_user == post.user or can? :manage, :all %>
+         <span class ="plaintext"> [<%= link_to_if(can?(:delete, post), 'Delete', post_path(post), :class=>'delbuttons', :id=>'delete', :confirm => "Are you sure?", :method => :delete) {} %>]
+         </span>
+        <% end %>
+
 <%# if post.upload == nil or post.upload.url == "/uploads/medium/missing.png" %>
 <%#= image_tag(random_lily_url, :class=>"image", :size=>'200x200')%>
 <%# else %>

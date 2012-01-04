@@ -4,7 +4,7 @@ OrchiveApp::Application.routes.draw do
   devise_for :linked_accounts
 
   resources :comments
-
+  
     devise_for :users, :path => '', :path_names => { :sign_in => "login", :sign_out => "logout", :sign_up => "join" }, :controllers => {:registrations => 'users/registrations', :sessions=> 'users/sessions', :passwords=>'users/passwords'}
 	
 	resources :beta_pages
@@ -21,9 +21,6 @@ OrchiveApp::Application.routes.draw do
     end 
     
 	end
-
-  resources :messages do
-  end
   
   resources :preferences do 
     collection do

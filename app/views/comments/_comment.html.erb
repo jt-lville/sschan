@@ -27,7 +27,7 @@
                 <% end %>
 
                 <% if current_user == comment.user or can? :manage, :all   %>
-                [<%= link_to 'Delete', [comment.post, comment], :class=>'comdel', :confirm => 'Are you sure?',:method => :delete %>]
+                [<%= link_to 'Delete', [comment.post, comment], :class=>'comdel', :confirm => 'Are you sure?' ,:method => :delete %>]
                 <% end %>
 
                 </n>
