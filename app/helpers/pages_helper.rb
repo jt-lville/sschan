@@ -55,7 +55,8 @@
                 "http://www.youtube.com/embed/6-uMkAWj28o", "http://www.youtube.com/embed/TjkSyQHQddo",
                 "http://www.youtube.com/embed/4dGJKh9hLTs", "http://www.youtube.com/embed/4wsNJ9K9ROw",
                 "http://www.youtube.com/embed/gCCbIkCcRKk", "http://www.youtube.com/embed/KckGp2Hz9yU",
-                "http://www.youtube.com/embed/4p8cH380Mrg", "http://www.youtube.com/embed/qeIqZWfVZqY" # layton battle, vow
+                "http://www.youtube.com/embed/4p8cH380Mrg", "http://www.youtube.com/embed/qeIqZWfVZqY", # layton battle, vow
+                "http://www.youtube.com/embed/aG6OxCmWwtM" #romeo cinderella
                 ]
 
     return yt_links[rand(yt_links.size)]
