@@ -1,7 +1,7 @@
 body {
          font-size:12pt;
-         background:#FFFFEE;
-         color:#800000;
+         background:#f6f9ff;
+         color:#000000;
 }
 
 a {
@@ -9,7 +9,8 @@ a {
         color:#0000EE;
         text-decoration:underline;
         font-family:serif;
-        
+
+
 }
 
 #beta #main #content {

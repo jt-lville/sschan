@@ -63,6 +63,8 @@ OrchiveApp::Application.routes.draw do
   match '/messages' => 'messages#index'
   post 'pusher/auth' #for pusher
 
+  match '/jonathan' => 'Pages#jonathan'
+
   match '/contact' => 'Pages#Contact'
   match '/about' => 'Pages#About'
   match '/help' => 'Pages#Help'
