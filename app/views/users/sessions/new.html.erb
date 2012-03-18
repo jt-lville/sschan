@@ -58,9 +58,12 @@
 	}
 </style>
 
+<% if not mobile_device? %>
 <div id='container'>
-
 	<div id="boxContent">
+          <% else %>
+          <div><div>
+          <% end %>
 		<h1>Super Secret Login</h1>
 		
 		<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
