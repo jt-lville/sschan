@@ -1,5 +1,8 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
+
+    before_filter :prepare_for_mobile
+
   private
   
   def current_preference
@@ -12,21 +15,22 @@ class ApplicationController < ActionController::Base
     
   end
 	
-	# Devise, way of using a different Layout for all the devise/non-signed in Views
-#  layout :layout_by_resource
-#  def layout_by_resource
-#    if user_signed_in?
-#      "application"
-#    else
-#      "beta"
-#    end
-#  end
-	#rescue_from CanCan:AccessDenied do |e|
-		#redirect_to root_url
-	#end
-	
 	def after_sign_in_path_for(resource)
 		posts_path
 	end
-	
+
+def mobile_device?
+  if session[:mobile_param]
+    session[:mobile_param] == "1"
+  else
+    request.user_agent =~ /Mobile|webOS/ #customize according to user agent strings
+  end
+end
+helper_method :mobile_device?
+
+def prepare_for_mobile
+  session[:mobile_param] = params[:mobile] if params[:mobile]
+  #request.format = :mobile if mobile_device?
+end
+
 end

@@ -217,12 +217,8 @@ left:0px;
 
 </style>
 <%= stylesheet_link_tag "chan" %>
+<%= stylesheet_link_tag "mobile" if mobile_device? %>
 <title>sschan</title>
-
-<script type="text/javascript" src="javascripts/redirection_mobile.min.js"></script>
-<script type="text/javascript">
-SA.redirection_mobile ({param:"isDefault", mobile_prefix : "m", cookie_hours : "1" });
-</script>  <!-- mobile -->
 
 <div id='banner'>
 

@@ -1,9 +1,5 @@
 <%= stylesheet_link_tag "chan" %>
-
-<script type="text/javascript" src="javascripts/redirection_mobile.min.js"></script>
-<script type="text/javascript">
-SA.redirection_mobile ({param:"isDefault", mobile_prefix : "m", cookie_hours : "1" });
-</script>  <!-- mobile -->
+<%= stylesheet_link_tag "mobile" if mobile_device? %>
 
 <%#= render '/layouts/sideBar' %>
 

@@ -14,10 +14,17 @@
 			<% end %>
 
                         <%=link_to('Chat', '/chat')%> |
-			<%=link_to('Need Nerf', '')%> |
+
                         <%=link_to('Wiki', '')%> |
                         <%=link_to('Nostalgia', '')%> |
                         <%=link_to('Playlist', '')%> |
+
+                          <% if mobile_device? %>
+    <%= link_to "Full Site", :mobile => 0 %>
+  <% else %>
+    <%= link_to "Mobile Site", :mobile => 1 %>
+  <% end %> |
+
 			<%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
 			
     </p>
@@ -48,37 +55,7 @@
 
   
   <span id="filters" class='floatRight'>
-    <!--<a>Filters</a>
-              <%= link_to displayIcon(5), { :action => :tag_with, 
-               :tag => "science", :controller => "preferences"}, :method=>:post, :title=>'Science'%>
-    
-              <%= link_to displayIcon(6), { :action => :tag_with, 
-               :tag => "nature", :controller => "preferences"}, :method=>:post, :title=>'Nature' %>
-    
-              <%= link_to displayIcon(7), { :action => :tag_with, 
-               :tag => "entertainment", :controller => "preferences"}, :method=>:post, :title=>'Entertainment' %>
-    
-              <%= link_to displayIcon(8), { :action => :tag_with, 
-               :tag => "sports", :controller => "preferences"}, :method=>:post, :title=>'Sports' %>
 
-              <%= link_to displayIcon(9), { :action => :tag_with, 
-               :tag => "tech", :controller => "preferences"}, :method=>:post, :title=>'Technology' %>
-
-              <%= link_to displayIcon(10), { :action => :tag_with, 
-               :tag => "business", :controller => "preferences"}, :method=>:post, :title=>'Business' %>
-
-              <%= link_to displayIcon(11), { :action => :tag_with, 
-               :tag => "social", :controller => "preferences"}, :method=>:post, :title=>'Social' %>
-
-              <%= link_to displayIcon(12), { :action => :tag_with, 
-               :tag => "crime", :controller => "preferences"}, :method=>:post, :title=>'Crime' %>
-              <%= link_to displayIcon(13), { :action => :tag_with, 
-               :tag => "politics", :controller => "preferences"}, :method=>:post, :title=>'Politics' %>
-
-              <%= link_to displayIcon(14), { :action => :tag_with, 
-               :tag => "other", :controller => "preferences"}, :method=>:post, :title=>'Other' %>
-
-    -->
               <%= link_to ("Inbox "+ render_unread_count(current_user) +" |"), "/messages" %>
 
                <% if @preference == nil or @preference.tag_list.empty? %>

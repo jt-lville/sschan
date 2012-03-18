@@ -75,5 +75,7 @@ OrchiveApp::Application.routes.draw do
   match '/FAQ' => 'Pages#FAQ'
   match '/dashboard' => 'users#adminUI'
 
-  
+  #mobile
+  #match '/' => 'posts#index', :constraints => { :subdomain => 'm'}
+
 end
