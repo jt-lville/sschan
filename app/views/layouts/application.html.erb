@@ -18,7 +18,8 @@
 <script src="/javascripts/jquery.titlealert.js"></script>
 <!-- pusher!! -->
 
-<% if signed_in? # no notifications if you're not signed in %>
+<% if signed_in? and not mobile_device? # no notifications if you're not signed in %>
+
 <script type="text/javascript" charset="utf-8">
   $(function() {
     // subscribes each user to private channel
@@ -96,7 +97,7 @@
     <div id="main"> 
       <div id="content">
 
-  <% if signed_in? %>
+  <% if signed_in? and not mobile_device?%>
 
     <center>
 
@@ -104,10 +105,11 @@
       <div id="notify"></div></center> <!-- more pusher stuff-->
   <!--<div id="status"></div>-->
   <!--<div id="notify_api"><button type="button" id="ask_notify_permission">Enable Webkit Notifications</button></div>-->
+   <br/>
+  <hr/>
   <% end %>
   
-  <br/>
-  <hr/>
+ 
 
 
         <%= yield %>
