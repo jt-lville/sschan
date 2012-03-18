@@ -1,7 +1,9 @@
 <div id="header">
 <div id="headerContent">
 
+
 <div id="topBar">
+
 
   <% if not mobile_device? %>
   <%= link_to(image_tag('logo.png', :alt=>'SSChan', :id=>'logo'), '/posts') %>
@@ -9,11 +11,11 @@
 
     <% else %>
 
-    <%= link_to(image_tag('logo.png', :alt=>'SSChan', :id=>'logo', :class => 'floatLeft'), '/posts') %>
+    <%= link_to(image_tag('logo.png', :alt=>'SSChan', :class => 'floatLeft'), '/posts') %>
+    </br></br></br></br></br></br>
     <span id="headPages" class="floatLeft">
 
     <% end %>
-
 
     <p>
       <%= link_to 'Home', '/' %> |
@@ -66,22 +68,7 @@
 
 <div id="navBar">
 
-<section>
-  <!-- <span id="feeds" class="floatLeft" >
-		<a href = '/posts'>Feeds</a>
-                <%= link_to displayIcon(1), {:action => :make_feed_preference,
-                :preference => "trending value",  :controller => "preferences"}, :method=>:post, :title=>'Trending Value' %>
-
-                <%= link_to displayIcon(2), {:action => :make_feed_preference,
-                :preference => "time",  :controller => "preferences"}, :method=>:post, :title=>'Most Recent' %>
-
-                <%= link_to displayIcon(3), {:action => :make_feed_preference,
-                :preference => "location",  :controller => "preferences"}, :method=>:post, :title=>'Location' %>
-
-                <%= link_to displayIcon(4), {:action => :make_feed_preference,
-                :preference => "followers", :controller => "preferences"}, :method=>:post, :title=>'Followers' %>
-                
-  </span> -->
+<span>
 
    <% if not mobile_device? %>
    <span id="filters" class='floatRight'>
@@ -102,7 +89,7 @@
   </span>
   <% end %>
 
-  </section>
+  </span>
   </div>
   </div>
 </div>

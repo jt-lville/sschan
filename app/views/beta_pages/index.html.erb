@@ -216,6 +216,7 @@ left:0px;
 }
 
 </style>
+
 <%= stylesheet_link_tag "chan" if not mobile_device? %>
 <%= stylesheet_link_tag "mobile" if mobile_device? %>
 <title>sschan</title>
@@ -297,10 +298,10 @@ Why sschan?
 <% else %>
 
 
-<center><p>Welcome to a super secret place!</p><br/>
+<span class="floatLeft"><p>Welcome to a super secret place!</p><br/>
  <%= link_to image_tag('/images/join.png'),'/login' %></br>
 <%= link_to "Non-Mobile Mode", :mobile => 0 %>
-</center>
+</span>
 
  
 
