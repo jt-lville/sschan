@@ -3,13 +3,13 @@ body {
 	padding:0;
 	border:0;			/* This removes the border around the viewport in old versions of IE */
 	width:100%;
-	background:#f6f9ff;
-	min-width:600px;		/* Minimum width of layout - remove line if not required */
+	background:#fff;
+	min-width:600px;    	/* Minimum width of layout - remove line if not required */
 					/* The min-width property does not work in old versions of Internet Explorer */
 	font-size:90%;
 }
 a {
-	color:#596A93;
+	color:#369;
 }
 a:hover {
 	color:#fff;
@@ -76,18 +76,18 @@ img {
 }
 #header ul li a:hover {
 	background:#369;
-	color:#596A93;
+	color:#fff;
 }
 #header ul li a.active,
 #header ul li a.active:hover {
-	color:#596A93;
+	color:#fff;
 	background:#000;
 	font-weight:bold;
 }
 #header ul li a span {
 	display:block;
 }
-
+*/
 #layoutdims {
 	clear:both;
 	background:#eee;
@@ -95,7 +95,7 @@ img {
 	margin:0;
 	padding:6px 15px !important;
 	text-align:right;
-}*/
+}
 /* column container */
 .colmask {
 	position:relative;	/* This fixes the IE7 overflow hidden bug */
@@ -109,7 +109,7 @@ img {
 .colmid,
 .colleft {
 	float:left;
-	width:100%;			/* width of page */
+	width:100%;
 	position:relative;
 }
 .col1,
@@ -117,34 +117,24 @@ img {
 .col3 {
 	float:left;
 	position:relative;
-	padding:0 0 1em 0;	/* no left and right padding on columns, we just make them narrower instead 
-					only padding top and bottom is included here, make it whatever value you need */
+	padding:0 0 1em 0;
 	overflow:hidden;
 }
-/* 3 Column settings */
-.threecol {
+/* 2 Column (right menu) settings */
+.rightmenu {
 	background:#eee;		/* right column background colour */
 }
-.threecol .colmid {
-	right:25%;			/* width of the right column */
-	background:#fff;		/* center column background colour */
+.rightmenu .colleft {
+	right:25%;			/* right column width */
+	background:#fff;		/* left column background colour */
 }
-.threecol .colleft {
-	right:50%;			/* width of the middle column */
-	background:#f4f4f4;	/* left column background colour */
+.rightmenu .col1 {
+	width:71%;			/* left column content width (left column width minus left and right padding) */
+	left:27%;			/* (right column width) plus (left column left padding) */
 }
-.threecol .col1 {
-	width:46%;			/* width of center column content (column width minus padding on either side) */
-	left:102%;			/* 100% plus left padding of center column */
-}
-.threecol .col2 {
-	width:21%;			/* Width of left column content (column width minus padding on either side) */
-	left:31%;			/* width of (right column) plus (center column left and right padding) plus (left column left padding) */
-}
-.threecol .col3 {
-	width:21%;			/* Width of right column content (column width minus padding on either side) */
-	left:85%;			/* Please make note of the brackets here:
-					(100% - left column width) plus (center column left and right padding) plus (left column left and right padding) plus (right column left padding) */
+.rightmenu .col2 {
+	width:21%;			/* right column content width (right column width minus left and right padding) */
+	left:31%;			/* (right column width) plus (left column left and right padding) plus (right column left padding) */
 }
 /* Footer styles */
 #footer {
