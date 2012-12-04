@@ -87,7 +87,7 @@ module ApplicationHelper
     c2 = c2.gsub("eels good man", "eelings baddingly mans")
     c2 = c2.gsub("sat froc", "sad frog")
 
-    c2 = c2.gsub("[spoiler]",%q[<span style='color:#000000; background:#000000' onmouseover="style.color='#ffffff'" onmouseout="style.color='#000000'">]).html_safe #possible bug: unclosed spoiler tags still work
+    c2 = c2.gsub("[spoiler]",%q[<span style='color:#000000; background:#000000' onmouseover="style.color='#ffffff'" onmouseout="style.color='#000000'">]).html_safe
     c2 = c2.gsub("[/spoiler]","</span>").html_safe
 
     c2 = c2.gsub("sade frueg", "sad frog").html_safe
