@@ -20,6 +20,9 @@ gem 'paperclip', :path => 'vendor/gems/paperclip' #:git => "git://github.com/tho
 gem 'awesome_nested_set'
 gem 'impressionist'
 
+gem 'sinatra'
+gem 'uuid'
+gem 'json'
 gem 'pusher'
 #gem 'pusher-gem', :git => "git://github.com/pusher/pusher-gem.git"
 
