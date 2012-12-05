@@ -104,7 +104,18 @@
   "The people would restart their lives in a simple, peaceful village, in the kind of place they wished they had grown up in.",
  "Elements of Harmony...I know I've heard that from somewhere.",
  "A train robbery is where you take a train to your destination, make your move, and take a train back, right?",
-"Then... I'll spit on the car!" ]
+"Then... I'll spit on the car!",
+"Is this the sad end of a materialistic culture?",
+"Banishment, this world!",
+"Could it be that the corner of an endless world of 4.5 tatami worlds I believed so strongly I was traveling through was in fact a small loop?",
+"I had thought the days were all wasted, but they were such a bounty!",
+"Always dreaming of the unrealistic, I never looked at what I had right around me...",
+"That was the life I chose. And this is the result I wished for.",
+"If a bowl of fresh cooked rice were placed before me, I am sure tears would flood down from my eyes in torrents!",
+"That world is what I would call ... Paradise."
+"Ozu, it's me!",
+"You say some pretty mean things, you know.",
+"Don't you see? We are connected by the black thread of fate." ]
 
     return phrases[rand(phrases.size)]
 
