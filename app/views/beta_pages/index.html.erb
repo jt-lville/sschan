@@ -217,8 +217,8 @@ left:0px;
 
 </style>
 
-<%= stylesheet_link_tag "chan" if not mobile_device? %>
-<%= stylesheet_link_tag "mobile" if mobile_device? %>
+<%= stylesheet_link_tag "chan" %>
+<%#= stylesheet_link_tag "mobile" if mobile_device? %>
 <title>sschan</title>
 
 <% if not mobile_device? %>

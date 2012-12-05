@@ -1,25 +1,10 @@
-<% if not mobile_device? %>
 <div id="header">
 <div id="headerContent">
-  <% else %>
-  <div>
-<div>
-  <% end %>
 
 <div id="topBar">
 
-
-  <% if not mobile_device? %>
   <%= link_to(image_tag('logo.png', :alt=>'SSChan', :id=>'logo'), '/posts') %>
   <span id="headPages" class="floatRight">
-
-    <% else %>
-
-    <%= link_to(image_tag('logo.png', :alt=>'SSChan', :class => 'floatLeft'), '/posts') %>
-    </br></br></br></br></br></br>
-    <span id="headPages" class="floatLeft">
-
-    <% end %>
 
     <p>
       <%= link_to 'Home', '/' %> |
@@ -35,33 +20,13 @@
                         <%=link_to('Nostalgia', '')%> |
                         <%=link_to('Playlist', '')%> |
 
-                          <% if mobile_device? %>
-    <%= link_to "Non-Mobile Mode", :mobile => 0 %>
-  <% else %>
-    <%= link_to "Mobile Site", :mobile => 1 %>
-  <% end %> |
+                          <%# if mobile_device? %>
+    <%#= link_to "Non-Mobile Mode", :mobile => 0 %>
+  <%# else %>
+    <%#= link_to "Mobile Site", :mobile => 1 %>
+  <%# end %>
 
 			<%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
-
-  <% if mobile_device? %>
-   <span id="filters" class='floatLeft'>
-
-
-              <%= link_to ("Inbox "+ render_unread_count(current_user) +" |"), "/messages" %>
-
-               <% if @preference == nil or @preference.tag_list.empty? %>
-               <%= link_to ("No tags selected |"), '/'  %>
-               <% else %>
-               <%= link_to (@preference.tag_list.join(" ") + " |"), '/'  %>
-               <% end %>
-
-               <%= link_to "Clear all tags", { :action => :clear_tag_list_and_preferences,
-               :tag => "other", :controller => "preferences"}, :method=>:post, :title=>'Clear' %>
-
-
-  </span>
-
-  <% end %>
 			
     </p>
     
@@ -74,7 +39,6 @@
 
 <span>
 
-   <% if not mobile_device? %>
    <span id="filters" class='floatRight'>
     
 
@@ -91,7 +55,6 @@
 
     
   </span>
-  <% end %>
 
   </span>
   </div>
