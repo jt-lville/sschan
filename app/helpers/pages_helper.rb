@@ -107,7 +107,7 @@
 "Then ... I'll spit on the car!",
 "Is this the sad end of a materialistic culture?",
 "Banishment, this world!",
-"Could it be that the corner of an endless world of 4.5 tatami worlds I believed so strongly I was traveling through was in fact a small loop?",
+"Could it be that the corner of an endless world of 4.5 tatami mats I believed so strongly I was traveling through was in fact a small loop?",
 "I had thought the days were all wasted, but they were such a bounty!",
 "Always dreaming of the unrealistic, I never looked at what I had right around me...",
 "That was the life I chose. And this is the result I wished for.",
