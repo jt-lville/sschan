@@ -2,9 +2,10 @@ OrchiveApp::Application.configure do
 
   require 'pusher'
 
-  Pusher.app_id = 12960
-  Pusher.key = '58241c114f90e278e82f'
-  Pusher.secret = 'ad75cd9c336b5d0e1afd' #Pusher stuff
+# old key = 58241c114f90e278e82f
+  Pusher.app_id = 12973
+  Pusher.key = 'e613b465087b5f260e7d'
+  Pusher.secret = '247371331b91d81540b7' #Pusher stuff
 
   # Settings specified here will take precedence over those in config/application.rb
 

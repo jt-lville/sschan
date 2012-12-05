@@ -24,7 +24,8 @@
   $(function() {
     // subscribes each user to private channel
 
-    var pusher = new Pusher('58241c114f90e278e82f'); // public app key
+ //  old key = 58241c114f90e278e82f
+    var pusher = new Pusher('e613b465087b5f260e7d'); // public app key
     var channel = pusher.subscribe('private-'+<%= current_user.id %>);
 
     channel.bind('new_message', function(data) {
