@@ -15,6 +15,9 @@
 <!-- note: this prevents deletion for some reason -->
 
 <script src="http://js.pusher.com/1.12/pusher.min.js"></script> 
+<script src="pusher-realtime-chat-widget/src/js/PusherChatWidget.js"></script>
+<link href="pusher-realtime-chat-widget/src/pusher-chat.css" rel="stylesheet" type="text/css" />
+
 <script src="/javascripts/jquery.titlealert.js"></script>
 <!-- pusher!! -->
 
@@ -26,9 +29,15 @@
 
  //  old key = 58241c114f90e278e82f
     var pusher = new Pusher('e613b465087b5f260e7d'); // public app key
+
+// pusher chat widget
+var chatWidget = new PusherChatWidget(pusher, {
+    chatEndPoint: 'pusher-realtime-chat-widget/src/ruby-sinatra/chat.rb'
+  });
+
     var channel = pusher.subscribe('private-'+<%= current_user.id %>);
 
-    channel.bind('new_message', function(data) {
+    /*channel.bind('new_message', function(data) {
         msg = data.from + ' has sent you a message: ' + data.subject;
         dom_notify(msg);
         title_notify(msg);
@@ -63,6 +72,7 @@
     channel.bind('subscription_error', function(status) {
       $('div#status').text('Pusher subscription_error');
     });
+*/
   });
   
 </script>
