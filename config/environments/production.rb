@@ -1,6 +1,14 @@
 OrchiveApp::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
+  require 'pusher'
+
+# old key = 58241c114f90e278e82f
+  Pusher.app_id = 12973
+  Pusher.key = 'e613b465087b5f260e7d'
+  Pusher.secret = '247371331b91d81540b7' #Pusher stuff
+
+
   # The production environment is meant for finished, "live" apps.
   # Code is not reloaded between requests
   config.cache_classes = true
