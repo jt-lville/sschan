@@ -25,7 +25,7 @@
                                           </b>
 
                                         <span class ="plaintext"><%=post.created_at.strftime("%B %e %Y %l:%M %p")%>
-                                         No.<%= link_to post.id, post_path(post)%> [<%= link_to "Reply", post, :class => 'filesize' %>]
+                                         No.<%= link_to post.id, post_path(post), :onclick => "quotePost()"%> [<%= link_to "Reply", post, :class => 'filesize' %>]
                                         
                                         </span>
 
@@ -42,4 +42,4 @@
                                         
                                         <%= image_tag post.user.avatar.url(:thumb), :size => '100x100', :class => 'floatRight' %>
 
-                                        <!-- WHITE SPAAAACE!! -->  <br/><br/><br/><br/><br/><br/><br/><br/>
+                                        <!-- WHITE SPAAAACE!! --> <br/><br/> <br/><br/><br/><br/><br/><br/><br/><br/>

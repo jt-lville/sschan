@@ -1,6 +1,26 @@
 <%= stylesheet_link_tag "chan" if mobile_device? %>
 <%= stylesheet_link_tag "mobile" if mobile_device? %>
 
+<script language="JavaScript" type="text/JavaScript">
+
+function quote(postId) {
+
+//window.location = "http://www.google.com/";
+
+var textBox = document.getElementById('comment_content');
+textBox.value = textBox.value + ">>" + postId+"\n"; 
+
+}
+
+function quotePost() {
+
+var textBox = document.getElementById('comment_content');
+textBox.value = textBox.value + ">>OP\n"; 
+
+}
+
+</script>
+
 <p class="notice"><%= notice %></p>
 
 
