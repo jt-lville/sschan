@@ -127,31 +127,31 @@
 			<div id="code">
 				<%= f.label :beta_code, 'Top Secret Code:', :class=>'inline betaLabelTextField' %>
 				<%= f.text_field :beta_code, :class=>'betaTextField' %>
-				<%= errorImage(@user, :beta_code)%>
+				<%#= errorImage(@user, :beta_code)%>
 			</div>
 
 			<div id="name">
 				<%= f.label :name, 'Name:', :class=>'inline betaLabelTextField' %>
 				<%= f.text_field :name, :class=>'betaTextField' %>
-				<%= errorImage(@user, :name)%>
+				<%#= errorImage(@user, :name)%>
 			</div>
 
 			<div id="email">
 				<%= f.label :email, "Email Address:", :class=>'inline betaLabelTextField' %>
 				<%= f.text_field :email, :class=>'betaTextField' %>
-				<%= errorImage(@user, :email)%>
+				<%#= errorImage(@user, :email)%>
 			</div>
 
 			<div id="pass">
 				<%= f.label :password, 'Password:', :class=>'inline betaLabelTextField' %>
 				<%= f.password_field :password, :class=>'betaTextField' %>
-				<%= errorImage(@user, :password)%>
+				<%#= errorImage(@user, :password)%>
 			</div>
 
 			<div>
 				<%= f.label :password_confirmation, "Re-Enter Password:", :class=>'inline betaLabelTextField' %>
 				<%=f.password_field :password_confirmation,:class=>'betaTextField'%>
-				<%= errorImage(@user, :password_confirmation)%>
+				<%#= errorImage(@user, :password_confirmation)%>
 			</div>
              
                              <%= f.label :avatar, "Avatar: " %> <!-- paperclip! -->

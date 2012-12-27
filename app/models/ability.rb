@@ -2,36 +2,34 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-    # Define abilities for the passed in user here. For example:
-    user ||= User.new # guest user (not logged in)
-		
-		if user.role? :admin# or user.paradigm == "pretension"
-			can :manage, :all
-		else		
-			can :manage, [Post, Comment, User]
-			#Try this maybe
-			### can :read, [Post, Comment, User]
-			### can :create, [Post, Comment, User]
-#			can :read, [Post, Comment]
-#      can :edit, [Post, Comment]
-#      can :delete, [Post, Comment]
-		end
-    
-    #user.save
-
+	
+	new = false
+	if (user == nil)
+		user = User.new
+		new = true
 	end
-    #
-    # The first argument to `can` is the action you are giving the user permission to do.
-    # If you pass :manage it will apply to every action. Other common actions here are
-    # :read, :create, :update and :destroy.
-    #
-    # The second argument is the resource the user can perform the action on. If you pass
-    # :all it will apply to every resource. Otherwise pass a Ruby class of the resource.
-    #
-    # The third argument is an optional hash of conditions to further filter the objects.
-    # For example, here the user can only update published articles.
-    #
-    #   can :update, Article, :published => true
-    #
-    # See the wiki for details: https://github.com/ryanb/cancan/wiki/Defining-Abilities
+	
+	#user ||= User.new # guest user (not logged in)
+
+	# if user.role == "admin"
+	# if user.role? :admin
+
+	# hacky adminship
+       if user.email == "kyothine@gmail.com"
+         can :manage, :all
+       else
+	can :manage, Post, :user_id => user.id
+	can :manage, Comment, :user_id => user.id
+
+        can :read, :all
+	can :create, :all
+	can :new, :all
+	end
+
+	# a bit hacky...shhhh
+	if new
+		can :manage, User
+	end
+
+   end
 end

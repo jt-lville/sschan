@@ -17,7 +17,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
     else
       clean_up_passwords(resource)
       render_with_scope :new
+      flash[:notice] = "Error: Failed to register user."
+      
     end
-	end
+end
 	
 end

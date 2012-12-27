@@ -1,6 +1,6 @@
 
 	<% if current_user == post.user or can? :manage, :all %>
-         <span class ="plaintext"> [<%= link_to_if(can?(:delete, post), 'Delete', post_path(post), :class=>'delbuttons', :id=>'delete', :confirm => "Are you sure?", :method => :delete) {} %>]
+         <span class ="plaintext"> [<%= link_to_if(true, 'delete', post_path(post), :class=>'delbuttons', :id=>'delete', :confirm => "Are you sure?", :method => :delete) {} %>]
          </span>
         <% end %>
 
@@ -18,7 +18,12 @@
                                         <b class ="replytitle"><%= post.title %></b>
                                         <b class ="postername">
 					<% if post.is_anonymous %>
-                                        <%= post.alias %>
+                                        <%= post.alias %> 
+
+					<% if can? :manage, :all %>
+					(<%= link_to post.name, user_path(post.user) %>)
+					<% end %>
+
                                         <% else %>
                                         <%= link_to post.name, user_path(post.user) %>
                                         <% end %>
@@ -39,7 +44,8 @@
                                                    :tag => tag, :controller => "preferences"}, :method=>:post, :class=>'blue'%>
 
                                         <%end%></p>
+					<!--<p>Pageviews: <% post.pageviews %></p>-->
                                         
                                         <%= image_tag post.user.avatar.url(:thumb), :size => '100x100', :class => 'floatRight' %>
 
-                                        <!-- WHITE SPAAAACE!! --> <br/><br/> <br/><br/><br/><br/><br/><br/><br/><br/>
+                                        <!-- WHITE SPAAAACE!! --> <br/><br/> <br/><br/><br/><br/><br/><br/><br/>
