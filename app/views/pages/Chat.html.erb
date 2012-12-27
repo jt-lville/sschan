@@ -3,71 +3,15 @@
 <html lang="en-us">
   <head>
     <meta charset="utf-8">
-    <title>Realtime Chat Widget using Pusher</title>
+    <title>sschan chat!</title>
     
     <link rel="stylesheet/less" type="text/css" href="lib/twitter-bootstrap/lib/bootstrap.less">
     <script src="lib/less/less-1.1.5.min.js"></script>
-    
-    <link href="styles.css" rel="stylesheet" />
-    <link href="pusher-chat-widget.css" rel="stylesheet" />
-    
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
-    <script src="http://js.pusher.com/1.11/pusher.min.js"></script>
-    <script src="js/PusherChatWidget.js"></script>    
-    <script>
-      $(function() {     
-        var pusher = new Pusher('e613b465087b5f260e7d')
-        var chatWidget = new PusherChatWidget(pusher, {
-          appendTo: '#pusher_chat_widget',
-	chatEndPoint: '/chat'
 
-        });
-      });
-    </script>
-  </head>
+   </head>
   <body>
 
-    <div class="container">
+<center><iframe width="800" height="550" scrolling="no" src="http://widget.mibbit.com/?settings=93141c1809c6c58ff62101f63a413b63&server=rizon.mibbit.org&channel=%23sschan"></iframe></center>
 
-      <div class="topbar">
-        <div class="fill">
-          <div class="container">
-            <a class="brand" href="/">Realtime Chat Widget using Pusher</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="hero-unit">
-        <h1>Realtime Chat Widget</h1>
-        <p><a href="https://github.com/pusher/pusher-realtime-chat-widget" class="btn primary large" target="_blank">Get the code &raquo;</a></p>
-      </div>
-      
-      <section class="realtime-chat">
-        
-        <div class="page-header">
-          <h1>Realtime Chat Widget Example</h1>
-        </div>
-        
-        <div class="row">
-          
-          <div class="span5">
-            <p>
-            </p>
-          </div>
-          <div class="span5" id='pusher_chat_widget'>
-          </div>
-          
-        </div>
-        
-      </section>
-
-      <footer>
-        <p></p>
-      </footer>
-
-    </div> <!-- /container -->
-  </body>
+      </body>
 </html>
