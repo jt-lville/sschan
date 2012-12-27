@@ -14,6 +14,10 @@ class PagesController < ApplicationController
     @title = "About Us"
   end
 
+  def Chat
+render :layout => "chatLayout"
+  end
+
   def Contact
     @title = "Contact Us"
 		

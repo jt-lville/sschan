@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title><%= title %></title>
+
+  <%= stylesheet_link_tag :all %>
+  <%= javascript_include_tag :defaults %>
+  <%= csrf_meta_tag %>
+
+<script type="text/javascript" src="http://use.typekit.com/jca1dnc.js"></script>
+<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+
+<!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script> -->
+<!-- note: this prevents deletion for some reason -->
+
+<script src="http://js.pusher.com/1.12/pusher.min.js"></script> 
+<script src="pusher-realtime-chat-widget/src/js/PusherChatWidget.js"></script>
+<link href="pusher-realtime-chat-widget/src/pusher-chat.css" rel="stylesheet" type="text/css" />
+
+<script src="/javascripts/jquery.titlealert.js"></script>
+<!-- pusher!! -->
+
+<% if signed_in? and not mobile_device? # no notifications if you're not signed in %>
+
+<script type="text/javascript" charset="utf-8">
+  $(function() {
+    // subscribes each user to private channel
+
+ //  old key = 58241c114f90e278e82f
+    var pusher = new Pusher('e613b465087b5f260e7d'); // public app key
+
+// pusher chat widget
+var chatWidget = new PusherChatWidget(pusher, {
+    chatEndPoint: 'pusher-realtime-chat-widget/src/ruby-sinatra/chat.rb'
+  });
+
+    var channel = pusher.subscribe('private-'+<%= current_user.id %>);
+
+    /*channel.bind('new_message', function(data) {
+        msg = data.from + ' has sent you a message: ' + data.subject;
+        dom_notify(msg);
+        title_notify(msg);
+        if (window.webkitNotifications) { webkit_notify(msg); }
+    });
+
+     // In DOM alert
+      function dom_notify(msg) {
+        $('#notify').text(msg);
+        $('#notify').fadeIn();
+        setTimeout(function() {
+          $('#notify').fadeOut
+          ();
+        }, 2000);
+     }
+
+      // <title> msg
+     function title_notify(msg) {
+        $.titleAlert(msg);
+      }
+
+    // Some useful debug msgs
+    pusher.connection.bind('connecting', function() {
+      $('div#status').text('Connecting to Pusher...');
+    });
+    pusher.connection.bind('connected', function() {
+      $('div#status').text('Connected to Pusher!');
+    });
+    pusher.connection.bind('failed', function() {
+      $('div#status').text('Connection to Pusher failed :(');
+    });
+    channel.bind('subscription_error', function(status) {
+      $('div#status').text('Pusher subscription_error');
+    });
+*/
+  });
+  
+</script>
+<% end %>
+
+<!-- end pusher -->
+
+<!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->  
+
+<!--[if lt IE 8]><%= stylesheet_link_tag 'blueprint/ie' %><![endif]-->
+<%= stylesheet_link_tag 'custom', :media => 'screen' %>
+
+
+  <meta name="description" content= "SSChan">
+  <meta name="author" content="SSChan">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<link rel="icon" href="/images/favicon.ico">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link href='http://fonts.googleapis.com/css?family=Ubuntu:300,400,500&v2' rel='stylesheet' type='text/css'>
+  
+	
+</head>
+<body>
+
+
+  <div id="wrapper">
+    <%= render "layouts/header" %>
+
+    <div id="main"> 
+
+  <% if signed_in? and not mobile_device?%>
+
+    <center>
+      <div id="notify"></div></center> <!-- more pusher stuff-->
+</br>
+   <br/>
+  <hr/>
+  <% end %>
+        <%= yield %>
+</br>
+      </div>
+  </div>  
+</body>
+</html>
