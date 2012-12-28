@@ -1,3 +1,4 @@
+Version beta_1.8.5 - IRC chat, mp3 uploads!
 Version beta_1.8 - messages are broken due to Pusher; chat under construction
 Version beta_1.7.4 - SSCHAN mobile site is now working!
 Version beta_1.7.3.1 - private messaging slightly implemented! in real time!
