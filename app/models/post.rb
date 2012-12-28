@@ -25,7 +25,7 @@
   end
 
 
-	validates_attachment_size :upload, :less_than => 7.megabytes
+	validates_attachment_size :upload, :less_than => 12.megabytes
                          
 	acts_as_taggable
 

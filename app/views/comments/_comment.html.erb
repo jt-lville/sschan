@@ -6,8 +6,17 @@
                  <% if comment.file.url != "/images/original/missing.png" %>
                    <span class ="filesize"><%= comment.file_file_size %> bytes </span>
                   <span class ="filetitle"><%= comment.file_file_name %></span> <br/>
-                <%= link_to (image_tag comment.file.url, :class => "image", :size => '200x200'), comment.file.url %>
                   <% end %>
+
+<% if %w(image/jpeg image/pjpeg image/gif image/png image/x-png image/jpg).include?(comment.file_content_type) %>
+<%= link_to (image_tag comment.file.url(:medium), :class => "image", :size => '200x200'), comment.file.url %>
+
+<% elsif comment.file.url != "/images/original/missing.png" %>
+<%= link_to (image_tag "/images/medium/media.jpg", :class => "image", :size => '200x200'), comment.file.url %>
+
+<% end %>
+
+
 
                   <% if comment.user.avatar.url != "/images/medium/missing_av.png" %>
                    <%= image_tag comment.user.avatar.url, :size => '50x50', :class => 'floatRight' %>

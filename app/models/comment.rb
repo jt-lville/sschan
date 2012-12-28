@@ -8,6 +8,15 @@ class Comment < ActiveRecord::Base
       :s3_credentials => "#{RAILS_ROOT}/config/s3.yml",
       :bucket => 'sschan'
     
+	 # don't resize audio or other non-image media
+	 before_post_process :skip_for_non_image
+
+  def skip_for_non_image
+    #! %w(application/x-shockwave-flash text/plain text/html audio/ogg application/ogg audio/mp4 audio/mpeg audio/mp3 application/mp3).include?(upload_content_type)
+	%w(image/jpeg image/pjpeg image/gif image/png image/x-png image/jpg).include?(file_content_type)
+  end
+	validates_attachment_size :file, :less_than => 12.megabytes
+
   #nesting, experimental vvv
 #
  # has_many :comments
