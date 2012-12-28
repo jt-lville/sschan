@@ -6,32 +6,40 @@
       :s3_credentials => "#{RAILS_ROOT}/config/s3.yml",
       :bucket => 'sschan'
       #:path => ":attachment/:id/:style.:extension",
-
     #:path => "/images/uploads/", :url => "/images/uploads/:style/:post_id.:extension" #uploads
 
+	#validates_with AttachmentSizeValidator, :attributes => :upload
+
+	#validates_attachment :upload,
+  	  #:content_type => { :content_type => "image/jpg" },
+  	 # :size => { :in => 0..1.megabytes }
+
+	#validates_attachment_size :in => 0..1.megabytes 
+
+	 # don't resize audio or other non-image media
+	 before_post_process :skip_for_non_image
+
+  def skip_for_non_image
+    #! %w(application/x-shockwave-flash text/plain text/html audio/ogg application/ogg audio/mp4 audio/mpeg audio/mp3 application/mp3).include?(upload_content_type)
+	%w(image/jpeg image/pjpeg image/gif image/png image/x-png image/jpg).include?(upload_content_type)
+  end
+
+
+	validates_attachment_size :upload, :less_than => 7.megabytes
+                         
 	acts_as_taggable
 
-  is_impressionable ##for viewing
+        is_impressionable ##for viewing
 
 	belongs_to :user
 
 	has_many :comments, :dependent => :destroy
-	
-	#has_many :votes, :as => :voteable
-	#has_many :voting_users,
-	#		 :through => :votes,
-	#		 :source => :user	
-
-#	validates :name, :presence => true #commented out for experimental reasons: if it fails, uncomment it
-
 	validates :title, :length => {:within => 0..150}#, Jon: removed the title regex
 									  #:format => {:with => title_regex }
 
 	validates :content, :length => {:within => 0..2000}
                     
-#   validates :post_location, :presence => true                                                                    
-
-#   
+#   validates :post_location, :presence => true                                                       #   
 #   validates :user_location, :presence => true
 #   
 #   validates :source, :presence => true

@@ -11,7 +11,16 @@
  <span class ="filesize"><%= post.upload_file_size %> bytes </span>
  <span class ="filetitle"><%= post.upload_file_name %></span><br/>
  <% end %>
+<% if %w(image/jpeg image/pjpeg image/gif image/png image/x-png image/jpg).include?(post.upload_content_type) %>
 <%= link_to (image_tag post.upload.url(:medium), :class => "image", :size => '200x200'), post.upload.url %>
+
+<% elsif post.upload.url != "/images/original/missing.png" %>
+<%= link_to (image_tag "/images/medium/media.jpg", :class => "image", :size => '200x200'), post.upload.url %>
+
+<% else %>
+<%= link_to (image_tag "/images/medium/missing.png", :class => "image", :size => '200x200'), post.upload.url %>
+
+<% end %>
  
 <%# end %>
 

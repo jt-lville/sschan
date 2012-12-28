@@ -50,5 +50,8 @@ class UsersController < ApplicationController
     @user_on_page.save
     
 	end
+
+	def destroy
+	end
   
 end
