@@ -1,5 +1,6 @@
 class BetaInviteMailer < ActionMailer::Base
   #default :from => "info@orchive.com"
+  # edit: toasting from an epic bread
 
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:
