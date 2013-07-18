@@ -37,7 +37,7 @@ render :layout => "chatLayout"
     @title = "Help"
   end
   def Command
-    @title = "Command Center"
+    @title = "Amazon Search Bar"
   end
   def FAQ
       @title = "FAQ"
