@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-	before_filter :authenticate_user!, :except => 'jonathan', 'Command'
+	before_filter :authenticate_user!, :except => 'jonathan', 'command'
 	
 	layout :layout_by_resource
   def layout_by_resource
