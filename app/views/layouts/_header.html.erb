@@ -8,7 +8,11 @@
 
     <p>
       <%= link_to 'Home', '/' %> |
+	  <% if params[:himitsu] %>
+	  <%= link_to 'sschan', '/posts?himitsu=1' %> |
+	  <%else %>
       <%= link_to 'sschan', '/posts' %> |
+	  <% end %>
 			
 			<% if current_user.role?('admin') %>
 				<%= link_to('Dashboard', '/dashboard') %> |
