@@ -39,16 +39,29 @@ class CommentsController < ApplicationController
     @post.save
     @comment.save
 		
+	if (params[:himitsu])
+		redirect_to (post_path(@post) + "?himitsu=1")
+	else 
+		
 		redirect_to post_path(@post)
+		
+	end
+	
 	end
 
   def new
      @comment = Comment.new
 
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @comment }
-    end
+	 if (params[:himitsu])
+		redirect_to (post_path(@post) + "?himitsu=1")
+	else 
+	 
+		respond_to do |format|
+		  format.html # new.html.erb
+		  format.xml  { render :xml => @comment }
+		end
+		
+	else 
   end
   
   def show
