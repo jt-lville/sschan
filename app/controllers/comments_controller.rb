@@ -61,7 +61,7 @@ class CommentsController < ApplicationController
 		  format.xml  { render :xml => @comment }
 		end
 		
-	else 
+	end 
   end
   
   def show
