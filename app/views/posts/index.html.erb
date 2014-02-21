@@ -118,6 +118,7 @@
 				
 				<!--=# link_to "Flag", :controller => "posts", :action => "update", #:method => :put, :post => {:flag => true}%>-->
                                 
+								<% if (post.tag_list.include?("Himitsu") and params[:himitsu]) or (not post.tag_list.include?("Himitsu")) %>
                                 <%= render post  %>
                                 <br>
 
@@ -139,8 +140,9 @@
 
                                         <hr>
                                         
+										<% end%>
 
 	<% end %>
   
-  <%= will_paginate @posts %>
+  <%= paginate @posts %>
 

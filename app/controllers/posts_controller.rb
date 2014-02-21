@@ -26,7 +26,8 @@ class PostsController < ApplicationController
       
     @title = @preference.feed_preference.capitalize
     
-    @posts = Post.all
+    #@posts = Post.all
+	@posts = Post
 	
 	taglist = Array.new(@preference.tag_list)
 	if (params[:himitsu])
@@ -39,7 +40,7 @@ class PostsController < ApplicationController
       @posts = @posts.tagged_with(taglist)
     end
 	
-	@posts.sort_by{|p| -p[:trending_value]}
+	#@posts.sort_by{|p| -p[:trending_value]}
    
 
 	#@posts.each do |p|
@@ -51,8 +52,8 @@ class PostsController < ApplicationController
 	#end
 	
 
-	#@posts = @posts.page(params[:page]).per(10)
-	@posts = @posts.paginate(:page => params[:page], :per_page => 30)
+	@posts = @posts.order('trending_value DESC').page(params[:page]).per(10)
+	#@posts = @posts.paginate(:page => params[:page], :per_page => 30)
 	
     @preference.save
 
