@@ -24,7 +24,7 @@ class PostsController < ApplicationController
       
     @title = @preference.feed_preference.capitalize
     
-    @posts = Post
+    @posts = Post.all
 	
 	taglist = Array.new(@preference.tag_list)
 	if (params[:himitsu])
@@ -34,7 +34,7 @@ class PostsController < ApplicationController
 	if @preference.tag_list == [] or @preference.tag_list == nil
 		#@posts = @posts.reject { |a| a.tag_list.include?("Himitsu") }
 	else
-      @posts = Post.tagged_with(taglist)
+      @posts = @posts.tagged_with(taglist)
     end
     
     #if @preference.feed_preference == "trending value"
