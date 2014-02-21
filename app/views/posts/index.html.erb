@@ -118,6 +118,7 @@
 				
 				<!--=# link_to "Flag", :controller => "posts", :action => "update", #:method => :put, :post => {:flag => true}%>-->
                                 
+								<!-- if (post.tagged_with("Himitsu") and params[:himitsu]) or not post.tagged_with("Himitsu") %>-->
                                 <%= render post  %>
                                 <br>
 
@@ -139,6 +140,7 @@
 
                                         <hr>
                                         
+										<!-- end%>-->
 
 	<% end %>
   

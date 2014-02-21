@@ -31,7 +31,7 @@ class PostsController < ApplicationController
 	end
 	
 	if @preference.tag_list == [] or @preference.tag_list == nil
-		@posts.delete_if { |a| a.tagged_with(["Himitsu"]) }
+		@posts = @posts.reject { |a| a.tagged_with(["Himitsu"]) }
 	else
       @posts = Post.tagged_with(taglist)
     end
