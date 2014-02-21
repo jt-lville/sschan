@@ -25,7 +25,12 @@ textBox.value = textBox.value + ">>OP\n"; 
 
 
 <div id='rightBar' class='floatLeft'>
+
+	<% if (not @post.tag_list.include?("Himitsu")) or params[:himitsu] %>
+
+
 	<div id='post'>
+	
 		<%= render @post  %>
 	</div>
   <hr/>
@@ -37,3 +42,5 @@ textBox.value = textBox.value + ">>OP\n"; 
 
   <%end%>
 		<%= render "comments/form" %>
+		
+	<% end %>

@@ -97,11 +97,11 @@ class PostsController < ApplicationController
 		  format.xml  { render :xml => @post }
 	end
 	
-	if (@post.tag_list.include?("Himitsu") and not params[:himitsu]) 
+	#if (@post.tag_list.include?("Himitsu") and not params[:himitsu]) 
 	
-		render => 404 and return
+	#	render => 404 and return
 	
-	end
+	#end
 	
   end
 
