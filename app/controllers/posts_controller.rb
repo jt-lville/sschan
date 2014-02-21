@@ -51,8 +51,8 @@ class PostsController < ApplicationController
 	
 	#end
 	
-
-	@posts = @posts.order('trending_value DESC').page(params[:page]).per(10)
+	@posts = @posts.order('trending_value DESC').paginate(:page => params[:page], :per_page => 10)
+	#@posts = @posts.order('trending_value DESC').page(params[:page]).per(10)
 	#@posts = @posts.paginate(:page => params[:page], :per_page => 30)
 	
     @preference.save
