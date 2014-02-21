@@ -64,12 +64,14 @@ class CommentsController < ApplicationController
 	
 	if (params[:himitsu])
 		redirect_to (post_path(@post) + "?himitsu=1")
-	end
+	else 
     
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @comment }
-    end
+		respond_to do |format|
+		  format.html # show.html.erb
+		  format.xml  { render :xml => @comment }
+		end
+	
+	end
     
   end
   

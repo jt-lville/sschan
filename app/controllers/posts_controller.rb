@@ -201,17 +201,19 @@ class PostsController < ApplicationController
 	
 	if (params[:himitsu])
 		redirect_to (post_path(@post) + "?himitsu=1")
-	end
+	else 
     
-    respond_to do |format|
-      if @post.save
-        format.html { redirect_to(@post, :notice => 'Post was successfully created.') }
-        format.xml  { render :xml => @post, :status => :created, :location => @post }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @post.errors, :status => :unprocessable_entity }
-      end
-    end
+		respond_to do |format|
+		  if @post.save
+			format.html { redirect_to(@post, :notice => 'Post was successfully created.') }
+			format.xml  { render :xml => @post, :status => :created, :location => @post }
+		  else
+			format.html { render :action => "new" }
+			format.xml  { render :xml => @post.errors, :status => :unprocessable_entity }
+		  end
+		end
+	
+	end
 
   end
   
