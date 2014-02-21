@@ -11,9 +11,6 @@ module ApplicationHelper
     def filter_comment(c) #use for both OP's and comments
 
     c1 = c.content
-
-	if (c == nil) return
-	end
 	
     str1 = '<n class = "unkfunc">'
     str2 = '</n>'
