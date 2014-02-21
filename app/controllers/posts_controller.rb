@@ -36,25 +36,15 @@ class PostsController < ApplicationController
 	else
       @posts = @posts.tagged_with(taglist)
     end
-    
-    #if @preference.feed_preference == "trending value"
-    #@posts = @posts.order('trending_value DESC').page(params[:page]).per(5)
-    
-    #elsif @preference.feed_preference == "time" 
-    #@posts = @posts.order('created_at DESC').page(params[:page]).per(5)
-    
-    #elsif @preference.feed_preference == "location" or @preference.feed_preference == "followers"
-    #@preference.feed_preference = "trending value"
-    #@posts = @posts.order('trending_value DESC').page(params[:page]).per(5)
-    #end  
+   
 
-	@posts.each do |p|
+	#@posts.each do |p|
 	
-		if (p.trending_value == nil)
-			p.trending_value = 0
-		end
+	#	if (p.trending_value == nil)
+	#		p.trending_value = 0
+	#	end
 	
-	end
+	#end
 	
 
 	@posts = @posts.order('trending_value DESC').page(params[:page]).per(10)
