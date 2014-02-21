@@ -135,6 +135,7 @@ GEM
       nokogiri (>= 1.2.0)
       rack (>= 1.0)
       rack-test (>= 0.5.3)
+    will_paginate (3.0.5)
     xml-simple (1.1.1)
 
 PLATFORMS
@@ -161,3 +162,4 @@ DEPENDENCIES
   sqlite3
   uuid
   webrat (= 0.7.1)
+  will_paginate (~> 3.0)
