@@ -205,6 +205,15 @@ a:hover {
         left:40px;
 }
 
+.himitsurepliesbox {
+  
+        margin: 0 -20 0 20px;
+        background: #FEECF1;
+        width: 800px;
+        position:relative;
+        left:40px;
+}
+
 .opbox {
 
         margin: 0 0 0 20px;
