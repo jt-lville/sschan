@@ -90,7 +90,12 @@ class PostsController < ApplicationController
     @post.save
 
 	respond_to do |format|
+	
+			if (params[:himitsu])
+				format.html { redirect_to (post_path(@post) + "?himitsu=1") }
+			else 
 		  format.html # show.html.erb
+		  end
 		  format.xml  { render :xml => @post }
 	end
 	
@@ -228,14 +233,16 @@ class PostsController < ApplicationController
   # PUT /posts/1.xml
   def update
     @post = Post.find(params[:id])
-
-	if (params[:himitsu])
-		redirect_to (post_path(@post) + "?himitsu=1")
-	else 
 	
 		respond_to do |format|
 		  if @post.update_attributes(params[:post])
+		  
+			if (params[:himitsu])
+				format.html { redirect_to (post_path(@post) + "?himitsu=1") }
+			else 
 			format.html { redirect_to(@post, :notice => 'Post was successfully updated.') }
+			end
+			
 			format.xml  { head :ok }
 		  else
 			format.html { render :action => "edit" }
