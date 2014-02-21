@@ -198,6 +198,10 @@ class PostsController < ApplicationController
 	end
 		
     @post.save
+	
+	if (params[:himitsu])
+		redirect_to (post_path(@post) + "?himitsu=1")
+	end
     
     respond_to do |format|
       if @post.save

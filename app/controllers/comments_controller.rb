@@ -61,6 +61,10 @@ class CommentsController < ApplicationController
     update_status
 
     @comment.save
+	
+	if (params[:himitsu])
+		redirect_to (post_path(@post) + "?himitsu=1")
+	end
     
     respond_to do |format|
       format.html # show.html.erb
