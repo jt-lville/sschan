@@ -24,6 +24,10 @@ else
 	
     c1 = c.content
 	
+	if (c1 == nil)
+	return ""
+	end
+	
     str1 = '<n class = "unkfunc">'
     str2 = '</n>'
     str3 = '<a class = "unkfunc" href = "/posts/'
