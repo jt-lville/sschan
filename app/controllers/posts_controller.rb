@@ -82,7 +82,7 @@ class PostsController < ApplicationController
     
 	if (@post.tag_list.include?("Himitsu") and not params[:himitsu]) 
 	
-		render :status => 404
+		redirect_to "/404" and return
 	
 	end
 	
