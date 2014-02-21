@@ -13,6 +13,7 @@ module ApplicationHelper
     c1 = c.content
 
 	if (c == nil) return
+	end
 	
     str1 = '<n class = "unkfunc">'
     str2 = '</n>'
