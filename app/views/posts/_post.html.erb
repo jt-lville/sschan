@@ -46,7 +46,7 @@
 										<% if (post.tag_list.include?("Himitsu") and params[:himitsu]) %>
 										
                                         <span class ="plaintext"><%=post.created_at.strftime("%B %e %Y %l:%M %p")%>
-                                         No.<%= link_to post.id, (post_path(post) + "?himitsu=1"), :onclick => "quotePost()"%> [<%= link_to "Reply", (post_path(post) + + "?himitsu=1"), :class => 'filesize' %>]
+                                         No.<%= link_to post.id, (post_path(post) + "?himitsu=1"), :onclick => "quotePost()"%> [<%= link_to "Reply", (post_path(post) + "?himitsu=1"), :class => 'filesize' %>]
 										 
 										 <% else %>
 										 
