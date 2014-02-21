@@ -16,6 +16,7 @@ class Comment < ActiveRecord::Base
 	%w(image/jpeg image/pjpeg image/gif image/png image/x-png image/jpg).include?(file_content_type)
   end
 	validates_attachment_size :file, :less_than => 12.megabytes
+	
 
   #nesting, experimental vvv
 #
@@ -30,7 +31,7 @@ class Comment < ActiveRecord::Base
 	#comment_regex = /\A[a-zA-Z.\:\;, \/\'\"\(\)\{\}\[\]]+\z/
 	
 	
-	validates :content, :length => {:within => 0..2000}#,
+	validates :content, :length => {:within => 10..2000}#,
 	                     #:format => {:with => comment_regex}
                        
  #attr_accessible :points_up, :points_down
