@@ -33,8 +33,7 @@ class PostsController < ApplicationController
     unless @preference.tag_list == [] or @preference.tag_list == nil
       @posts = Post.tagged_with(taglist)
 	else
-		@posts = Post.tagged_with(["Anime", "Random", "Ponies", "Video Games", "Magic", "Intellectual", "Minecraft", "Television", "Music",
-		"International"])
+		@post = Post.tagged_with(["Himitsu"], :exclude => :true)
     end
     
     if @preference.feed_preference == "trending value"
