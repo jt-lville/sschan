@@ -30,7 +30,7 @@
                    <%#= image_tag comment.user.avatar.url, :size => '50x50', :class => 'floatRight' %>
                   <%# end %>
 
-                <% if comment.is_anonymous %>
+                <% if comment.is_anonymous or comment.user == nil %>
                   <%= comment.alias %>
                 <% else %>
                 <%= link_to comment.user.name, user_path(comment.user)%>
