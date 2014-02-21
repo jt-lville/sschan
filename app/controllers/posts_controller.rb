@@ -48,8 +48,16 @@ class PostsController < ApplicationController
     #@posts = @posts.order('trending_value DESC').page(params[:page]).per(5)
     #end  
 
+	@posts.each do |p|
 	
-	@posts = @posts = @posts.order('trending_value DESC').page(params[:page]).per(10)
+		if (p.trending_value == nil)
+			p.trending_value = 0
+		end
+	
+	end
+	
+
+	@posts = @posts.order('trending_value DESC').page(params[:page]).per(10)
 
     @preference.save
 
