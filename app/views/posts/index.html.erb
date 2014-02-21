@@ -88,7 +88,7 @@
 	<%= f.label 'International'%>
 	
 	<% if params[:himitsu] %>
-	<%= check_box_tag 'tags[]', 'Himitsu' %>
+	<%= check_box_tag 'tags[]', 'Himitsu', :options => {:checked => true}%>
 	<%= f.label 'Himitsu'%>
 	<% end %>
         </p>
