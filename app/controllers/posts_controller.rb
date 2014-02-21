@@ -250,7 +250,6 @@ class PostsController < ApplicationController
 		  end
 		end
 	
-	end
   end
 
   # DELETE /posts/1
