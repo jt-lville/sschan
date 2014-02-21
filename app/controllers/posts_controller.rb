@@ -226,15 +226,21 @@ class PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
 
-    respond_to do |format|
-      if @post.update_attributes(params[:post])
-        format.html { redirect_to(@post, :notice => 'Post was successfully updated.') }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @post.errors, :status => :unprocessable_entity }
-      end
-    end
+	if (params[:himitsu])
+		redirect_to (post_path(@post) + "?himitsu=1")
+	else 
+	
+		respond_to do |format|
+		  if @post.update_attributes(params[:post])
+			format.html { redirect_to(@post, :notice => 'Post was successfully updated.') }
+			format.xml  { head :ok }
+		  else
+			format.html { render :action => "edit" }
+			format.xml  { render :xml => @post.errors, :status => :unprocessable_entity }
+		  end
+		end
+	
+	end
   end
 
   # DELETE /posts/1
