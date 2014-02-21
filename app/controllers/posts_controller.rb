@@ -79,12 +79,6 @@ class PostsController < ApplicationController
 	
     #experimental
 #    @comments = @post.children
-    
-	if (@post.tag_list.include?("Himitsu") and not params[:himitsu]) 
-	
-		redirect_to "/404" and return
-	
-	end
 	
     @title = @post.title  
       
@@ -96,11 +90,17 @@ class PostsController < ApplicationController
     update_status
     
     @post.save
-
+	
 	respond_to do |format|
 	
 		  format.html # show.html.erb
 		  format.xml  { render :xml => @post }
+	end
+	
+	if (@post.tag_list.include?("Himitsu") and not params[:himitsu]) 
+	
+		render => 404 and return
+	
 	end
 	
   end
@@ -238,15 +238,21 @@ class PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
 	
-		respond_to do |format|
-		  if @post.update_attributes(params[:post])
-			format.html { redirect_to(@post, :notice => 'Post was successfully updated.') }
-			format.xml  { head :ok }
-		  else
-			format.html { render :action => "edit" }
-			format.xml  { render :xml => @post.errors, :status => :unprocessable_entity }
-		  end
-		end
+	if (params[:himitsu])
+		redirect_to (post_path(@post) + "?himitsu=1")
+	else 
+		redirect_to (post_path(@post))
+	end
+	
+		# respond_to do |format|
+		  # if @post.update_attributes(params[:post])
+			# format.html { redirect_to(@post, :notice => 'Post was successfully updated.') }
+			# format.xml  { head :ok }
+		  # else
+			# format.html { render :action => "edit" }
+			# format.xml  { render :xml => @post.errors, :status => :unprocessable_entity }
+		  # end
+		# end
 	
   end
 
