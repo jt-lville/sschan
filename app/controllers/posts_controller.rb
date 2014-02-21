@@ -232,13 +232,7 @@ class PostsController < ApplicationController
 	
 		respond_to do |format|
 		  if @post.update_attributes(params[:post])
-		  
-			if (params[:himitsu])
-				format.html { redirect_to (post_path(@post) + "?himitsu=1") }
-			else 
 			format.html { redirect_to(@post, :notice => 'Post was successfully updated.') }
-			end
-			
 			format.xml  { head :ok }
 		  else
 			format.html { render :action => "edit" }
