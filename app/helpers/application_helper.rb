@@ -12,6 +12,8 @@ module ApplicationHelper
 
     c1 = c.content
 
+	if (c == nil) return
+	
     str1 = '<n class = "unkfunc">'
     str2 = '</n>'
     str3 = '<a class = "unkfunc" href = "/posts/'
