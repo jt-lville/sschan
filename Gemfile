@@ -5,7 +5,7 @@ gem 'rails', '3.0.8'
 gem 'aws-s3'
 gem 'aws-sdk'
 
-gem 'sqlite3', :require => 'sqlite3'
+gem 'sqlite3'#, :require => 'sqlite3'
 gem 'devise'
 gem 'cancan'
 gem 'kaminari'

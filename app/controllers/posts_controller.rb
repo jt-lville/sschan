@@ -145,6 +145,7 @@ class PostsController < ApplicationController
 
     #experimental
  #   @post = Post.create!(params[:post])
+ 
     @post.user = current_user
     @post.name = @post.user.name
 
@@ -185,6 +186,11 @@ class PostsController < ApplicationController
       end
     end
         
+	if (params[:himitsu] and @post.is_anonymous)
+		@post.user = nil
+		@post.name = nil
+	end
+		
     @post.save
     
     respond_to do |format|

@@ -86,6 +86,11 @@
 
 	<%= check_box_tag 'tags[]', 'International' %>
 	<%= f.label 'International'%>
+	
+	<% if params[:himitsu] %>
+	<%= check_box_tag 'tags[]', 'International' %>
+	<%= f.label 'International'%>
+	<% end %>
         </p>
 
 
@@ -113,7 +118,7 @@
 				
 				<!--=# link_to "Flag", :controller => "posts", :action => "update", #:method => :put, :post => {:flag => true}%>-->
                                 
-                                 
+                                 <% if (post.tags.include?('himitsu') and params[:himitsu]) or not post.tags.include?('himitsu') %>
                                 <%= render post  %>
                                 <br>
 
@@ -135,6 +140,7 @@
 
                                         <hr>
                                         
+										<% end %>
 
 	<% end %>
   
