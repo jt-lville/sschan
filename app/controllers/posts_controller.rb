@@ -29,8 +29,12 @@ class PostsController < ApplicationController
 	if (params[:himitsu])
 		taglist << "Himitsu"
 	end
+	
     unless @preference.tag_list == [] or @preference.tag_list == nil
       @posts = Post.tagged_with(taglist)
+	else
+		@posts = Post.tagged_with(["Anime", "Random", "Ponies", "Video Games", "Magic", "Intellectual", "Minecraft", "Television", "Music",
+		"International"])
     end
     
     if @preference.feed_preference == "trending value"
@@ -191,8 +195,7 @@ class PostsController < ApplicationController
     end
         
 	if (params[:himitsu] and @post.is_anonymous)
-		@post.user = nil
-		@post.name = nil
+		@post.name = "Bernd"
 	end
 		
     @post.save
