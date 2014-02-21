@@ -24,7 +24,8 @@ class PostsController < ApplicationController
       
     @title = @preference.feed_preference.capitalize
     
-    @posts = Post
+    @posts = Post.all
+	
 	taglist = Array.new(@preference.tag_list)
 	if (params[:himitsu])
 		taglist << "Himitsu"
@@ -41,9 +42,6 @@ class PostsController < ApplicationController
     
     elsif @preference.feed_preference == "time" 
     @posts = @posts.order('created_at DESC').page(params[:page]).per(5)
-
-      elsif @preference.feed_preference == "humor"
-     @posts = Post.tagged_with("humor")
     
     elsif @preference.feed_preference == "location" or @preference.feed_preference == "followers"
     @preference.feed_preference = "trending value"
