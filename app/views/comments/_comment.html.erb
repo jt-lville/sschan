@@ -26,9 +26,9 @@
 
 
 
-                  <% if comment.user.avatar.url != "/images/medium/missing_av.png" %>
-                   <%= image_tag comment.user.avatar.url, :size => '50x50', :class => 'floatRight' %>
-                  <% end %>
+                  <%# if comment.user.avatar.url != "/images/medium/missing_av.png" %>
+                   <%#= image_tag comment.user.avatar.url, :size => '50x50', :class => 'floatRight' %>
+                  <%# end %>
 
                 <% if comment.is_anonymous %>
                   <%= comment.alias %>
@@ -58,9 +58,9 @@
                 <div class ="row1"><%= filter_comment(comment) %></div>
 
 
-                  <% if comment.user.avatar.url != "/images/medium/missing_av.png" %>
+                  <%# if comment.user.avatar.url != "/images/medium/missing_av.png" %>
                    <br/><br/>
-                  <% end %>
+                  <%# end %>
 
                 <% if comment.file.url != "/images/original/missing.png" %>
                 <br/><br/><br/><br/><br/><br/><br/><br/><br/> <br/><br/><br/>
