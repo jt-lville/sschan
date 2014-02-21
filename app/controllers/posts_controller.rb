@@ -33,7 +33,7 @@ class PostsController < ApplicationController
     unless @preference.tag_list == [] or @preference.tag_list == nil
       @posts = Post.tagged_with(taglist)
 	else
-		@posts = @Post
+		@posts = Post
 		
 		@posts.delete_if { |a| a.tagged_with("Himitsu") }
     end
