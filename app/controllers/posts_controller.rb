@@ -24,7 +24,7 @@ class PostsController < ApplicationController
       
     @title = @preference.feed_preference.capitalize
     
-    @posts = Post.all
+    @posts = Post
 	
 	taglist = Array.new(@preference.tag_list)
 	if (params[:himitsu])
@@ -37,21 +37,19 @@ class PostsController < ApplicationController
       @posts = Post.tagged_with(taglist)
     end
     
-    if @preference.feed_preference == "trending value"
-    @posts = @posts.order('trending_value DESC').page(params[:page]).per(5)
+    #if @preference.feed_preference == "trending value"
+    #@posts = @posts.order('trending_value DESC').page(params[:page]).per(5)
     
-    elsif @preference.feed_preference == "time" 
-    @posts = @posts.order('created_at DESC').page(params[:page]).per(5)
+    #elsif @preference.feed_preference == "time" 
+    #@posts = @posts.order('created_at DESC').page(params[:page]).per(5)
     
-    elsif @preference.feed_preference == "location" or @preference.feed_preference == "followers"
-    @preference.feed_preference = "trending value"
-    @posts = @posts.order('trending_value DESC').page(params[:page]).per(5)
-    end  
+    #elsif @preference.feed_preference == "location" or @preference.feed_preference == "followers"
+    #@preference.feed_preference = "trending value"
+    #@posts = @posts.order('trending_value DESC').page(params[:page]).per(5)
+    #end  
 
-#    @posts.each do |p| #may be inefficient
-#      update_status_for_post(p)
-#      p.save
-#    end
+	
+	@posts = @posts.page(params[:page]).per(10)
 
     @preference.save
 
