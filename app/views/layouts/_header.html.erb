@@ -3,7 +3,13 @@
 
 <div id="topBar">
 
+	  <% if params[:himitsu] %>
+	  
   <%= link_to(image_tag('logo.png', :alt=>'SSChan', :id=>'logo'), '/posts') %>
+	  <%else %>
+  <%= link_to(image_tag('logo.png', :alt=>'SSChan', :id=>'logo'), '/posts?himitsu=1') %>
+	  <% end %>
+
   <span id="headPages" class="floatRight">
 
     <p>
