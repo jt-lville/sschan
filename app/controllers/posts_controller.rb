@@ -59,16 +59,12 @@ class PostsController < ApplicationController
 
     #end of 4chan style posts
 
-	if (params[:himitsu])
-		redirect_to (post_path(@post) + "?himitsu=1")
-	else 
 	
 		respond_to do |format| #old code
 		  format.html # index.html.erb
 		  format.xml  { render :xml => @posts }
 		end
-	
-	end
+
     
   end
   
