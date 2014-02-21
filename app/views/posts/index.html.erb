@@ -75,17 +75,11 @@
 	<%= check_box_tag 'tags[]', 'Intellectual' %>
 	<%= f.label 'Intellectual' %>
 
-	<%= check_box_tag 'tags[]', 'Minecraft' %>
-	<%= f.label 'Minecraft' %>
-
-	<%= check_box_tag 'tags[]', 'Television' %>
-	<%= f.label 'Television' %>
+	<%= check_box_tag 'tags[]', 'Entertainment' %>
+	<%= f.label 'Movies' %>
 
 	<%= check_box_tag 'tags[]', 'Music' %>
 	<%= f.label 'Music' %>
-
-	<%= check_box_tag 'tags[]', 'International' %>
-	<%= f.label 'International'%>
 	
 	<% if params[:himitsu] %>
 	<%= check_box_tag 'tags[]', 'Himitsu', :options => {:checked => true}%>
