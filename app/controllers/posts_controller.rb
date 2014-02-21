@@ -33,7 +33,9 @@ class PostsController < ApplicationController
     unless @preference.tag_list == [] or @preference.tag_list == nil
       @posts = Post.tagged_with(taglist)
 	else
-		@post = Post.tagged_with(["Himitsu"], :exclude => :true)
+		@posts = @Post
+		
+		@posts.delete_if { |a| a.tagged_with("Himitsu") }
     end
     
     if @preference.feed_preference == "trending value"
