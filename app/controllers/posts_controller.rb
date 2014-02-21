@@ -49,7 +49,7 @@ class PostsController < ApplicationController
     #end  
 
 	
-	@posts = @posts.page(params[:page]).per(10)
+	@posts = @posts = @posts.order('created_at ASC').page(params[:page]).per(10)
 
     @preference.save
 
