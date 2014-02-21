@@ -50,7 +50,8 @@ class PostsController < ApplicationController
 	
 
 	#@posts = @posts.page(params[:page]).per(10)
-
+	@posts = @posts.paginate(:page => params[:page], :per_page => 30)
+	
     @preference.save
 
     #end of 4chan style posts

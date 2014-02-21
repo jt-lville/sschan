@@ -15,6 +15,8 @@ gem 'rake', '0.9.2.2'
 gem 'acts-as-taggable-on', '~>2.1.0'
 gem 'gravtastic' #gravatar support
 
+gem 'will_paginate', '~> 3.0'
+
 gem 'paperclip', :path => 'vendor/gems/paperclip' #:git => "git://github.com/thoughtbot/paperclip.git"
 
 gem 'awesome_nested_set'
