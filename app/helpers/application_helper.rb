@@ -7,9 +7,21 @@ module ApplicationHelper
      # "#{base_title} | #{@title}"
     # end
   end
+  
+  def replies_box_class
+  
+  if params[:himitsu] and comment.post.tag_list.include?("Himitsu")
+  
+	return himitsurepliesbox
+else 
+	return repliesbox
+  
+  end
+  
+  end
 
     def filter_comment(c) #use for both OP's and comments
-
+	
     c1 = c.content
 	
     str1 = '<n class = "unkfunc">'

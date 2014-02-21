@@ -1,5 +1,13 @@
 
+<% if params[:himitsu] and comment.post.tag_list.include?("Himitsu") %>
+
+<div class ="himitsurepliesbox">
+
+<% else %>
+
 <div class ="repliesbox">
+
+<% end %>
 
                 <n class='postername'>
 

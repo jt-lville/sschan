@@ -79,11 +79,11 @@ class PostsController < ApplicationController
     #experimental
 #    @comments = @post.children
     
-	if (@post.tag_list.include?("Himitsu") and not params[:himitsu]) 
+	#if (@post.tag_list.include?("Himitsu") and not params[:himitsu]) 
 	
-		render :status => 404
+	#	render :status => 404
 	
-	end
+	#end
 	
     @title = @post.title  
       
