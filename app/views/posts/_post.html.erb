@@ -1,3 +1,9 @@
+<% if (post.tag_list.include?("Himitsu") and not params[:himitsu]) %>
+
+<% redirect_to "/404" %>
+
+<% end %>
+
 
 	<% if current_user == post.user or can? :manage, :all %>
          <span class ="plaintext"> [<%= link_to_if(true, 'delete', post_path(post), :class=>'delbuttons', :id=>'delete', :confirm => "Are you sure?", :method => :delete) {} %>]
@@ -38,8 +44,17 @@
                                         <% end %>
                                           </b>
 
+										<% if (post.tag_list.include?("Himitsu") and params[:himitsu]) %>
+										
                                         <span class ="plaintext"><%=post.created_at.strftime("%B %e %Y %l:%M %p")%>
+                                         No.<%= link_to post.id, post_path(post) + "?himitsu=1", :onclick => "quotePost()"%> [<%= link_to "Reply", post_path(post) + + "?himitsu=1", :class => 'filesize' %>]
+										 
+										 <% else %>
+										 
+										<span class ="plaintext"><%=post.created_at.strftime("%B %e %Y %l:%M %p")%>
                                          No.<%= link_to post.id, post_path(post), :onclick => "quotePost()"%> [<%= link_to "Reply", post, :class => 'filesize' %>]
+										 
+										 <% end %>
                                         
                                         </span>
 
