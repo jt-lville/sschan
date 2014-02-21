@@ -59,10 +59,16 @@ class PostsController < ApplicationController
 
     #end of 4chan style posts
 
-    respond_to do |format| #old code
-      format.html # index.html.erb
-      format.xml  { render :xml => @posts }
-    end
+	if (params[:himitsu])
+		redirect_to (post_path(@post) + "?himitsu=1")
+	else 
+	
+		respond_to do |format| #old code
+		  format.html # index.html.erb
+		  format.xml  { render :xml => @posts }
+		end
+	
+	end
     
   end
   
@@ -87,10 +93,16 @@ class PostsController < ApplicationController
     
     @post.save
 
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @post }
-    end
+	if (params[:himitsu])
+		redirect_to (post_path(@post) + "?himitsu=1")
+	else 
+	
+		respond_to do |format|
+		  format.html # show.html.erb
+		  format.xml  { render :xml => @post }
+		end
+	end
+	
   end
 
   # GET /posts/new
