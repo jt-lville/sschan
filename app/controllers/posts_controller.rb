@@ -2,6 +2,8 @@ class PostsController < ApplicationController
   before_filter :authenticate_user!, :alert => 'You must be logged in to continue'
   load_and_authorize_resource
   impressionist :actions=>[:show] ##plugin to log pageviews
+  
+  require 'will_paginate/array'
 
 #  rescue_from NoMethodError, :with => :clear_preferences
 
