@@ -90,14 +90,8 @@ class PostsController < ApplicationController
     @post.save
 
 	respond_to do |format|
-	
-		if (params[:himitsu])
-		redirect_to (post_path(@post) + "?himitsu=1")
-		else 
-	
 		  format.html # show.html.erb
 		  format.xml  { render :xml => @post }
-		  end
 	end
 	
   end
