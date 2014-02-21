@@ -25,7 +25,7 @@ class PostsController < ApplicationController
     @title = @preference.feed_preference.capitalize
     
     @posts = Post
-	taglist = @preference.tag_list
+	taglist = Array.new(@preference.tag_list)
 	if (params[:himitsu])
 		taglist << "Himitsu"
 	end
