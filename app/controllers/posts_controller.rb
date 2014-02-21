@@ -72,12 +72,19 @@ class PostsController < ApplicationController
   # GET /posts/1.xml
   def show
     #@posts = Post.order('trending_value DESC').page(params[:page]).per(5)
+	
     @post = Post.find(params[:id])
     @user = current_user
     @comments = @post.comments
     #experimental
 #    @comments = @post.children
     
+	if (post.tag_list.include?("Himitsu") and not params[:himitsu]) 
+	
+		render :status => 404
+	
+	end
+	
     @title = @post.title  
       
     @comments.each do |c| #TODO: FIX

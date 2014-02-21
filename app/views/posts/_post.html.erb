@@ -1,9 +1,3 @@
-<% if (post.tag_list.include?("Himitsu") and not params[:himitsu]) %>
-
-<% redirect_to "/404" %>
-
-<% else %>
-
 	<% if current_user == post.user or can? :manage, :all %>
          <span class ="plaintext"> [<%= link_to_if(true, 'delete', post_path(post), :class=>'delbuttons', :id=>'delete', :confirm => "Are you sure?", :method => :delete) {} %>]
          </span>
