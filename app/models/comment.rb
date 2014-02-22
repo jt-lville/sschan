@@ -31,7 +31,7 @@ class Comment < ActiveRecord::Base
 	#comment_regex = /\A[a-zA-Z.\:\;, \/\'\"\(\)\{\}\[\]]+\z/
 	
 	
-	validates :content, :length => {:within => 10..2000}#,
+	#validates :content, :length => {:within => 10..2000}#,
 	                     #:format => {:with => comment_regex}
                        
  #attr_accessible :points_up, :points_down
