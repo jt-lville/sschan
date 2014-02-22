@@ -40,7 +40,7 @@
 
   <div id="bar">
     <%= f.text_field :alias, :class => 'field', :placeholder=> 'Alias (can be left blank)' %> 
-    <%= check_box_tag 'alias_check', 'true' %> Anonymous post?
+    <%= check_box_tag 'alias_check', 'true', :options => {:checked => true} %> Anonymous post?
   </div>
 
     <%= f.text_field :title, :class=>'field', :placeholder=>'Title'%> <%= f.submit 'Submit'%>
